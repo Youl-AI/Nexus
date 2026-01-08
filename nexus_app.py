@@ -106,14 +106,12 @@ def get_chain(mode="lol"):
     {role_desc}
     
     [행동 지침]
-    [말투 및 행동 지침]
     1. 당신은 'Nexus'입니다. 아래 제공된 [데이터]를 기반으로 답변하세요.
     2. 이전 대화 흐름을 기억하고, 문맥에 맞게 자연스럽게 대화하세요.
     3. 분석가답게 논리적으로 말하되, 게이머들이 쓰는 용어(너프, 버프, 떡상, 떡락, OP, 삼신기, 순방 등)를 자연스럽게 섞어 쓰세요.
     4. 수치 변화(데미지, 쿨타임 등)는 매우 중요하므로 정확하게 언급하세요.
     5. 질문에 대한 답이 데이터에 없다면, 어설프게 지어내지 말고 "그건 데이터에 없는데? 라이엇이 아직 안 알려줬나 봐."라고 솔직하게 말하세요.
     6. 답변 끝에는 항상 도움이 될만한 '한 줄 꿀팁'을 덧붙이세요.
-    7. 사용자를 '소환사님'이라고 부르세요.
     
     [학습된 데이터]
     {{context}}
@@ -162,25 +160,25 @@ with tab1:
     if "history_lol" not in st.session_state:
         st.session_state.history_lol = []
 
-    # [핵심 변경 1] 채팅창 컨테이너를 미리 만듭니다. (입력창보다 무조건 위에 위치함)
+    # [컨테이너] 입력창보다 위에 위치
     chat_container_lol = st.container()
 
-    # [핵심 변경 2] 기존 대화 내용을 컨테이너 안에 그립니다.
+    # [컨테이너 내용] 기존 대화 내용 그리기
     with chat_container_lol:
         for msg in st.session_state.messages_lol:
             with st.chat_message(msg["role"]):
                 st.markdown(msg["content"])
 
-    # [핵심 변경 3] 입력창은 컨테이너 밖(아래)에 배치
+    # [입력창] 컨테이너 밖(아래)에 배치
     if prompt_lol := st.chat_input("LoL 질문 입력 (예: 가렌 버프됨?)", key="input_lol"):
         
-        # 1. 사용자 질문 표시 (컨테이너 안에)
+        # 1. 사용자 질문 표시
         with chat_container_lol:
             with st.chat_message("user"):
                 st.markdown(prompt_lol)
         st.session_state.messages_lol.append({"role": "user", "content": prompt_lol})
 
-        # 2. AI 답변 생성 (컨테이너 안에)
+        # 2. AI 답변 생성
         with chat_container_lol:
             with st.chat_message("assistant"):
                 with st.spinner("미니언 데이터 분석 중..."):
@@ -197,6 +195,10 @@ with tab1:
                         st.session_state.messages_lol.append({"role": "assistant", "content": response})
                         st.session_state.history_lol.append(HumanMessage(content=prompt_lol))
                         st.session_state.history_lol.append(AIMessage(content=response))
+                        
+                        # [핵심 추가] 처리가 다 끝나면 강제 새로고침 -> 잔상 제거 및 순서 정렬
+                        st.rerun()
+                        
                     except Exception as e:
                         st.error(f"분석 중 오류 발생: {e}")
 
@@ -210,16 +212,16 @@ with tab2:
     if "history_tft" not in st.session_state:
         st.session_state.history_tft = []
 
-    # [핵심 변경] TFT용 채팅 컨테이너 생성
+    # [컨테이너] 입력창보다 위에 위치
     chat_container_tft = st.container()
 
-    # 대화 내용 출력
+    # [컨테이너 내용] 대화 내용 출력
     with chat_container_tft:
         for msg in st.session_state.messages_tft:
             with st.chat_message(msg["role"]):
                 st.markdown(msg["content"])
 
-    # 입력창
+    # [입력창]
     if prompt_tft := st.chat_input("TFT 질문 입력 (예: 징크스 3신기 알려줘)", key="input_tft"):
         
         # 1. 사용자 질문
@@ -233,7 +235,7 @@ with tab2:
             with st.chat_message("assistant"):
                 with st.spinner("리롤 확률 계산 중..."):
                     try:
-                        # [핵심] mode="tft"를 확실하게 전달
+                        # [설정] mode="tft" 전달
                         chain = get_chain(mode="tft")
                         response = chain.invoke({
                             "context": tft_data,
@@ -246,5 +248,9 @@ with tab2:
                         st.session_state.messages_tft.append({"role": "assistant", "content": response})
                         st.session_state.history_tft.append(HumanMessage(content=prompt_tft))
                         st.session_state.history_tft.append(AIMessage(content=response))
+                        
+                        # [핵심 추가] 처리가 다 끝나면 강제 새로고침 -> 잔상 제거 및 순서 정렬
+                        st.rerun()
+
                     except Exception as e:
                         st.error(f"분석 중 오류 발생: {e}")
