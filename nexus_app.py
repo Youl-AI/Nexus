@@ -11,43 +11,42 @@ from langchain_core.output_parsers import StrOutputParser
 # ==========================================
 st.set_page_config(page_title="Nexus AI", page_icon="✨", layout="wide")
 
-# [Gemini 스타일 CSS]
-# 1. 사이드바의 라디오 버튼을 '목록형 메뉴'처럼 보이게 꾸밉니다.
-# 2. 채팅 메시지 간격을 조정합니다.
+# [핵심] Gemini 스타일 사이드바 CSS
 st.markdown("""
 <style>
-    /* 사이드바 라디오 버튼 디자인 변경 (리스트처럼 보이게) */
-    .stRadio [role=radiogroup] {
-        padding-top: 10px;
-        gap: 10px;
+    /* 1. 라디오 버튼의 '동그라미' 아이콘을 완전히 숨깁니다 */
+    div[role="radiogroup"] > label > div:first-child {
+        display: none !important;
     }
-    .stRadio label {
-        background-color: #f0f2f6;
-        padding: 10px 15px;
-        border-radius: 8px;
+
+    /* 2. 라디오 버튼의 레이블(텍스트) 스타일을 메뉴 바(Bar)처럼 변경 */
+    div[role="radiogroup"] label {
+        padding: 12px 15px !important;       /* 내부 여백을 넉넉하게 */
+        border-radius: 8px !important;       /* 모서리 둥글게 */
+        margin-bottom: 8px !important;       /* 항목 간 간격 */
+        border: 1px solid transparent;       /* 테두리 투명 */
+        transition: all 0.2s ease;           /* 부드러운 애니메이션 */
+    }
+
+    /* 3. 마우스를 올렸을 때 (Hover) 배경색 변경 */
+    div[role="radiogroup"] label:hover {
+        background-color: #f0f2f6 !important; /* 연한 회색 */
         cursor: pointer;
-        transition: background-color 0.3s;
-        border: 1px solid transparent;
-        width: 100%;
-        display: block;
     }
-    .stRadio label:hover {
-        background-color: #e0e2e6;
+
+    /* 4. 선택된 항목 스타일 (최신 브라우저 지원 :has 선택자 사용) */
+    /* 선택된 항목은 연한 파란색 배경과 파란 글씨로 강조 */
+    div[role="radiogroup"] label:has(input:checked) {
+        background-color: #e8f0fe !important; /* Gemini 특유의 연한 파란 배경 */
+        color: #1967d2 !important;            /* 진한 파란 글씨 */
+        font-weight: 600 !important;
     }
-    /* 선택된 항목 강조 */
-    .stRadio [aria-checked="true"] + div {
-        background-color: #e8f0fe !important; /* 연한 파란색 */
-        color: #1967d2 !important; /* 파란 글씨 */
-        font-weight: bold;
-        border: 1px solid #d2e3fc;
-    }
-    /* 채팅창 스타일 */
-    .stChatMessage {
-        margin-bottom: 15px;
-    }
-    /* 메인 헤더 숨기기 (깔끔하게) */
+
+    /* 채팅 메시지 간격 및 가독성 확보 */
+    .stChatMessage { margin-bottom: 10px; }
+    /* 메인 헤더와 푸터 숨기기 (더 깔끔하게) */
     #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
+    footer {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -96,7 +95,6 @@ def load_split_knowledge():
 lol_data, tft_data, lol_files, tft_files = load_split_knowledge()
 
 def get_chain(mode="lol"):
-    # [설정] 2.5 버전 사용
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
     
     if mode == "lol":
@@ -112,6 +110,7 @@ def get_chain(mode="lol"):
         사용자를 **'전략가님'**이라고 부르세요.
         협곡(LoL) 관련 내용은 무시하세요.
         챔피언을 '기물'로 칭하고 덱 구성, 증강체, 배치를 중심으로 설명하세요.
+        아이템 추천은 항상 '찬란한', '유물' 아이템을 제외한 기본 아이템으로 추천하세요.
         """
 
     system_instruction = f"""
@@ -119,10 +118,11 @@ def get_chain(mode="lol"):
     
     [행동 지침]
     1. 데이터를 기반으로 전문적이고 논리적인 답변을 하세요.
-    2. 게이머 은어(너프, 버프, OP, 순방 등)를 자연스럽게 섞어 쓰세요.
-    3. 수치 변화는 정확하게 언급하세요.
-    4. 모르는 내용은 솔직하게 데이터에 없다고 말하세요.
-    5. 답변 끝에 '한 줄 꿀팁'을 추가하세요.
+    2. 이전 대화 흐름을 기억하고, 문맥에 맞게 자연스럽게 대화하세요.
+    3. 게이머 은어(너프, 버프, OP, 삼신기, 순방 등)를 자연스럽게 섞어 쓰세요.
+    4. 수치 변화(데미지, 쿨타임 등)는 정확하게 언급하세요.
+    5. 모르는 내용은 솔직하게 데이터에 없다고 말하세요.
+    6. 답변 끝에 '한 줄 꿀팁'을 추가하세요.
     
     [학습된 데이터]
     {{context}}
@@ -138,44 +138,44 @@ def get_chain(mode="lol"):
 
 
 # ==========================================
-# 3. 사이드바 (Gemini 스타일 목록)
+# 3. 사이드바 (Gemini 스타일 목록 적용)
 # ==========================================
 with st.sidebar:
     st.title("Nexus AI")
     st.caption("Game Data Analysis")
     st.markdown("---")
     
-    # [핵심] 탭 대신 라디오 버튼을 사용하여 메뉴처럼 만듭니다.
-    # CSS를 통해 버튼 모양을 숨기고 리스트처럼 보이게 했습니다.
+    # [변경] 라디오 버튼이지만 CSS로 인해 '목록'처럼 보입니다.
+    # label_visibility="collapsed"를 주어 상단 제목('내 프로젝트')을 숨기고
+    # 버튼 자체만 깔끔하게 보여줍니다.
     selected_mode = st.radio(
-        "내 프로젝트",
+        "내 프로젝트", # 실제로는 CSS로 숨겨질 수도 있거나 작게 보임
         ["소환사의 협곡 (LoL)", "전략적 팀 전투 (TFT)"],
         index=0,
-        key="navigation"
+        key="navigation",
+        label_visibility="collapsed" # 라디오 버튼 제목 숨기기
     )
     
+    # 하단 정보 영역을 아래로 밀어내기 위한 여백 (선택 사항)
+    st.markdown("<br>" * 5, unsafe_allow_html=True)
+    
     st.markdown("---")
-    st.markdown(f"**📚 데이터 현황**")
-    st.caption(f"LoL 문서: {lol_files}개")
-    st.caption(f"TFT 문서: {tft_files}개")
+    st.markdown(f"**📂 데이터베이스**")
+    st.caption(f"• LoL 문서: {lol_files}개")
+    st.caption(f"• TFT 문서: {tft_files}개")
 
 
 # ==========================================
-# 4. 메인 화면 (선택된 모드만 렌더링)
+# 4. 메인 화면 로직 (기존과 동일, 디자인만 변경)
 # ==========================================
 
-# (1) 모드에 따른 설정값 매핑
 if "LoL" in selected_mode:
     current_mode = "lol"
     header_text = "⚔️ 소환사의 협곡 분석실"
     input_placeholder = "LoL 질문 입력 (예: 가렌 버프됨?)"
     context_data = lol_data
-    
-    # 세션 키 설정
     msg_key = "messages_lol"
     hist_key = "history_lol"
-    
-    # 초기 메시지
     initial_msg = "협곡에 오신 것을 환영합니다, 소환사님! 무엇을 분석해 드릴까요?"
 
 else: # TFT
@@ -183,40 +183,35 @@ else: # TFT
     header_text = "♟️ 전략적 팀 전투 연구소"
     input_placeholder = "TFT 질문 입력 (예: 징크스 3신기 알려줘)"
     context_data = tft_data
-    
-    # 세션 키 설정
     msg_key = "messages_tft"
     hist_key = "history_tft"
-    
-    # 초기 메시지
     initial_msg = "반갑습니다, 전략가님! 이번 시즌 꿀덱을 찾아드릴까요?"
 
 
-# (2) 세션 상태 초기화 (해당 모드가 처음이면 생성)
+# 세션 초기화
 if msg_key not in st.session_state:
     st.session_state[msg_key] = [{"role": "assistant", "content": initial_msg}]
 if hist_key not in st.session_state:
     st.session_state[hist_key] = []
 
 
-# (3) UI 그리기
+# 메인 UI
 st.subheader(header_text)
 
-# 채팅 기록 출력 (스크롤 가능한 영역)
-# 탭이 없으므로 컨테이너 없이 바로 그려도 안전합니다.
+# 채팅 기록 출력
 for msg in st.session_state[msg_key]:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# (4) 입력창 및 로직 (하단 고정, Gemini 방식)
+# 입력창 (Gemini 스타일 하단 고정)
 if prompt := st.chat_input(input_placeholder):
     
-    # 사용자 메시지 표시
+    # 사용자 메시지
     with st.chat_message("user"):
         st.markdown(prompt)
     st.session_state[msg_key].append({"role": "user", "content": prompt})
 
-    # AI 답변 생성
+    # AI 답변
     with st.chat_message("assistant"):
         with st.spinner("Nexus가 분석 중입니다..."):
             try:
