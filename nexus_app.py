@@ -7,44 +7,49 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
 
 # ==========================================
-# 1. 페이지 설정 및 CSS (Gemini 스타일 적용)
+# 1. 페이지 설정 및 CSS (사이드바 너비 조절 포함)
 # ==========================================
 st.set_page_config(page_title="Nexus AI", page_icon="✨", layout="wide")
 
-# [핵심] Gemini 스타일 사이드바 CSS
 st.markdown("""
 <style>
-    /* 1. 라디오 버튼의 '동그라미' 아이콘을 완전히 숨깁니다 */
+    /* [핵심 추가] 사이드바 초기 너비 고정 */
+    section[data-testid="stSidebar"] {
+        min-width: 350px !important; /* 최소 너비를 350px로 강제 설정 (글자 안 짤리게) */
+    }
+
+    /* 1. 라디오 버튼의 '동그라미' 아이콘 숨기기 */
     div[role="radiogroup"] > label > div:first-child {
         display: none !important;
     }
 
-    /* 2. 라디오 버튼의 레이블(텍스트) 스타일을 메뉴 바(Bar)처럼 변경 */
+    /* 2. 라디오 버튼 스타일 (목록 메뉴처럼) */
     div[role="radiogroup"] label {
-        padding: 12px 15px !important;       /* 내부 여백을 넉넉하게 */
-        border-radius: 8px !important;       /* 모서리 둥글게 */
-        margin-bottom: 8px !important;       /* 항목 간 간격 */
-        border: 1px solid transparent;       /* 테두리 투명 */
-        transition: all 0.2s ease;           /* 부드러운 애니메이션 */
+        padding: 12px 15px !important;
+        border-radius: 8px !important;
+        margin-bottom: 8px !important;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+        white-space: nowrap; /* 글자가 절대 줄바꿈 되지 않게 설정 */
     }
 
-    /* 3. 마우스를 올렸을 때 (Hover) 배경색 변경 */
+    /* 3. 마우스 호버 효과 */
     div[role="radiogroup"] label:hover {
-        background-color: #f0f2f6 !important; /* 연한 회색 */
+        background-color: #f0f2f6 !important;
         cursor: pointer;
     }
 
-    /* 4. 선택된 항목 스타일 (최신 브라우저 지원 :has 선택자 사용) */
-    /* 선택된 항목은 연한 파란색 배경과 파란 글씨로 강조 */
+    /* 4. 선택된 항목 스타일 */
     div[role="radiogroup"] label:has(input:checked) {
-        background-color: #e8f0fe !important; /* Gemini 특유의 연한 파란 배경 */
-        color: #1967d2 !important;            /* 진한 파란 글씨 */
+        background-color: #e8f0fe !important;
+        color: #1967d2 !important;
         font-weight: 600 !important;
     }
 
-    /* 채팅 메시지 간격 및 가독성 확보 */
+    /* 채팅 메시지 간격 */
     .stChatMessage { margin-bottom: 10px; }
-    /* 메인 헤더와 푸터 숨기기 (더 깔끔하게) */
+    
+    /* 헤더/푸터 숨김 */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 </style>
@@ -138,25 +143,23 @@ def get_chain(mode="lol"):
 
 
 # ==========================================
-# 3. 사이드바 (Gemini 스타일 목록 적용)
+# 3. 사이드바 UI
 # ==========================================
 with st.sidebar:
     st.title("Nexus AI")
     st.caption("Game Data Analysis")
     st.markdown("---")
     
-    # [변경] 라디오 버튼이지만 CSS로 인해 '목록'처럼 보입니다.
-    # label_visibility="collapsed"를 주어 상단 제목('내 프로젝트')을 숨기고
-    # 버튼 자체만 깔끔하게 보여줍니다.
+    # 메뉴 선택
     selected_mode = st.radio(
-        "내 프로젝트", # 실제로는 CSS로 숨겨질 수도 있거나 작게 보임
+        "내 프로젝트",
         ["소환사의 협곡 (LoL)", "전략적 팀 전투 (TFT)"],
         index=0,
         key="navigation",
-        label_visibility="collapsed" # 라디오 버튼 제목 숨기기
+        label_visibility="collapsed"
     )
     
-    # 하단 정보 영역을 아래로 밀어내기 위한 여백 (선택 사항)
+    # 여백 추가
     st.markdown("<br>" * 5, unsafe_allow_html=True)
     
     st.markdown("---")
@@ -166,7 +169,7 @@ with st.sidebar:
 
 
 # ==========================================
-# 4. 메인 화면 로직 (기존과 동일, 디자인만 변경)
+# 4. 메인 화면 로직
 # ==========================================
 
 if "LoL" in selected_mode:
@@ -203,15 +206,13 @@ for msg in st.session_state[msg_key]:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# 입력창 (Gemini 스타일 하단 고정)
+# 입력창
 if prompt := st.chat_input(input_placeholder):
     
-    # 사용자 메시지
     with st.chat_message("user"):
         st.markdown(prompt)
     st.session_state[msg_key].append({"role": "user", "content": prompt})
 
-    # AI 답변
     with st.chat_message("assistant"):
         with st.spinner("Nexus가 분석 중입니다..."):
             try:
@@ -223,7 +224,6 @@ if prompt := st.chat_input(input_placeholder):
                 })
                 st.markdown(response)
                 
-                # 기록 저장
                 st.session_state[msg_key].append({"role": "assistant", "content": response})
                 st.session_state[hist_key].append(HumanMessage(content=prompt))
                 st.session_state[hist_key].append(AIMessage(content=response))
