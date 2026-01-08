@@ -1,0 +1,12520 @@
+=== [LoL 게임 메커니즘 및 공식 모음] ===
+출처: League of Legends Fandom Wiki
+이 데이터는 게임의 규칙, 공식, AI(미니언/포탑) 행동 패턴을 담고 있습니다.
+
+
+========================================
+## 미니언 (Minions)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Minion_(League_of_Legends)
+========================================
+
+For information about the 
+species
+, see 
+Minion (Species)
+.
+
+For information about the 
+ 
+Legends of Runeterra
+ card
+, see 
+2
+ 
+Minion
+.
+
+ 
+Minions
+ are units that comprise the main force sent by the 
+Nexus
+. They spawn periodically from their Nexus and advance along a lane towards the enemy Nexus, automatically engaging any enemy unit or structure they encounter. They are controlled by artificial intelligence and only use 
+basic attacks
+.
+
+A group of spawned minions is called a 
+wave
+. The game's pace fundamentally depends on minion waves.
+
+Contents
+
+1
+ 
+Spawning location and routes
+
+2
+ 
+Gameplay - Summoner's Rift
+
+2.1
+ 
+Minion waves
+
+2.2
+ 
+Behavior
+
+2.2.1
+ 
+Priority
+
+2.2.2
+ 
+Acquisition Range
+
+2.2.3
+ 
+Timing
+
+2.2.4
+ 
+Vision
+
+2.3
+ 
+Stats mechanics
+
+3
+ 
+Buffs
+
+3.1
+ 
+General
+
+3.2
+ 
+Minion Pushing
+
+3.3
+ 
+Neutral Buffs
+
+4
+ 
+Minion interactions
+
+4.1
+ 
+Capped damage
+
+4.2
+ 
+Modified damage
+
+4.3
+ 
+Other interactions
+
+5
+ 
+Creep Score
+
+5.1
+ 
+Wave Gold Value
+
+6
+ 
+Wave Strategy
+
+7
+ 
+Game Terminology
+
+8
+ 
+Minion Variants
+
+9
+ 
+Trivia
+
+10
+ 
+Patch History
+
+Spawning location and routes
+
+These graphics show the points at which minions spawn right beside each Nexus, and the route they follow after being spawned, for each available map:
+
+ 
+Summoner's Rift
+ 
+Howling Abyss
+
+The thick, short segments at each line's end represent the spawning point for each lane (the point at which minions appear on the map).
+
+The thin, long segments represent the minions' regular route along each lane that they march along immediately after spawning.
+
+Gameplay - Summoner's Rift
+
+Minion waves
+
+Minions start spawning from each 
+Nexus
+ at 
+1:05
+ and keep spawning in waves every 30 seconds for the rest of the match. Each wave comprises several types of minions, which spawn in this order:
+
+ 
+Super minions
+
+If a team's inhibitor is destroyed, one super minion spawns for the enemy team on the same lane as the destroyed inhibitor.
+
+If all of a team's inhibitors are destroyed, two super minions spawn on each lane for the enemy team instead.
+
+ 
+Melee minions
+
+Three of them spawn in each wave.
+
+ 
+Siege minions
+
+They do not spawn on waves in which 
+ 
+super minions
+ are present.
+
+For the first 15 minutes, one spawns every three waves.
+
+After the 15 minute mark, one spawns every two waves.
+
+After the 25 minute mark, one spawns every wave.
+
+ 
+Caster minions
+
+Three of them spawn in each wave.
+
+Behavior
+
+While minions have not acquired a target, they will strictly path linearly along a lane until they find a valid enemy unit. Upon finding one, they will move toward and attack it within their range. Minions respect unit collision as well as 
+player-generated terrain
+.
+
+The 
+first wave
+'s minions have modified behaviour. Top and bottom lanes' minions are ghosted for 28 seconds, while middle lane minions are ghosted for 18 seconds. They will ignore enemy champions until a champion walks much closer to them or until meeting with the enemy wave. When the waves meet, minions will spread out their attacks on the three enemy melee minions regardless of distance. This special behavior exists so that, in every game, neither side gains a pushing advantage without champion interference since the first wave's melee minions are guaranteed to die at roughly the same time.
+
+Nearby enemy minions will become aggressive toward, or "
+aggro
+", an enemy champion within their own 
+ 
+variable acquisition range
+ and under certain conditions. When activated by enemy champion actions, this aggression is formally referred to as a 
+Call for Help signal
+ in-game and throughout the wiki, and it is indicated by an icon of three concentrated lines above a minion's health bar (this icon indicates all non-playable units' aggro, including 
+ 
+monsters
+, 
+ 
+turrets
+, 
+ 
+pets
+, etc.).
+
+Abilities interacting with 
+ / 
+ minion 
+Call for Help
+ specifically, is noted under their respective "Details" section within a formatted table (
+which includes other fundamental ability properties
+).
+
+Call for Help signals trigger when:
+
+A champion stands in the minion's path, without any other targets within the minions' attack range and outside of a 
+turret
+'s range.
+
+A champion deals damage to an enemy champion with a basic attack, the majority of 
+unit-targeted
+ abilities, and a minority of abilities which are marked as being similar to those two. Minions will prioritize the closest champion in the case there are multiple sources.
+
+Bar the first wave (which is noted above as an exception), Call for Help signals are also ignored while minions are already attacking an enemy turret.
+
+Priority
+
+When minions find several enemy units, they choose their target using a priority system that follows this order:
+
+Enemy champions attacking an allied champion.
+
+Enemy minions attacking an allied champion.
+
+Enemy minions attacking an allied minion.
+
+Enemy turrets attacking an allied minion.
+
+Enemy champions attacking an allied minion.
+
+The closest enemy minion.
+
+The closest enemy champion.
+
+Once a minion has chosen a target, it only switches to a new target if that new target has a higher priority. The minion cannot acquire a new target that has the same priority as their current target (and thus continues attacking its current target).
+
+Acquisition Range
+
+In general, valid targets must be within 500 units of the minion in order to be acquired.
+
+Allied champions being attacked by an enemy champion may be within 1000 range of the minion instead.
+
+Timing
+
+Minions reevaluate their target in between each attack windup every few seconds. For instance, if an enemy champion is attacking an allied champion and stops doing so, minions will not stop targeting that champion for a short time afterwards.
+
+Vision
+
+When the minion loses sight of its target, the minion switches to a new target or keeps advancing if there are no targets left within sight.
+
+Stats mechanics
+
+Minions "upgrade" strictly every 90 seconds (i.e., every third wave), gaining 
+Champions killed with Comeuppance (R)
+health
+, 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+, and possibly certain 
+buffs
+ depending on the game state.
+
+Minions deal 50% reduced damage to enemy champions.
+
+Minions start with 325 base 
+ 
+Champions killed 5s before or after using Chronobreak (R)
+movement speed
+ and gain 
+25 / 50 / 75 / 100 (based on minutes)
+ movement speed as the game time progresses.
+
+After the first wave and before 14 minutes, all top and bottom lane minions gain bonus movement speed. This increase matches the time it takes for top and bottom lanes' minions and midlane minions to reach the midpoint of each lane, as the side lanes are longer than the middle lane.
+
+New spawning minions level up based on their team's average (integer) champion level (e.g. champion levels 15, 10, 18 = minion level 14). Minion levels interact with the minion pushing buff explained below.
+
+Buffs
+
+General
+
+Destroying an enemy inhibitor grants a small buff to allied minions in the lane where the inhibitor has been destroyed.
+
+Minion Pushing
+
+On 
+ 
+Summoner's Rift
+
+The team with the higher average champion level gains the minion pushing buff. The buff increases the minion damage against enemy minions and reduces the damage they take from them.
+
+Bonus damage
+ = (5% + (5% × 
+Turret advantage of the lane
+)) × 
+Team level advantage
+
+Damage reduction
+ = 1 + (
+Turret advantage of the lane
+ × 
+Team level advantage
+)
+
+Team level advantage is the difference between the (decimal) average of the (integer) levels of the players in one team and the average of the levels of the other. This difference can be a decimal value, and is capped at 3.
+
+Turret advantage is the difference between the number of turrets destroyed in one team on a specific lane and the number of turrets destroyed on the other team on that same lane. Note that Nexus turrets are not lane turrets. This difference cannot be below 0.
+
+Since there are three turrets on each lane, the maximum possible benefits on Summoner's Rift are: 
+
+Bonus damage
+ = (5% + (5% × 3)) × 3 = 60%
+
+Damage reduction
+ = 1 + (3 × 3) = 10
+
+This buff starts to apply at 3:30. Already-spawned minions will also receive the buff and these values will update for all minions when the level and turret advantages change.
+
+On 
+ 
+Howling Abyss
+
+Minions in the team with higher average champion level receive a buff that reduces damage taken from enemy minions.
+
+Damage reduction
+ = 
+Level advantage
+ × 
+Turret advantage
+
+Team level advantage is the difference between the (decimal) average of the (integer) levels of the players in one team and the average of the levels of the other. This difference can be a decimal value, and is 
+not
+ capped.
+
+Turret advantage is the difference between the number of inner and nexus turrets destroyed for each team.
+
+This buff starts to apply at 3:30. Already-spawned minions will also receive the buff and these values will update for all minions when the level and turret advantages change.
+
+Neutral Buffs
+
+ 
+Hand of Baron
+
+Minion interactions
+
+The following game elements have special interactions or effects against minions:
+
+"Time doesn't heal all wounds."
+
+This article or section is 
+outdated
+. Please 
+update
+ this article to reflect recent events or newly available information.
+Last champion added: 
+ 
+Smolder
+.
+
+This article was 
+last edited
+ by 
+FrostFist
+ on 
+15-May-2024 21:15
+.
+
+Capped damage
+
+Hide
+Show
+
+Champions
+
+ 
+Briar's
+ 
+ 
+Snack Attack
+
+ 
+Cho'Gath's
+ 
+ 
+Vorpal Spikes
+
+ 
+Ekko's
+ 
+ 
+Parallel Convergence
+
+ 
+Kog'Maw's
+ 
+ 
+Bio-Arcane Barrage
+
+ 
+Malzahar's
+ 
+ 
+Nether Grasp
+
+ 
+Maokai's
+ 
+ 
+Sapling Toss
+
+ 
+Singed's
+ 
+ 
+Fling
+
+ 
+Sion's
+ 
+ 
+Glory in Death
+ and 
+ 
+Soul Furnace
+
+ 
+Volibear's
+ 
+ 
+Sky Splitter
+
+ 
+Yuumi's
+ 
+ 
+Prowling Projectile
+
+ 
+Zac's
+ 
+ 
+Unstable Matter
+
+Items
+
+ 
+Blade of the Ruined King
+
+Modified damage
+
+Hide
+Show
+
+Champions
+
+ 
+Aatrox's
+ 
+ 
+Deathbringer Stance
+, 
+ 
+The Darkin Blade
+ and 
+ 
+Infernal Chains
+
+ 
+Ahri's
+ 
+ 
+Fox-Fire
+
+ 
+Akshan's
+ 
+ 
+Dirty Fighting
+, 
+ 
+Avengerang
+ and 
+ 
+Comeuppance
+
+ 
+Aphelios'
+ 
+ 
+Infernum
+
+ 
+Bel'Veth's
+ 
+ 
+Void Surge
+
+ 
+Briar's
+ 
+ 
+Snack Attack
+
+ 
+Dr. Mundo's
+ 
+ 
+Blunt Force Trauma
+
+ 
+Ezreal's
+ 
+ 
+Trueshot Barrage
+
+ 
+Fiddlesticks'
+ 
+ 
+Bountiful Harvest
+
+ 
+Galio's
+ 
+ 
+Justice Punch
+
+ 
+Gragas'
+ 
+ 
+Barrel Roll
+
+ 
+Gwen's
+ 
+ 
+Thousand Cuts
+
+ 
+Hecarim's
+ 
+ 
+Rampage
+
+ 
+Heimerdinger's
+ 
+ 
+Hextech Micro-Rockets
+ and 
+ 
+Hextech Rocket Swarm
+
+ 
+Hwei's
+ 
+ 
+Severing Bolt
+ and 
+ 
+Molten Fissure
+ and 
+ 
+Stirring Lights
+
+ 
+Irelia's
+ 
+ 
+Bladesurge
+
+ 
+Jhin's
+ 
+ 
+Deadly Flourish
+ and 
+ 
+Captive Audience
+
+ 
+Kai'Sa's
+ 
+ 
+Icathian Rain
+
+ 
+Kalista's
+ 
+ 
+Sentinel
+
+ 
+Kayn's
+ 
+ 
+Reaping Slash
+
+ 
+Kled's
+ 
+ 
+Bear Trap on a Rope
+
+ 
+Lillia's
+ 
+ 
+Watch Out! Eep!
+
+ 
+Lucian's
+ 
+ 
+Lightslinger
+ and 
+ 
+The Culling
+
+ 
+Lulu's
+ 
+ 
+Glitterlance
+
+ 
+Malzahar's
+ 
+ 
+Void Swarm
+
+ 
+Miss Fortune's
+ 
+ 
+Love Tap
+
+ 
+Naafiri's
+ 
+ 
+Darkin Daggers
+
+ 
+Nilah's
+ 
+ 
+Formless Blade
+
+ 
+Nocturne's
+ 
+ 
+Umbra Blades
+
+ 
+Nunu's
+ 
+ 
+Consume
+
+ 
+Ornn's
+ 
+ 
+Bellows Breath
+
+ 
+Pantheon's
+ 
+ 
+Comet Spear
+ and 
+ 
+Aegis Assault
+
+ 
+Rumble's
+ 
+ 
+Flamespitter
+
+ 
+Samira's
+ 
+ 
+Inferno Trigger
+
+ 
+Seraphine's
+ 
+ 
+Beat Drop
+
+ 
+Sion's
+ 
+ 
+Decimating Smash
+
+ 
+Smolder's
+ 
+ 
+Super Scorcher Breath
+ and 
+ 
+Achooo!
+
+ 
+Swain's
+ 
+ 
+Vision of Empire
+
+ 
+Sylas'
+ 
+ 
+Petricite Burst
+ and 
+ 
+Chain Lash
+
+ 
+Urgot's
+ 
+ 
+Purge
+
+ 
+Vex's
+ 
+ 
+Doom 'n Gloom
+
+ 
+Xayah's
+ 
+ 
+Bladecaller
+
+ 
+Xin Zhao's
+ 
+ 
+Wind Becomes Lightning
+
+ 
+Yone's
+ 
+ 
+Spirit Cleave
+
+Items
+
+ 
+Bami's Cinder
+
+ 
+Doran's Ring
+
+ 
+Doran's Shield
+
+ 
+Elixir of Avarice
+
+ 
+Noonquiver
+
+ 
+Sunfire Aegis
+
+ 
+Tear of the Goddess
+
+Other interactions
+
+Hide
+Show
+
+Champions
+
+ 
+Aatrox's
+ 
+ 
+Deathbringer Stance
+ and 
+ 
+World Ender
+
+ 
+Alistar's
+ 
+ 
+Triumphant Roar
+
+ 
+Bel'Veth's
+ 
+ 
+Endless Banquet
+
+ 
+Cassiopeia's
+ 
+ 
+Twin Fang
+
+ 
+Cho'Gath's
+ 
+ 
+Feast
+
+ 
+Darius'
+ 
+ 
+Noxian Guillotine
+
+ 
+Draven's
+ 
+ 
+League of Draven
+
+ 
+Fiddlesticks'
+ 
+ 
+Terrify
+ and 
+ 
+Bountiful Harvest
+
+ 
+Gangplank's
+ 
+ 
+Cannon Barrage
+ with 
+ 
+Raise Morale
+
+ 
+Graves'
+ 
+ 
+New Destiny
+
+ 
+Hecarim's
+ 
+ 
+Spirit of Dread
+
+ 
+Janna's
+ 
+ 
+Monsoon
+
+ 
+Kled's
+ 
+ 
+Jousting
+ and 
+ 
+Dismounted Skaarl the Cowardly Lizard
+
+ 
+Lillia's
+ 
+ 
+Lilting Lullaby
+
+ 
+Malzahar's
+ 
+ 
+Void Shift
+
+ 
+Morgana's
+ 
+ 
+Soul Siphon
+
+ 
+Naafiri's
+ 
+ 
+We Are More
+
+ 
+Nasus'
+ 
+ 
+Siphoning Strike
+
+ 
+Nilah's
+ 
+ 
+Joy Unending
+ and 
+ 
+Apotheosis
+
+ 
+Nocturne's
+ 
+ 
+Umbra Blades
+
+ 
+Nunu's
+ 
+ 
+Consume
+, 
+ 
+Biggest Snowball Ever!
+
+ 
+Orianna's
+ 
+ 
+Command Dissonance
+
+ 
+Quinn's
+ 
+ 
+Blinding Assault
+
+ 
+Rek'Sai's
+ 
+ 
+Fury of the Xer'Sai
+
+ 
+Rell's
+ 
+ 
+Break the Mold
+ and 
+ 
+Ferromancy: Crash Down
+
+ 
+Sejuani's
+ 
+ 
+Winter's Wrath
+ and 
+ 
+Permafrost
+
+ 
+Senna's
+ 
+ 
+Absolution
+
+ 
+Shaco's
+ 
+ 
+Jack in the Box
+
+ 
+Sion's
+ 
+ 
+Soul Furnace
+ and 
+ 
+Roar of the Slayer
+
+ 
+Sivir's
+ 
+ 
+On the Hunt
+
+ 
+Swain's
+ 
+ 
+Demonic Ascension
+
+ 
+Syndra's
+ 
+ 
+Force of Will
+
+ 
+Teemo's
+ 
+ 
+Blinding Dart
+
+ 
+Thresh's
+ 
+ 
+Damnation
+ and 
+ 
+Death Sentence
+
+ 
+Varus'
+ 
+ 
+Living Vengeance
+
+ 
+Veigar's
+ 
+ 
+Baleful Strike
+
+ 
+Vex's
+ 
+ 
+Doom 'n Gloom
+
+ 
+Viego's
+ 
+ 
+Blade of the Ruined King
+
+ 
+Viktor's
+ 
+ 
+Glorious Evolution
+
+ 
+Vladimir's
+ 
+ 
+Transfusion
+ with 
+ 
+Crimson Rush
+
+ 
+Volibear's
+ 
+ 
+Frenzied Maul
+
+ 
+Zed's
+ 
+ 
+Contempt for the Weak
+
+ 
+Zoe's
+ 
+ 
+Spell Thief
+ and 
+ 
+Sleepy Trouble Bubble
+
+Items
+
+ 
+Bami's Cinder
+
+ 
+Cull
+
+ 
+Hullbreaker
+
+ 
+Ravenous Hydra
+
+ 
+Runic Compass
+
+ 
+Sunfire Aegis
+
+ 
+Tear of the Goddess
+
+ 
+Warmog's Armor
+
+ 
+World Atlas
+
+Runes
+
+ 
+Fleet Footwork
+
+ 
+Legend: Alacrity
+
+ 
+Legend: Bloodline
+
+ 
+Legend: Haste
+
+ 
+Overgrowth
+
+Summoner Spells
+
+ 
+Smite
+ (
+ 
+Unleashed Smite
+ and 
+ 
+Primal Smite
+)
+
+Neutral Buffs
+
+ 
+Ocean Dragon Soul
+
+Creep Score
+
+Creep Score
+, or 
+CS
+, is the number of minions, monsters, and champion pets a champion has slain by dealing the killing blow to these units. Dealing this hit is known as 
+last hitting
+ and is considered one of the most important skills in League of Legends.
+
+Every minion is worth 1 CS.
+
+In the early- and mid-game, CS along with 
+KDA
+ can be used to measure a player's performance against their lane opponent.
+
+Wave Gold Value
+
+In 
+Summoner's Rift
+, an undistributed wave consists of three 
+ 
+melee minions
+, three 
+ 
+caster minions
+ and possibly a 
+ 
+siege minion
+.
+
+As of 
+V8.23
+, a 
+minion wave
+ has an 
+average
+ gold value that varies from 
+ 
+125
+ and up to 
+ 
+195
+ at 25:00.
+
+Game time
+
+Average gold per wave
+
+Calculations
+
+Average gold per cs
+
+0:00
+
+ 
+125
+
+(3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+21
+) + (3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+14
+) + (
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+60
+ ÷ 3)
+
+19.8
+
+15:00
+
+ 
+147
+
+(3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+21
+) + (3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+14
+) + (
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+84
+ ÷ 2)
+
+22.6
+
+17:15
+
+ 
+150
+
+(3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+21
+) + (3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+14
+) + (
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+90
+ ÷ 2)
+
+23
+
+25:00
+
+ 
+195
+
+(3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+21
+) + (3 × 
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+14
+) + (
+Lethal damage prevented with healing from Bountiful Harvest (W)
+ 
+90
+)
+
+27.6
+
+Wave Strategy
+
+Without player interference, a lane's wave is neither advancing or retreating in any significant amount.
+
+A minion wave that catches up with its preceding wave starts pushing the lane towards enemy turret.
+
+Big waves of minions can overwhelm a turret.
+
+When a player interrupts an enemy minion wave, ensuring their minions deal more damage to the opponent's minions than they are receiving, the lane starts to 
+push
+.
+
+In the simplest way, this is done by killing every minion in a wave without interference from your own minions. This changes where in the lane the minion waves clash.
+
+On more sophisticated turning the player makes sure their side is making just slightly more damage thus allowing the wave to build up as the wave gets reinforcements before than the enemy wave.
+
+Game Terminology
+
+Some game terms related to minions:
+
+Farming
+: Last hitting minions to earn gold and experience.
+
+Lane Momentum
+: The strength with which the minions in a lane advance without champion aid.
+
+Pushing
+: Attacking enemy minions to keep allied minions alive and allow them to advance along their lane.
+
+Freezing
+: Preventing enemy minions from pushing the lane without pushing them back.
+
+"Winions"
+: A wave of minions so big or so strong that it can destroy 
+turrets
+, 
+nexuses
+, or champions without champion aid.
+
+Free Farming
+: Farming without being confronted by an enemy champion.
+
+Proxy Farming
+: Farming behind an enemy tower. It's easier than conventional farming because there is no interference from allied minions, but it's usually much more dangerous.
+
+Split Pushing
+: Attacking several objectives at the same time when at least one of the objectives is a lane turret.
+
+Minion Variants
+
+Labels use the Order (blue team) and Chaos (red team) faction names.
+
+Summoner's Rift
+Other Game Modes
+
+Evolved
+Alpha
+Beta
+
+These are all the Minions used after the second Summoner's Rift map update
+
+Blue Caster Minion 
+(Order)
+Red Caster Minion 
+(Chaos)
+Blue Melee Minion 
+(Order)
+Red Melee Minion 
+(Chaos)
+Blue Siege Minion 
+(Order)
+Red Siege Minion 
+(Chaos)
+Blue Super Minion 
+(Order)
+Red Super Minion 
+(Chaos)
+
+These are all the Minions used between Beta 1 and Beta 3
+
+Blue Barracks Wizard 
+(Order)
+Blue Archer Minion 
+(Order)
+Red Barracks Wizard 
+(Chaos)
+Red Archer Minion 
+(Chaos)
+Blue Melee Minion 
+(Order)
+Red Melee Minion 
+(Chaos)
+Blue Rider Minion 
+(Order)
+Red Rider Minion 
+(Chaos)
+
+These are all the Minions used between Beta 3 and the second Summoner's Rift map update
+
+Blue Caster Minion 
+(Order)
+Purple Caster Minion 
+(Chaos)
+Blue Melee Minion 
+(Order)
+Purple Melee Minion 
+(Chaos)
+Blue Siege Minion 
+(Order)
+Unused Blue Siege Minion 
+(Order)
+Purple Siege Minion 
+(Chaos)
+Blue Super Minion 
+(Order)
+Purple Super Minion 1 
+(Chaos)
+Purple Super Minion 2 
+(Chaos)
+
+Other game modes refers to 
+April Fools' Day
+, 
+Arcade
+, 
+Arcane
+, 
+PROJECT
+, 
+Snowdown Showdown
+ and 
+Ultra Rapid Fire
+ Minions.
+
+Both original 
+Howling Abyss
+, 
+Twisted Treeline
+ and 
+Murder Bridge
+ had altered variants of the original Summoner's Rift inhibitors before their eventual updates.
+
+Blue "Arcane" Caster Minion 
+(Order)
+Red "Arcane" Caster Minion 
+(Order)
+Blue "Arcane" Caster Minion 
+(Chaos)
+Red "Arcane" Caster Minion 
+(Chaos)
+Blue "Arcane" Melee Minion 
+(Order)
+Red "Arcane" Melee Minion 
+(Order)
+Blue "Arcane" Melee Minion 
+(Chaos)
+Red "Arcane" Melee Minion 
+(Chaos)
+Blue "Arcane" Siege Minion 
+(Order)
+Red "Arcane" Siege Minion 
+(Order)
+Blue "Arcane" Siege Minion 
+(Chaos)
+Red "Arcane" Siege Minion 
+(Chaos)
+Blue "Arcane" Super Minion 
+(Order)
+Red "Arcane" Super Minion 
+(Order)
+Blue "Arcane" Super Minion 
+(Chaos)
+Red "Arcane" Super Minion 
+(Chaos)
+
+Trivia
+
+If the game plays out without champion interference, the minions in one of the teams will eventually win the game. The team that wins is random.
+
+When minions acquire a target, it is possible for a champion to pick up aggro multiple times from a minion. Minions can constantly pick up aggro from you and can follow you through the jungle.
+
+By default, each player sees their allied minions and structures in 
+Summoner's Rift
+ in blue and the enemy minions and structures in red. This is just a visual effect, it has no practical effects in the game.
+
+Previously, midlane minions had reduced gold bounties, which lasted until 14:00 (until the wave at 13:35). The gold penalty was ultimately removed in 
+V13.12
+.
+
+Between 
+V10.23
+ and 
+V12.21
+, midlane siege minions were worth 
+ 
+10
+ less. Compared to other lanes, the total amount of gold from midlane minions was 
+ 
+80
+ less.
+
+Between 
+V12.22
+ and 
+V13.11
+, all midlane minions were worth 
+ 
+1
+ less (i.e., siege minions were in total worth 
+ 
+1
+ less instead of 
+ 
+10
+ less than their regular bounty as before). Compared to other lanes, the total amount of gold from midlane minions was 
+ 
+164
+ less.
+
+Blue Siege Minion in beta is a mobile ballista.
+
+The unused Blue Siege Minion model in beta also became the now Blue Siege Minion.
+
+Visually, Blue 
+Super Minion
+'s pilots use two control sticks similar to analog sticks on 
+Siege Minions
+ to control their mech while Red 
+Super Minion
+'s pilots control their mech with a red crystal sphere, suggesting that magic is used.
+
+Patch History
+
+V13.12
+
+Removed:
+ Mid lane minions no longer give 1 less gold before 14:00.
+
+V13.10
+
+New Effect:
+ After the first wave and before 14 minutes, side lane minions gain increased movement speed, matching the time it takes for two opposing minion waves to meet at the midpoint of top lane and bottom lane, with the time it takes for the middle lane.
+
+New Effect:
+ Minions that are targeting towers now ignore "call for help" signals against enemy champions.
+
+V12.22
+
+New Effect:
+ All minions spawned in the middle lane will now be worth 
+ 
+1
+ less before 14 minutes when last hit.
+
+This affects siege minions which were previously worth 
+ 
+10
+ less.
+
+Solo lane minion bonus experience modifier increased to 95% from 93%.
+
+Minion shared experience unchanged.
+
+V10.23
+
+Siege minion
+
+New Effect:
+ Gold from mid lane 
+siege minions
+ are reduced by 
+ 
+10
+ for the first 14 minutes of the game.
+
+New Effect:
+ Mid lane 
+siege minions
+ gain 
+Champions hit with Martial Cadence (P)
+30% 
+bonus
+ attack speed
+ while attacking turrets.
+
+V9.23
+
+Melee minion 
+base
+ XP increased to 65 from 64.
+
+Minion solo experience increased to 93% from 92%.
+
+Minion shared experience reduced to 116% from 120%.
+
+Melee minion
+
+Solo XP increased to 60.
+45
+ from 58.
+88
+.
+
+Shared XP reduced to 75.
+4
+ from 76.
+8
+.
+
+Caster minion
+
+Solo XP increased to 29.
+76
+ from 29.
+44
+.
+
+Shared XP reduced to 37.
+12
+ from 38.
+4
+.
+
+Siege / Super minion
+
+Solo XP increased to 93 from 92.
+
+Shared XP reduced to 116 from 120.
+
+V9.4
+
+The first wave of top and bot lane minions are ghosted for 28 seconds, instead of 18, after spawning. 
+Mid lane minions unchanged at 18 seconds of ghosting.
+
+V8.23
+
+General
+
+Damage to turrets reduced to 50% from 60%.
+
+Damage to champions reduced to 50% from 60%.
+
+Bonus movement speed based on game-time increased to 
+25 / 50 / 75 / 100 (based on minutes)
+ from 25 at 20:00.
+
+Melee Minions
+
+Health changed to 
+477 − 1300 (based on upgrades)
+ from 
+473 − 1200 (based on minutes)
+.
+
+Maximum health (at 37:00) increased to 1300 from 1200.
+
+Armor increased to 
+0 − 16 (based on upgrades)
+ from 0 at all times.
+
+Maximum armor (at 37:00) increased to 16 from 0.
+
+Attack damage increased to 
+12 − 80 (based on upgrades)
+ from 12 at all times.
+
+Maximum attack damage (at 37:00) increased to 80 from 12.
+
+ 
+Hand of Baron
+
+Incoming champion damage reduction reduced to 70% from 75%.
+
+Removed:
+ 30% reduced damage from turrets.
+
+Caster Minions
+
+Health changed to 
+296 − 485 (based on upgrades)
+ from 
+296 − 425 (based on minutes)
+.
+
+Time threshold to trigger health cap increased to 37 minutes from 27 minutes.
+
+Maximum health increased to 485 from 425 (previous maximum at 27 minutes). 
+Value at 27 minutes remains 425.
+
+Attack damage changed to 
+24 − 120 (based on upgrades)
+ from 22.
+5
+ (+1.
+5
+ / 90s).
+
+Attack damage now has a maximum threshold instead of scaling infinitely.
+
+Maximum attack damage implemented at 120.
+5
+ (at 37 minutes). 
+Previous value at 37 minutes was 60.
+5
+.
+
+ 
+Hand of Baron
+
+Incoming champion damage reduction increased to 70% from 50%.
+
+Cannon Minions
+
+Health changed to 
+912 − ∞ (based on upgrades)
+ from 900 (+ (
+50 / 60 (based on wave)
+) / 90s).
+
+Maximum health implemented at 2900 at 37 minutes. 
+Previous value at 37 minutes was 2300.
+
+Time threshold to spawn every 2 waves reduced to 15 minutes from 20.
+
+Time threshold to spawn every wave reduced to 25 minutes from 35.
+
+Incoming turret damage modulator changed to 
+8 / 10 / 12 (based on turret)
+ (based on turret) shots-to-die from 8 shots-to-die from all turrets.
+
+Super Minions
+
+Base attack damage reduced to 225 from 306.
+
+Base attack speed increased to 0.
+85
+ from 0.
+694
+.
+
+Removed:
+ Aura that grants nearby minions +70% damage.
+
+Super minions now show up on the minimap through fog of war.
+
+V8.8
+
+Summoner's Rift:
+
+Siege minion
+
+Capped gold increased to 
+ 
+90
+ from 
+ 
+87
+.
+
+Super minion
+
+Capped gold increased to 
+ 
+90
+ from 
+ 
+87
+.
+
+V8.7
+
+Summoner's Rift:
+
+Melee minions
+
+Base gold reward increased to 
+ 
+21
+ from 
+ 
+20
+.
+
+Gold reward growth reduced to 
+ 
+0
+ from 
+ 
+0.
+125
+.
+
+Caster minions
+
+Base gold reward reduced to 
+ 
+14
+ from 
+ 
+17
+.
+
+Gold reward growth reduced to 
+ 
+0
+ from 
+ 
+0.
+125
+.
+
+Siege minions
+
+Base gold reward increased to 
+ 
+60
+ from 
+ 
+45
+.
+
+Gold reward growth increased to 
+ 
+3
+ from 
+ 
+0.
+35
+.
+
+New Effect:
+ Gold reward is now capped at 
+ 
+87
+.
+
+Base health increased to 900 from 828.
+
+Health growth changed to 50 from 23.
+
+Health growth at wave 16 increased to 60 from 32.
+
+Super minion
+
+Base gold reward increased to 
+ 
+60
+ from 
+ 
+45
+.
+
+Gold reward growth increased to 
+ 
+3
+ from 
+ 
+0.
+35
+.
+
+New Effect:
+ Gold reward is now capped at 
+ 
+87
+.
+
+V8.5
+
+Melee minion turret damage per shot increased to 
+Champions killed with Comeuppance (R)
+45% of 
+maximum
+ health
+ from 
+inherit
+43%
+.
+
+V8.4
+
+Removed:
+ Basic attacks dealing 5 bonus physical damage to minions.
+
+V8.2
+
+New Effect:
+ Melee minions now have the cosmetic item 
+ 
+Gusto
+.
+
+New Effect:
+ Caster minions now have the cosmetic item 
+ 
+Phreakish Gusto
+.
+
+New Effect:
+ Siege minions now have the cosmetic item 
+ 
+Anti-Tower Socks
+.
+
+New Effect:
+ Super minions now have the cosmetic items 
+ 
+Super Mech Armor
+ and 
+ 
+Super Mech Power Field
+.
+
+V7.23
+
+Minion reduced damage to turrets reduced to 40% from 50%.
+
+New Effect:
+ After 20 minutes, minions gain +25 movement speed. 
+This change will be enabled several days into the patch so we can more accurately track its impact.
+
+V6.22
+
+Melee and caster minion health growth over time increased by ~60%
+
+Melee minions no longer gain attack damage as the game progresses.
+
+Ranged minions now gain ~100% attack damage as the game progresses
+
+Turret bullets now deal a fixed percent of minion max health:
+
+Melee minions ~45% health per bullet
+
+Caster minions ~70% health per bullet
+
+Siege minions ~14% health per bullet
+
+Super minions ~5% health per bullet
+
+V5.23
+
+New Buff - Pushing Advantage
+
+Team level advantage = Average level of your team − average level of the enemy team. The value can be decimal but cannot be higher than 3.
+
+If you have a team level advantage:
+
+Your minions deal bonus damage to enemy minions equal to 5% + 5% per turret advantage in their lane, all multiplied by your team's level advantage.
+
+Your minions take reduced damage from enemy minions equal to 1 + 1 per turret advantage in that lane, with the turret advantage bonus multiplied by the team's level advantage.
+
+V5.22
+
+Melee minion
+
+Initial gold increased to 20 from 18.
+5
+.
+
+Gold growth reduced to 0.
+125
+ per minute from 0.
+17
+.
+
+Caster minion
+
+Initial gold increased to 17 from 13.
+8
+.
+
+Gold growth reduced to 0.
+125
+ per minute from 0.
+17
+.
+
+Siege minion
+
+Initial gold increased to 45 from 36.
+8
+.
+
+Gold growth reduced to 0.
+35
+ per minute from 0.
+425
+.
+
+V5.8
+
+Visual and Gameplay Updates on Howling Abyss map (to match Summoner's Rift).
+
+Minions no longer gain magic resistance over time.
+
+Minion health gain over time increased to compensate the loss of resistances.
+
+Siege minions no longer have base armor.
+
+Super minions now grant nearby allies minions bonus damage and resistances.
+
+V4.21
+
+Melee minion gold reward 19 ⇒ 20.
+
+ranged minion gold reward 14 ⇒ 15.
+
+V4.20
+
+Minions no longer gain armor or magic resistance over time.
+
+Siege minions no longer have base armor.
+
+Siege minions now start spawning every two waves at 20 minutes.
+
+Siege minions now start spawning every wave at 35 minutes.
+
+All minion health gain over time has been increased to be roughly as durable as when they had resistances.
+
+V4.19
+
+Visual Update on Summoner's Rift map.
+
+V3.14
+
+Lane minions are no longer worth more experience based on game time.
+
+V3.5
+
+Siege Minions now take 70% damage from Turrets, increased from 50% damage.
+
+Siege Minions now deal 150% damage to Turrets, reduced from 200% damage
+
+Super Minions now take 70% damage from Turrets, increased from 50% damage
+
+V1.0.0.152
+
+Melee minion base gold value reduced to 20 from 22.
+
+Caster minions base gold value reduced to 15 from 16.
+
+Siege minions
+
+Base gold value increased to 40 from 27.
+
+Scaling gold value based on time increased to 1 from 0.5.
+
+V1.0.0.138
+
+Minion shared experience increased to 120% from 116%.
+
+Melee minion
+
+Shared XP increased to 76.
+8
+ from 74.
+24
+.
+
+Caster minion
+
+Shared XP increased to 38.
+4
+ from 37.
+12
+.
+
+Siege / Super minion
+
+Shared XP increased to 120 from 116.
+
+V1.0.0.130
+
+Damage from lane minions to champions reduced by about 15%.
+
+Undocumented:
+ Minion shared experience increased to 116% from 110%.
+
+Melee minion
+
+Shared XP increased to 74.
+24
+ from 70.
+4
+.
+
+Caster minion
+
+Shared XP increased to 37.
+12
+ from 35.
+2
+.
+
+Siege / Super minion
+
+Shared XP increased to 116 from 110.
+
+V1.0.0.127
+
+Personal score on Dominion: minion kill reward increased to 2 points from 1.
+
+V1.0.0.122
+
+Fixed a bug where minions were not properly displaying stat growth over time.
+
+V1.0.0.113
+
+New effect:
+ Shared minion kill experience now grants 110% experience, shared equally between nearby allied champions.
+
+Melee minion
+
+Shared XP increased to 70.
+4
+ from 64.
+
+Caster minion
+
+Shared XP increased to 35.
+2
+ from 32.
+
+Siege / Super minion
+
+Shared XP increased to 110 from 100.
+
+March 9th Hotfix
+
+Siege minions now spawn every 2 waves after 35 minutes instead of 20.
+
+Siege minions and super minions now reduce turret damage by 50%, down from 65%.
+
+Minions now deal 50% more damage to turrets, down from 60%.
+
+Super minions now reduce turret damage by 50% (down from 65%).
+
+V1.0.0.112
+
+Minions now deal 60% more damage to turrets, up from 40%.
+
+Melee minion magic resist now increases by 1.25 per 3 minutes, up from 0.5.
+
+Caster minion armor now increases by 1.25 per 3 minutes, up from 0.5.
+
+Siege minions:
+
+Armor and magic resist now increase by 3 per 3 minutes, up from 0.5.
+
+After 20 minutes, siege minions now spawn every 2 waves, up from every 3 waves.
+
+Siege minions and super minions now reduce turret damage by 65%, up from 50%.
+
+Fixed a tooltip bug with siege minions and super minions.
+
+Super minions now reduce turret damage by 65% (up from 50%).
+
+V1.0.0.108
+
+Removed mana from all inhibitor minions.
+
+V1.0.0.106
+
+Twisted Treeline super minions:
+
+Health increased to 1200 from 1000.
+
+Base damage increased by 30.
+
+V1.0.0.104
+
+Undocumented:
+ Solo minion kill experience reduced to 92% of the 
+base
+ value 
+(shared experience unchanged)
+.
+
+Melee minion
+
+Solo XP reduced to 58.
+88
+ from 64.
+
+Caster minion
+
+Solo XP reduced to 29.
+44
+ from 32.
+
+Siege / Super minion
+
+Solo XP reduced to 92 from 100.
+
+V1.0.0.100
+
+Fixed a bug that caused purple Siege minions to deal and receive normal damage from towers.
+
+V1.0.0.87
+
+Gold from minion kills increased by 3 for all minions.
+
+V1.0.0.61
+
+Melee minions:
+
+Gain 2 additional armor every 3 minutes.
+
+Gain 0.5 additional magic resist every 3 minutes.
+
+Gold bounty increased to 22 from 20 on Summoner's Rift and to 26 from 24 on Twisted Treeline.
+
+Caster minions:
+
+Gain 0.5 additional armor every 3 minutes.
+
+Gain 2 additional magic resist every 3 minutes.
+
+Gold bounty increased to 16 from 14 on Summoner's Rift and to 19 from 17 on Twisted Treeline.
+
+Siege minions:
+
+Gain 2 additional armor every 3 minutes.
+
+Gain 2 additional magic resist every 3 minutes.
+
+Gold bounty increased to 27 from 25 on Summoner's Rift and to 19 from 17 on Twisted Treeline.
+
+Super minion gold bounty increased to 27 from 25 on Summoner's Rift and to 32 from 30 on Twisted Treeline.
+
+V1.0.0.52
+
+Improved minion turning when they appear from fog of war.
+
+Twisted Treeline:
+
+Melee minion gold per kill increased to 24 from 22.
+
+Super minions:
+
+Health increased by 200.
+
+Damage increased by 20.
+
+Fixed minion pathfinding.
+
+V0.9.22.16
+
+Minion kills now display the correct values.
+
+Super minion movement speed aura removed.
+
+Minions no longer clear the player's bounty.
+
+V0.9.22.15
+
+Super minions and siege minions now have new portraits.
+
+Siege minion health boost per 3 minutes increased to 27 from 25.
+
+Super minion magic resist reduced to -30 from 0.
+
+Minion corpses now fade out when they disappear instead of popping.
+
+V0.8.22.115
+
+Super minions:
+
+Base health reduced to 1500 from 2000.
+
+Health scaling increased to reach the current values at 30 minutes (exceeding it past that mark).
+
+Base damage reduced to 180 from 250.
+
+Damage scaling increased to reach the current values at 30 minutes (exceeding it past that mark).
+
+V0.8.21.110
+
+Super minions:
+
+Health scaling increased to 150 from 100 every 180 game seconds.
+
+Added a 30% multiplicative movement speed boost aura with a 800 radius that affects both minions and champions.
+
+June 19, 2009 Patch
+
+Minions no longer have health or mana regeneration. This will help the game run faster.
+
+Siege minions:
+
+Health increased to 700 from 600.
+
+Spawn rate increased to every 3 waves from ever 4 waves.
+
+Fixed a bug with ghost minions. They will no longer be present when you reconnect.
+
+June 12, 2009 Patch
+
+Siege minions:
+
+Red and blue siege minions now have Turret Shield (receives 50% reduced damage from turrets).
+
+Red and blue siege minions now deal 100% bonus damage to turrets.
+
+June 6, 2009 Patch
+
+Fixed an issue where minions were not giving players full credit for kills in the announcements.
+
+Damage minions deal to champions increased to 70% from 60%.
+
+May 29, 2009 Patch
+
+Inhibitor bonuses:
+
+Melee minion bonus damage increased to 10 from 8.
+
+Caster minion bonus damage increased to 18 from 15.
+
+Siege minion bonus damage increased to 25 from 20.
+
+Added a new passive to mech minions
+
+Turret Shield: damage taken from turrets is reduced by 50%.
+
+May 23, 2009 Patch
+
+Brightened the new mech minions and siege minions.
+
+Corrected the collision sizes of the new mech minions and siege minions.
+
+May 15, 2009 Patch
+
+Removed aura from rider minions.
+
+Basic minion gold yield growth reduced by 50%.
+
+Added new rider minion and super minion models.
+
+May 1, 2009 Patch
+
+Destroying an inhibitor no longer causes the enemy team to gain less experience and gold from minion kills.
+
+Duration between minion upgrades increased to 200 from 180.
+
+Damage minions deal to champions increased to 60% from 50%.
+
+Minion gold bounty now caps after 30 minutes (10 upgrades).
+
+New melee and caster minions for both blue and red teams.
+
+April 25, 2009 Patch
+
+Super Minions:
+
+Armor reduced to 40 from 50.
+
+Critical strike chance reduced to 0 from 10.
+
+Health reduced to 2500 from 4000.
+
+Damage increased to 250 from 150.
+
+Alpha Week 7
+
+Minions should no longer be able to get killing streaks.
+
+Alpha Week 6
+
+Archer minion health increased to 280 from 260.
+
+Melee minion health increased to 445 from 425.
+
+Minions no longer give half gold and experience when you have lost an inhibitor.
+
+Alpha Week 5
+
+Minion health bars are now brighter.
+
+Alpha Week 4
+
+Melee minion gold bounty increased to 26 from 22.
+
+Caster minion gold bounty reduced to 18 from 22.
+
+Minions now spawn after 1 minute instead of 1 minute and 40 seconds.
+
+Minions now spawn from the Nexus instead of inhibitors.
+
+Alpha Week 2
+
+Minions can no longer be denied.
+
+Reduced the selection radius of archers and riders (caster and siege minions)
+
+Units
+
+Champion
+ ·
+ 
+Champion summoned units
+ ·
+ 
+Little Legend
+ ·
+ 
+Structures
+ 
+(
+Turret
+ ·
+ 
+Inhibitor
+ ·
+ 
+Nexus
+)
+
+Minions
+
+Small
+
+ 
+Melee minion
+
+ 
+Caster minion
+
+Large
+
+ 
+Siege minion
+
+ 
+Super minion
+
+Monsters
+
+Lesser
+
+ 
+Krug
+
+ 
+Murk Wolf
+
+ 
+Raptor
+
+ 
+Voidmite
+
+Large
+
+ 
+Ancient Krug
+
+ 
+Blue Sentinel
+
+ 
+Crimson Raptor
+
+ 
+Greater Murk Wolf
+
+ 
+Gromp
+
+ 
+Red Brambleback
+
+ 
+Rift Scuttler
+
+Epic
+
+Baron pit
+ (
+ 
+Baron Nashor
+ ·
+ 
+ 
+Rift Herald
+ ·
+ 
+ 
+Voidgrubs
+)
+
+Dragon pit
+ (
+ 
+Cloud Drake
+ ·
+ 
+ 
+Hextech Drake
+ ·
+ 
+ 
+Infernal Drake
+ ·
+ 
+ 
+Mountain Drake
+ ·
+ 
+ 
+Ocean Drake
+ ·
+ 
+ 
+Elder Dragon
+)
+
+Featured game mode
+
+Black Market Brawlers
+
+ 
+Ironback
+
+ 
+Ocklepod
+
+ 
+Plundercrab
+
+ 
+Razorfin
+
+Invasion
+
+ 
+Big Stompy Monster
+
+ 
+Draggy Tail Monster
+
+ 
+Grumpy Burrow Monster
+
+ 
+Jumpy Slashy Monster
+
+ 
+Scary Spitty Monster
+
+ 
+Shooty Eyeball Monster
+
+ 
+The Big One
+
+Nexus Siege
+
+ 
+Siege Ballista
+
+ 
+Shield Totem
+
+ 
+Port Pad
+
+ 
+Vanguard Banner
+
+Odyssey: Extraction
+
+ 
+Kayn
+
+ 
+Alphacyte
+
+ 
+Anchortail
+
+ 
+Arcraptor
+
+ 
+Brightcore
+
+ 
+Crimson Stinger
+
+ 
+Cyte
+
+ 
+Dozermaw
+
+ 
+Hogtongue
+
+ 
+Landsquid
+
+ 
+Petal Claw
+
+ 
+Razorheart
+
+ 
+Rhinodon
+
+ 
+Shimmerstriker
+
+ 
+Skitterbeak
+
+ 
+Squidtooth
+
+ 
+Terraburster
+
+ 
+Tuskbeard
+
+Other
+
+ 
+Abyss Scuttler
+
+ 
+Ancient Ascendant
+
+ 
+Demon Herald
+
+ 
+Devil Teemo
+
+ 
+Poro King
+
+Removed content
+
+Minions
+
+ 
+Anti-turret cannon
+
+ 
+Siege rider minion
+
+Monsters
+
+Summoner's Rift
+
+ 
+Ancient Golem
+
+ 
+Big Golem
+
+ 
+Chemtech Drake
+
+ 
+Cinderling
+
+ 
+Dragon
+
+ 
+Giant Wolf
+
+ 
+Golem
+
+ 
+Lesser Wolf
+
+ 
+Lesser Wraith
+
+ 
+Lizard Elder
+
+ 
+Sentry
+
+ 
+Wight
+
+ 
+Wraith
+
+ 
+Young Lizard
+
+Twisted Treeline
+
+ 
+Big Golem
+
+ 
+Ebonmaw
+
+ 
+Ghast
+
+ 
+Giant Wolf
+
+ 
+Golem
+
+ 
+Grez
+
+ 
+Lesser Wolf
+
+ 
+Lesser Wraith
+
+ 
+Lizard
+
+ 
+Rabid Wolf
+
+ 
+Vilemaw
+
+ 
+Wraith
+
+ 
+Young Lizard
+
+
+========================================
+## 정글링 (Jungling)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Jungling
+========================================
+
+For the plants, see 
+Jungle plants
+.
+
+On maps that have multiple lanes, 
+the 
+jungle
+ consists of the parts of the map between the lanes proper, excluding the teams' bases, characterized by the lack of vision or dense 
+Fog of War
+. 
+Neutral
+—not aggressive unless attacked—creeps called 
+ 
+monsters
+ live in the jungle, and a monster or group of monsters at a certain location of the map is called a 
+camp
+.
+
+Jungling
+ encompasses three specialized responsibilities of the 
+jungler
+. These contrast with 
+laners'
+, whose primary purpose is to farm minions and defend their lane's structures in the earlier stages of the game.
+
+Farming
+ the jungle, meaning the slaying of monster camps.
+
+Having access to the 
+ 
+Smite
+ summoner spell in order to secure epic monster objectives, which are beneficial to the entire ally team (
+ 
+Voidgrubs
+, 
+ 
+Rift Herald
+, 
+ 
+Baron Nashor
+, and 
+ 
+Drakes
+).
+
+And lastly, because of the jungle's extent, generally assisting and influencing lanes.
+
+Contents
+
+1
+ 
+Basis
+
+2
+ 
+Camp Farming
+
+2.1
+ 
+General combat
+
+2.2
+ 
+Jungle items
+
+2.3
+ 
+Camp recycling
+
+2.4
+ 
+Timers
+
+3
+ 
+Invading
+
+4
+ 
+Ganking
+
+5
+ 
+ Summoner's Rift
+ Jungle Overview
+
+5.1
+ 
+Runes
+
+6
+ 
+History
+
+Basis
+
+The primary reason for a jungler to exist is to maximize resource allocation. The jungle offers a lot of 
+ 
+gold
+ and 
+ 
+Champions killed with Trueshot Barrage (R)
+experience
+ that can be accessed through slaying the monsters that spawn and respawn in predetermined locations on the map. With a lone player dedicating themself to accruing them, more resources can then be collected in lanes by the laners, rather than sharing them with another teammate. This is especially important for solo laners, who can possibly earn the highest amount of gold and experience from creeps on the team.
+
+The structure of the map also naturally leads to that resource acquirement being done in desired 
+paths
+, formally called 
+pathing
+, as some camps are closer to each other and/or some camps may be prioritized over others as desired. Because the jungler can obviously only be situated close to one half of the map at a time, this 
+pathing
+ also determines which lanes or objectives are within their more immediate sphere of influence. Minimizing the time and resources spent clearing camps is imperative for a jungler to be able to have priority over further camps, fights, other objectives, and general pressuring of the enemy team. The farming of camps is generally balanced to be able to be done in cycles while both champions and monsters level up and become more powerful as the game goes on. Junglers that are ahead will cycle monsters much faster, allowing more free time between the camps' killing and the camps' respawning, as well as being able to farm the next cycle of monsters much faster too.
+
+The jungler, much like any roaming role, can undertake the initiating of ambushes against enemies in order to overpower the enemy in numbers. Ambushes against laners within the lanes are called 
+ganks
+, and the lack of natural vision in the jungle heavily facilitates this. This means laners also have to be mindful and avoid 
+ganks
+ through proper vision and 
+zone control
+, or defend against them through various means such as a 
+counter-gank
+.
+
+Lastly but not least, access to 
+ 
+Smite
+ as the jungler additionally provides them with a clear advantage in taking down jungle monsters compared to laners, and agency over important epic monster objectives and the game.
+
+Camp Farming
+
+General combat
+
+See 
+Monster
+ for details on monsters' behavior, such as patience.
+
+Farming, or "clearing", a camp is done within each camp's 
+leash range
+, indicated by a circle around the camp when initiating combat with its monsters. Outside of that leash range, the monsters will start to lose patience and eventually automatically regenerate any damage taken and run back to their original position (= reset).
+
+During combat, the attacker can create a window of timing where they can avoid incoming damage by moving away from the monster before it can start winding up an attack, while also potentially retaliating—a 
+ 
+ranged
+ champion can perform this more consistently, since they are able to attack at a longer range than monsters' attack range. As a general rule, large monsters may either move or attack slower (or both move and attack slower) than most champions as the game goes on.
+
+Monsters will always attack the nearest champion regardless of having 
+ 
+vision
+ of them or not. A change of targets can alert a team of the presence of an enemy nearby. Monsters will attempt to follow a target into 
+ 
+brush
+, and not immediately "forget" that an attacker has hidden in them.
+
+Jungle items
+
+In order to incentivize junglers to be able to farm camps in a compelling way and better than laners, junglers are provided with exclusive and essential 
+jungle items
+. These items also ensure laners practically cannot gain much from farming camps rather than lane minions, especially during the 
+early game
+. Conversely, junglers gain heavily reduced 
+Champions killed with Trueshot Barrage (R)
+experience
+ for farming lane 
+ 
+minions
+, because of their jungle item.
+
+ 
+Gustwalker Hatchling
+
+ 
+Mosstomper Seedling
+
+ 
+Scorchclaw Pup
+
+Purchasing a jungle item summons the respective type of pet to assist the jungler in clearing camps by dealing significant damage and restoring them health and mana. In order to be most efficient, the jungle item must be purchased at the start of the game, because it allows the jungler to gain increased gold and experience bounties for killing jungle camps in general, as well as feed their pet treats for each large monster killed to gain certain bonuses for themselves. The pet can be evolved at certain thresholds of treats to grant the jungler a powerful permanent buff based on their type of pet and unlock access to the 
+ 
+Smite
+ upgrades: 
+ 
+Unleashed Smite
+ for the first evolution, and 
+ 
+Primal Smite
+ for the final evolution.
+
+In 
+ 
+Classic
+ 5v5 
+ 
+Summoner's Rift
+, those evolution thresholds are at 20 and 40 treats, respectively.
+
+Camp recycling
+
+The level of monsters is calculated from the average champion level of both teams in the game at the time of their spawning, with the exception of epic monsters which upgrade based on game time. As their level increases, so does their 
+ 
+experience
+ bounty, but also their health and damage. It is therefore important, especially at the earliest stages of the game, for the jungler to pick a pathing that allows them to reach certain levels by clearing camps most efficiently, thus creating a cycle for them to respawn and be cleared again sooner, and enabling the jungler to accrue even more gold and experience on their own.
+
+Monsters' bounties differ; regardless of this, (and assuming the jungler is not gaining experience from other sources than their jungle yet) clearing the first camp of the game will always level up the jungler to level 2. Some monsters, such as the 
+ 
+Mini Krug
+ or the 
+ 
+Lesser Raptor
+, may not be as important to kill in order to achieve certain level breakpoints, since their bounties are exceptionally low.
+
+Champions evidently take much longer to clear camps in the earlier stages, while some junglers may lose a lot of health or time if they start fighting monsters alone, even with a jungle item. To solve this, the jungler may ask for a "
+leash
+" for their first ever camp of the game, where the allies essentially contribute some damage to the camp so that it can be taken faster. Regardless, this strategy is not always optimal for laners, because they may lose control of the lane earlier on. Balance changes for the jungle camps and junglers' starting items have made leashing less and less important over the years, but it remains an important strategy to situationally employ in certain games nonetheless.
+
+On 
+ 
+Summoner's Rift
+, the assisting allies are specifically only the top or bot laners, since minions in the midlane arrive much sooner than top and bottom lane relative to camps spawning.
+
+Timers
+
+Live camps are marked on the minimap with a diamond icon at their distinct locations. When there are 60 seconds until their spawning, an hourglass icon will appear at their location on the minimap and will be greyed out. At 10 seconds until their spawning, the icon becomes highlighted. Visual spawn timers are only available for the 
+ 
+Red Brambleback
+, 
+ 
+Blue Sentinel
+, 
+ 
+Voidgrubs
+, 
+ 
+Rift Herald
+, 
+ 
+Baron Nashor
+ and 
+ 
+Drake
+ camps. Their timers can also be viewed in the 
+scoreboard
+.
+
+If a team has vision of a camp when it is cleared, the exact spawn timer can be calculated, as the respawn takes 135 seconds (2:15) for a regular camp and 300 seconds (5:00) for the 
+ 
+Red Brambleback
+ and 
+ 
+Blue Sentinel
+ camps specifically. It is important to note that the respawn timer for the latter two can appear on the minimap if a team gains 
+ 
+vision
+ of the camp's location, regardless of if the team had vision of the camp when it was slain. An epic monster camp being slain is announced to both teams, so their exact spawn timer will always be known to everyone.
+
+Invading
+
+Invading
+ is the act of walking into the enemy half of the jungle with the intent of gaining information, and if done by a jungler, potentially stealing away camps. Invading can severely impact the ability of the enemy jungler to cycle their own camp, and the ally team can utilize the information gained from invading for various decisions and strategies themselves.
+
+Counter-jungling
+ is the act of invading with the express intent of stealing away camps to cover a known deficit. For example, if the enemy jungler is confirmed to have invaded and cleared the ally Raptor camp, the ally jungler can counter this by invading to clear an enemy camp themselves, potentially equalizing the difference.
+
+Both invading and counter-jungling can become an explosive cause for fighting, as laners come to scare or fend off the invaders on their own or assist the jungler in a skirmish to try to ambush them.
+
+Ganking
+
+Ganking
+ refers to the act of ambushing one or more laners within their lane, with the intent of scoring 
+ 
+takedowns
+. While the act of ganking is not exclusive to junglers, it is one of the primary activities expected from the jungler earlier in the game, because they are not bound to any particular lane. This free-roaming nature within the jungle's Fog of War can render their decisions somewhat unexpected (though still more expected than the 
+ 
+Support
+ who can truly freely roam despite starting in the bottom lane; the jungler actually has to go to camps and farm them at some point).
+
+The vast majority of viable junglers are given explicit tools to be able to gank effectively and be the primary facilitator for their team: a mix of 
+ 
+crowd control
+, gap closers, and burst damage.
+
+Not all junglers are meant to be ganking often, though. Some junglers benefit from the potential safety of farming in the jungle rather than lanes against opponents constantly contesting them, and are more efficient in clearing camps than ganking due to lack of the aforementioned tools. This renders them more of a carry instead of a facilitator, and separates junglers into two main categories. If a jungler has very good 
+base stats
+ and tools for ganking early in the game, and prefers to gank often to get their team ahead, they are referred to as a "ganking jungler". On the other hand, if a jungler is better served accruing as many resources as possible while ganking less often, and then potentially becoming a primary 
+carry
+ with massive resource leads over the opponent, they are referred to as a "farming jungler". Both strategies are valid, but the extent of "preferring ganking" vs "preferring farming" differs from champion to champion and even from one 
+balance patch
+ to another.
+
+ 
+Summoner's Rift
+ Jungle Overview
+
+On Summoner's Rift, there are 6 regular monster camps per side. The blue- and red-side jungles have an equal area and the same number and type of non-boss monsters, except mirrored across the river:
+
+ 
+Raptors
+
+ 
+Wolves
+
+ 
+Krugs
+
+ 
+Gromp
+
+ 
+Blue Sentinel
+
+ 
+Red Brambleback
+
+Epic monsters break this symmetry, but still do reside on opposite sides of the river:
+
+ 
+Voidgrubs
+, 
+ 
+Rift Herald
+ and 
+ 
+Baron Nashor
+ reside in the 
+baron pit
+ at the top half of the map, sheltered closer to the red side but only open to the blue side.
+
+ 
+Drakes
+ reside in the 
+dragon pit
+ at the bottom half of the map, sheltered closer to the blue side but only open to the red side.
+
+Runes
+
+The majority of runes do not affect combat with jungle monsters, however, there are several that either through directly increasing the stats a champion has or by having an effect which is activated by attacking, being attacked by, or by either killing or participating in the deaths of large or epic monsters respectively. The following runes all in some way either assist in the farming of monsters, or increase in power as a result of having done so:
+
+ 
+Fleet Footwork
+
+ 
+Legend: Alacrity
+
+ 
+Legend: Bloodline
+
+ 
+Legend: Haste
+
+ 
+Absolute Focus
+
+ 
+Transcendence
+
+ 
+Waterwalking
+
+ 
+Gathering Storm
+
+ 
+Guardian
+
+ 
+Conditioning
+
+ 
+Overgrowth
+
+ 
+Attack Speed Shard
+
+ 
+Adaptive Force Shard
+
+ 
+Ability Haste Shard
+
+History
+
+Click on 
+Show
+ for an overview of jungling changes over the years.
+
+Hide
+Show
+
+Jungler itemization has gone through some considerable changes over the course of the game's lifespan, mainly owing to the unique difficulty in balancing a relatively unorthodox role with the more traditional laning mechanics.
+
+During 
+Season One
+, the jungle was a highly profitable source of gold, so much so that often a Jungling champion could even obtain more farm than the lanes with some effort, eventually letting them afford expensive and deadly items if their farming efforts were not halted. This was offset by the enormous difficulty of the jungle monsters of the time - there were extremely few junglers who could even clear effectively in such an rigorous environment and even fewer junglers who could begin the game with anything other than a 
+ 
+Cloth Armor
+ and 5 
+ 
+Health Potions
+.
+
+The jungle rework of 
+Season Two
+ reduced the difficulty of the jungle monsters and the gold and experience that they gave out in an attempt to open the jungle to more prospective champions. Despite the decreased monster health, however, it was found that the decreased gold meant that dedicated farming was simply no longer an economically viable strategy, and many junglers were forced to find alternative solutions to the resultant gold starvation (most often amounting to early stacking of gold generating items such as 
+ 
+Philosopher's Stone
+ and 
+ 
+Heart of Gold
+), while other junglers whose core item builds often demanded a high gold income to be feasible simply could not function in such a low-gold environment.
+
+The jungle in 
+Season Three
+ attempted to compromise between the high farm of Season One and the low difficulty of Season Two. The introduction of 
+ 
+Hunter's Machete
+ allowed many junglers to successfully clear without many sustain issues and offered fallback solutions in the form of the highly 
+gold efficient
+ items it built into in case of a poor early game, and the increase to passive gold generation saw most junglers in possession of at least passable amounts of gold. These changes saw the number of viable junglers increase greatly.
+
+Season Four
+ was built upon the framework set by Season Three, with several gameplay refinements aimed at combating issues seen at higher levels of play. Of particular note, all of the high-tier jungle items provided benefits exclusively involving killing monsters and an entirely new jungle monster, 
+ 
+Wight
+, was introduced, enabling much higher potential profits to both farming junglers who are sufficiently fast to keep up with the respawn times of the four camps and ganking junglers who do not perform well early on. These buffs to farming junglers were boosted further with the addition of 
+ 
+Feral Flare
+, which provided massive bonuses to junglers who could farm fast enough to acquire the upgrade early on. On the flipside, the addition of 
+ 
+Quill Coat
+ kept slower utility junglers useful during a metagame period dominated by heavy early offense.
+
+In 
+Season Five
+, the jungle received a major update that coincided with the Summoner's Rift visual update. It introduced 4 items that upgraded 
+ 
+Smite
+: 
+ 
+Poacher's Knife
+, 
+ 
+Ranger's Trailblazer
+, 
+ 
+Skirmisher's Sabre
+, and 
+ 
+Stalker's Blade
+. On top of that, four unique enchantments to those items that diversified champions and granted them unique Legendary-item tier statistics and effects: 
+ 
+Warrior
+ 
+ 
+Cinderhulk
+, 
+ 
+Runic Echoes
+, and 
+ 
+Warrior
+. It also added new effects to jungle camps to the jungler when 
+ 
+Smite
+ was used on those camps: 
+ 
+Gromp
+ would grant a buff that poisoned enemies when attacked; 
+ 
+Ancient Krug
+ would grant a buff that stunned jungle monsters every 5 basic attacks or dealt bonus true damage against turrets; 
+ 
+Crimson Raptor
+ would grant a buff that revealed wards when detected; 
+ 
+Greater Murk Wolf
+ would spawn a sentry that would alert the presence of an enemy champion; 
+ 
+Blue Sentinel
+ would restore a portion of 
+Champions hit by Piltover Peacemakers (Q) at greater than 75% of max range
+maximum
+ mana
+; and 
+ 
+Red Brambleback
+ would restore a portion of 
+Champions killed with Comeuppance (R)
+maximum
+ health
+. 
+
+In 
+Season Six
+, 
+ 
+Poacher's Knife
+ and 
+ 
+Ranger's Trailblazer
+ were replaced by 
+ 
+Tracker's Knife
+, which did not upgrade 
+ 
+Smite
+ but stored sight 
+ 
+wards
+. 
+ 
+Tracker's Knife
+ was eventually removed in 
+V8.4
+, largely due to its staleness in higher-level and professional play (where vision is strongly valued).
+
+In 
+Season Eleven
+, enchantments were removed. In their place, 
+ 
+Emberknife
+ or 
+ 
+Hailblade
+ were introduced as started items that would eventually be consumed after 5 uses of the summoner spell, at which point Smite would gain a one of two unique effects, 
+ 
+Challenging Smite
+ and 
+ 
+Chilling Smite
+, respectively.
+
+
+========================================
+## 포탑 (Turrets)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Turret
+========================================
+
+Contents
+
+1
+ 
+General
+
+1.1
+ 
+Notes
+
+1.2
+ 
+Items
+
+2
+ 
+Turret rewards
+
+3
+ 
+Target selection
+
+4
+ 
+Damaging turrets
+
+4.1
+ 
+Abilities that deal bonus damage to turrets
+
+4.1.1
+ 
+On-hit Effects
+
+4.1.2
+ 
+Single target
+
+4.1.3
+ 
+Area of Effect
+
+4.1.4
+ 
+Turret-Targeted
+
+4.2
+ 
+Items that deal bonus damage to turrets
+
+4.3
+ 
+Abilities that affect turrets
+
+5
+ 
+Summoner's Rift turrets
+
+6
+ 
+Howling Abyss turrets
+
+7
+ 
+Strategy
+
+8
+ 
+Turret Variants
+
+9
+ 
+Trivia
+
+10
+ 
+Media
+
+11
+ 
+Patch History
+
+12
+ 
+References
+
+Turrets
+, also called 
+towers
+, are heavy fortifications that attack enemy units on sight. Turrets are a core component of 
+League of Legends
+. They deal damage to enemies and provide vision to their team, allowing them to have static and persistent control over the battlefield. Turrets target one unit at a time and deal heavy damage. Teams must destroy enemy turrets to push their assault into enemy territory.
+
+There are 11 turrets per team on 
+ 
+Summoner's Rift
+ and 4 on 
+ 
+Howling Abyss
+.
+
+General
+
+Summoner's Rift
+Howling Abyss
+
+Outer turret
+Inner turret
+Inhibitor turret
+Nexus turret
+
+Outer turret features:
+
+ 
+Turret Plating
+: Outer turrets have large stone shields attached called plates. Plates are segments of the turret's health. Turrets start with five plates, each with 1000 health, meaning that they start with 5000 health. When a champion destroys a plate, they and nearby allies get a gold reward. However, the turret then gains damage resistance, thus becoming slightly harder to destroy. Plates disappear 14 minutes into the game, along with their extra damage resistance. When this happens, the crystals embued on the remaining plates will flicker as a visual indicator and announcing messages both visually and audibly can be seen and heard 30 seconds before their removal.
+
+Passive:
+ Grants 
+-25 / 25 / 75 / 125 / 175 (based on 
+current
+ health)
+ 
+Healing from Spirit of Dread (W)
+bonus
+ armor
+ and 
+Champions that have been made a Vessel by Test of Spirit (E)
+bonus
+ magic resistance
+.
+
+Passive - Bulwark:
+ When an outer turret's health is reduced to 
+inherit
+4000
+, 
+inherit
+3000
+, 
+inherit
+2000
+, and 
+Champions killed with Comeuppance (R)
+1000 health
+; the turret gains a 
+stack
+ of 
+Bulwark
+ for 20 seconds. The duration refreshes upon gaining a new stack while the effect is already active. Each stack grants 
+20 − 100 (based on nearby enemy champions)
+ 
+Healing from Spirit of Dread (W)
+bonus
+ armor
+ and 
+Champions that have been made a Vessel by Test of Spirit (E)
+bonus
+ magic resistance
+, up to a maximum of 
+80 − 400 (based on nearby enemy champions)
+ 
+bonus
+ resistances at 4 stacks. Granted resistances increase based on the number of alive enemy champions within 
+ 850 range of the center of the turret.
+
+Plates take 17% reduced damage from 
+ 
+minions
+ and 
+ 
+ranged
+ 
+ 
+champions
+.
+
+Destroying a plate grants 
+ 
+125
+ 
+local
+ gold.
+
+The toplane and midlane outer turrets receive a 
+ 
+Fortification
+ bonus for the first five minutes of each game.
+
+Inner turret features:
+
+No specific features.
+
+Inhibitor turret features:
+
+Inhibitor turrets regenerate 
+Champions killed with Comeuppance (R)
+3 health
+ per second up to a maximum that depends on their 
+Champions killed with Comeuppance (R)
+current
+ health
+.
+
+If their 
+Champions killed with Comeuppance (R)
+current
+ health
+ is:
+
+Below 
+inherit
+33.
+3
+%
+, they regenerate up to 
+Champions killed with Comeuppance (R)
+33.
+3
+% health
+.
+
+Above 
+inherit
+33.
+3
+%
+ and below 
+inherit
+66.
+7
+%
+, they regenerate up to 
+Champions killed with Comeuppance (R)
+66.
+7
+% health
+.
+
+Above 
+inherit
+66.
+7
+%
+ and below 
+inherit
+100%
+, they regenerate up to 
+Champions killed with Comeuppance (R)
+100% health
+.
+
+Nexus turret features:
+
+Nexus turrets regenerate 
+Champions killed with Comeuppance (R)
+6 health
+ per second up to a maximum that depends on their 
+Champions killed with Comeuppance (R)
+current
+ health
+.
+
+If their 
+Champions killed with Comeuppance (R)
+current
+ health
+ is:
+
+Below 
+inherit
+33.
+3
+%
+, they regenerate up to 
+Champions killed with Comeuppance (R)
+33.
+3
+% health
+.
+
+Above 
+inherit
+33.
+3
+%
+ and below 
+inherit
+66.
+7
+%
+, they regenerate up to 
+Champions killed with Comeuppance (R)
+66.
+7
+% health
+.
+
+Above 
+inherit
+66.
+7
+%
+ and below 
+inherit
+100%
+, they regenerate up to 
+Champions killed with Comeuppance (R)
+100% health
+.
+
+After being destroyed Nexus Turrets will respawn after a 3 minute delay.
+
+Outer turret
+Inhibitor turret
+Nexus turret
+
+Outer turret features:
+
+Armor and magic resistance are reduced to 40 at 12:00.
+
+Inhibitor turret features:
+
+Inhibitor turrets gain 30% damage reduction for 60 seconds after the Outer Turret is destroyed.
+
+Nexus turret features:
+
+After being destroyed Nexus Turrets will respawn after a 3 minute delay.
+
+Notes
+
+Turrets have a 
+ 
+sight
+ radius of 
+ 1350 and an 
+ attack range
+ of 
+ 750. Their shots travel at a speed of 1200 and are unblockable 
+ 
+projectiles
+. They are also 
+ 
+immune to crowd control
+ except 
+ 
+stasis
+.
+
+If a turret is destroyed while one of its shots is in mid-flight, that shot will not deal damage.
+
+Turrets are units located on top of impassable 
+terrain
+. This terrain remains even after the turret is destroyed.
+
+Effects that interact with terrain will do so for both functional and destroyed turrets.
+
+Items
+
+Turrets have a pseudo-inventory which consists of items that grant them additional effects, similarly to the inventories of champions. Each of these items provide the turret with mechanics that improve their overall offense and defense on the battlefield. The following section lists them with their passive effects:
+
+ 
+Fortification
+
+Unique Passive - Fortification:
+ 85% damage reduction from all sources. This effect expires after 5 minutes.
+
+ 
+Ohmwrecker
+
+Unique Passive:
+ Gains 30% armor penetration.
+
+Unique Passive - Dodge Piercing:
+ Turret attacks, once their windup has completed, cannot be evaded, 
+parried
+, nor 
+ 
+intercepted
+. They will be still be 
+ 
+destroyed by effects that 'pop' homing projectiles
+, such as their target becoming 
+ 
+untargetable
+.
+
+Unique Passive - Warming Up:
+ The damage dealt by turrets increases by 40% each time they hit a 
+ 
+champion
+, up to 120% bonus damage. This effect resets 3 seconds after the last shot hits a champion, but it doesn't reset when switching targets.
+
+ 
+Reinforced Armor
+
+Unique Passive - Reinforced Armor:
+ 
+Reduces
+ incoming damage by 80%, including 
+ 
+true damage
+, when no enemy 
+ 
+minions
+ or 
+ 
+Summoned Rift Herald
+ are nearby.
+
+ 
+Pets
+, 
+ 
+traps
+, and 
+ 
+neutral monsters
+ do not deactivate this effect.
+
+ 
+Base Turret Reinforced Armor
+
+Unique Passive - Reinforced Armor:
+ 
+Reduces
+ incoming damage by 80%, including 
+ 
+true damage
+, when no enemy 
+ 
+minions
+ or 
+ 
+Summoned Rift Herald
+ are nearby.
+
+Unique Passive:
+ Base turrets have 
+ 
+health regeneration
+, but this regeneration is limited by their 
+Champions killed with Comeuppance (R)
+current
+ health
+:
+
+Champions killed with Comeuppance (R)
+Current
+ health
+ between 
+inherit
+67%
+ and 
+inherit
+100%
+: Regenerate up to 
+Champions killed with Comeuppance (R)
+100% health
+.
+
+Champions killed with Comeuppance (R)
+Current
+ health
+ between 
+inherit
+34%
+ and 
+inherit
+66%
+: Regenerate up to 
+Champions killed with Comeuppance (R)
+66% health
+.
+
+Champions killed with Comeuppance (R)
+Current
+ health
+ below 
+inherit
+34%
+: Regenerate up to 
+Champions killed with Comeuppance (R)
+33% health
+.
+
+ 
+Warden's Eye
+
+Unique Passive - 
+ 
+True Sight
+:
+ Can see all units and traps (including those in 
+ 
+stealth
+) within 1000 range, unless the direct line of vision is obstructed (e.g. by terrain).
+
+Turret rewards
+
+Destroying a turret grants two gold rewards to the team that destroys it: a 
+global reward
+ and a 
+local reward
+.
+
+The global reward is given to all the champions in the team.
+
+The local reward is shared between all champions alive and within 1200 range of the turret at the moment of its destruction. Additionally, if a champion deals the killing blow directly, they will alway earns their share of the reward whether they are 
+ 
+dead
+ or not.
+
+Champions who are alive and have assisted in destroying the turret by dealing damage to it directly or via their summons (including the 
+ 
+Rift Herald Mercenary
+) within the last 
+10 seconds
+ receive their share as well, 
+regardless of range
+.
+
+The paradigm for local rewards also apply to the distributed reward from destroying 
+ 
+Turret Plating
+ stages.
+
+The local reward for destroying the 
+first turret
+ (also referred to as "Turret First Blood" and "First Turret gold") grants 
+ 
+300 
+bonus
+ gold
+.
+
+Target selection
+
+Turrets attack the first enemy unit that comes into their range and continue attacking that unit until it dies, leaves the attack range of the turret, or stops being targetable. When the current target is lost by any means, the turret selects a new target. If several targets are in range, the turret chooses its new target by following this priority list (they will attack the closest and most prioritized enemy):
+
+ 
+Shaco's
+ 
+ 
+Jack in the Box
+
+Pets
+ (e.g. 
+ 
+Tibbers
+, 
+ 
+Voidlings
+).
+
+ 
+Siege minion
+ or 
+ 
+super minion
+.
+
+ 
+Mist Walkers
+.
+
+ 
+Melee minion
+.
+
+ 
+Caster minion
+.
+
+ 
+Yorick's
+ 
+ 
+Maiden of the Mist
+.
+
+ 
+Champion
+.
+
+However, if an enemy champion deals damage to an allied champion who is within 1400 range of a turret, the turret switches targets to attack the enemy champion. The damage can come from any source, including 
+pets
+. Turrets don't attack enemy champions using non-damaging spells, like 
+ 
+Karthus'
+ 
+ 
+Wall of Pain
+. They will still attack them if the spell or attack is blocked by a 
+ 
+spell shield
+ or if the attack triggers 
+combat effects
+.
+
+Damaging turrets
+
+A turret can only be targeted and damaged if it is the outermost structure standing in its lane. Turrets located behind the outermost standing turrets are 
+invulnerable and untargetable
+ until the outermost one is destroyed. This means that inner turrets only become vulnerable when their respective outer turret is destroyed, and inhibitor turrets only become vulnerable when their respective inner turret is destroyed. Nexus turrets are only vulnerable if one or more of their inhibitors are destroyed.
+
+Turrets fall apart as they take damage.
+
+Turrets are not valid targets to most abilities, spells and auras. Exceptions are listed in the lists below. 
+Basic attacks
+ don't apply health based damage modifiers or critical strikes, unless otherwise stated. 
+Armor penetration
+ and 
+magic penetration
+ are factored into the damage dealt to any structure. Some 
+on-hit
+ effects can apply to structures and/or turrets.
+
+Unmodified basic attacks' damage against turrets is 
+Champions stunned with Pyromania (P)
+100% 
+base
+ AD
+ 
+Champions stunned with Pyromania (P)
+(+ 100% 
+bonus
+ AD)
+ 
+Multiple champions hit with Between Worlds (R)
+(+ 60% AP)
+. The damage type depends on 
+Damage to champions with Center of the Universe (P)
+ability power
+ and 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+bonus
+ attack damage
+:
+
+Physical damage if 
+Champions stunned with Pyromania (P)
+100% 
+bonus
+ AD
+ > 
+Multiple champions hit with Between Worlds (R)
+60% AP
+.
+
+Magic damage if 
+Champions stunned with Pyromania (P)
+100% 
+bonus
+ AD
+ < 
+Multiple champions hit with Between Worlds (R)
+60% AP
+.
+
+The 
+ 
+Demolish
+ rune helps to destroy turrets quickly. When a champion with the 
+Demolish
+ rune is within the range of a turret, 6 crystals appear around the turret's base. These crystals act as a countdown timer that indicates when the turret will be vulnerable to 
+Demolish
+.
+
+Abilities that deal bonus damage to turrets
+
+On-hit Effects
+
+ 
+Blitzcrank's
+ 
+ 
+Power Fist
+
+ 
+Camille's
+ 
+ 
+Precision Protocol
+
+ 
+Corki's
+ 
+ 
+Hextech Munitions
+
+ 
+Darius'
+ 
+ 
+Crippling Strike
+
+ 
+Diana's
+ 
+ 
+Moonsilver Blade
+
+ 
+Ekko's
+ 
+ 
+Phase Dive
+
+ 
+Ezreal's
+ 
+ 
+Essence Flux
+
+ 
+Fiora's
+ 
+ 
+Lunge
+ and 
+ 
+Bladework's
+ second attack
+
+ 
+Fizz's
+ 
+ 
+Seastone Trident
+
+ 
+Gangplank's
+ 
+ 
+Trial by Fire
+
+ 
+Garen's
+ 
+ 
+Decisive Strike
+
+ 
+Gragas'
+ 
+ 
+Drunken Rage
+
+ 
+Hecarim's
+ 
+ 
+Devastating Charge
+
+ 
+Illaoi's
+ 
+ 
+Harsh Lesson
+
+ 
+Jayce's
+ 
+ 
+Transform Mercury Hammer
+ and 
+ 
+Hyper Charge
+
+ 
+Jax's
+ 
+ 
+Empower
+ and 
+ 
+Grandmaster-At-Arms
+
+ 
+Jhin's
+ 
+ 
+Whisper
+'s 4th shot will still crit structures at 44% reduced damage
+
+The fourth hit of 
+ 
+Kled's
+ 
+ 
+Violent Tendencies
+
+ 
+Leona's
+ 
+ 
+Shield of Daybreak
+
+ 
+Lucian's
+ 
+ 
+Lightslinger
+
+ 
+Master Yi's
+ 
+ 
+Double Strike
+
+ 
+Miss Fortune's
+ 
+ 
+Love Tap
+
+ 
+Nasus'
+ 
+ 
+Siphoning Strike
+
+ 
+Nidalee's
+ 
+ 
+Takedown
+
+ 
+Nilah's
+ 
+ 
+Formless Blade
+
+ 
+Poppy's
+ 
+ 
+Iron Ambassador
+
+ 
+Rek'Sai's
+ 
+ 
+Queen's Wrath
+
+ 
+Rengar's
+ 
+ 
+Savagery
+
+ 
+Senna's
+ 
+ 
+Piercing Darkness
+
+ 
+Shyvana's
+ 
+ 
+Twin Bite
+
+ 
+Sona's
+ 
+ 
+Power Chord
+
+ 
+Trundle's
+ 
+ 
+Chomp
+
+ 
+Twisted Fate's
+ 
+ 
+Pick a Card
+ and 
+ 
+Stacked Deck
+
+ 
+Vayne's
+ 
+ 
+Tumble
+
+ 
+Vi's
+ 
+ 
+Relentless Force
+
+ 
+Volibear's
+ 
+ 
+Thundering Smash
+
+ 
+Wukong's
+ 
+ 
+Crushing Blow
+
+ 
+Xin Zhao's
+ 
+ 
+Three Talon Strike
+
+ 
+Ziggs'
+ 
+ 
+Short Fuse
+
+ 
+Zoe's
+ 
+ 
+More Sparkles!
+
+Single target
+
+ 
+Akshan's
+ 
+ 
+Comeuppance
+
+Area of Effect
+
+ 
+Rammus'
+ 
+ 
+Soaring Slam
+
+ 
+Sion's
+ 
+ 
+Unstoppable Onslaught
+
+ 
+Skarner's
+ 
+ 
+Upheaval
+
+ 
+Twitch's
+ 
+ 
+Spray and Pray
+
+ 
+Volibear's
+ 
+ 
+Stormbringer
+
+ 
+Ziggs'
+ 
+ 
+Satchel Charge
+
+ 
+Zeri's
+ 
+ 
+Burst Fire
+ after casting 
+ 
+Spark Surge
+
+Turret-Targeted
+
+ 
+Tristana's
+ 
+ 
+Explosive Charge
+
+ 
+Samira's
+ 
+ 
+Wild Rush
+ (does not deal damage)
+
+Items that deal bonus damage to turrets
+
+ 
+Dead Man's Plate
+
+ 
+Hullbreaker
+
+ 
+Iceborn Gauntlet
+
+ 
+Lich Bane
+
+ 
+Sheen
+
+ 
+Trinity Force
+
+Abilities that affect turrets
+
+Turrets can be put into stasis by 
+ 
+Bard's
+ 
+ 
+Tempered Fate
+.
+
+Turrets can be shielded by 
+ 
+Janna's
+ 
+ 
+Eye of the Storm
+.
+
+Turrets can be disabled by 
+ 
+Volibear's
+ 
+ 
+Stormbringer
+.
+
+Last-hitting a turret does not grant bonuses to champions, unless they have a guaranteed effect for any unit regardless of their type:
+
+ 
+Cho'Gath's
+ 
+ 
+Carnivore
+ grants its heal and mana restore.
+
+ 
+Draven's
+ 
+ 
+League of Draven
+ grants 1 stack.
+
+ 
+Nasus'
+ 
+ 
+Siphoning Strike
+ gains permanent damage.
+
+ 
+Twisted Fate's
+ 
+ 
+Loaded Dice
+ grants him 
+ 
+1 to 6
+.
+
+Summoner's Rift turrets
+
+Type
+
+Location
+
+Number
+
+Outer turrets
+
+In front of the inner towers.
+
+6
+
+Inner turrets
+
+In front of the inhibitor towers.
+
+6
+
+Inhibitor turrets
+
+In front of an inhibitor, guarding the entrances to the base.
+
+6
+
+Nexus turrets
+
+In front of the Nexus
+
+4
+
+Howling Abyss turrets
+
+Type
+
+Location
+
+Number
+
+Outer turrets
+
+In front of the inner towers.
+
+2
+
+Inhibitor turrets
+
+In front of an inhibitor, guarding the entrances to the base.
+
+2
+
+Nexus turrets
+
+In front of the Nexus
+
+4
+
+Strategy
+
+Turrets can be used to create choke points using traps such as 
+ 
+Caitlyn's
+ 
+ 
+Yordle Snap Trap
+, especially in the narrow areas between a turret and nearby terrain, as minions will not normally walk through those areas of lanes.
+
+On Summoner's Rift, the majority of champions during the 
+early game
+ have enough base 
+ 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+ (including any sufficient passive 
+attack effects
+ such as 
+ 
+Clockwork Windup
+) to last hit minions with assistance from turrets by using only 
+basic attacks
+. Assuming that minions have taken none or negligible damage from other sources prior to or during being attacked by the turret:
+
+Melee minions may sustain two turret attacks, and then one champion attack to last hit.
+
+Ranged minions may sustain one champion attack, then one turret attack, then another champion attack to last hit.
+
+Destroying the five stacks of 
+ 
+Turret Plating
+ grants a total of 
+ 
+625
+ (125 × 5 plates), plus 
+ 
+300
+ (250 local gold bounty for the Outer turret + 50 global gold bounty for taking down a turret) for a total of ​​​​​
+ 
+925
+. If this is the first turret to go down (First Turret gold), it also locally grants an additional 
+ 
+150
+, for a maximum possible total of 
+ 
+1075
+ from a single Outer turret before 14 minutes.
+
+Turrets have one of the largest hitboxes in the game, so it is possible for enemies to misclick into the turrets instead of into the player.
+
+Turret Variants
+
+League of Legends have had numerous different turrets during its history. Most were primarily used for Summoner's Rift while the remaining ones for ARAM, Twisted Treeline, and other game modes.
+
+Summoner's Rift
+Other Game Modes
+
+Evolved
+Beta
+Alpha
+
+These are all the Turrets used after second Summoner's Rift map update
+
+Blue "Summoner's Rift" Turret 
+(Order)
+Red "Summoner's Rift" Turret 
+(Order)
+Blue "Summoner's Rift" Turret 
+(Chaos)
+Red "Summoner's Rift" Turret 
+(Chaos)
+Blue "Summoner's Rift" Turret Shield 
+(Order)
+Red "Summoner's Rift" Turret Shield 
+(Order)
+Blue "Summoner's Rift" Turret Shield 
+(Chaos)
+Red "Summoner's Rift" Turret Shield 
+(Chaos)
+
+These are all the Turrets used between Beta 3 and second Summoner's Rift map update.
+
+While they appear in the Beta 1 files, they were used the most after Beta 3 until the second Summoner's Rift map update.
+
+Blue "Summoner's Rift" Lane Turret Old 3 
+(Order)
+Blue "Summoner's Rift" Gate Turret Old 3 
+(Order)
+Blue "Summoner's Rift" Nexus Turret Old 3 
+(Order)
+Purple "Summoner's Rift" Lane Turret Old 3 
+(Chaos)
+Purple "Summoner's Rift" Gate Turret Old 3 
+(Chaos)
+Purple "Summoner's Rift" Nexus Turret Old 3 
+(Chaos)
+Generic Destroyed "Summoner's Rift" Turret
+
+These are all the Turrets used between Beta 1 and second Summoner's Rift map update.
+
+Before the second Summoner's Rift map update, each part of the map had specific turret designs (lane, gate, nexus). The two turret variants were quickly changed between Beta 1 to Beta 3, with the final third variant lasting until the second Summoner's Rift map update.
+
+Blue "Summoner's Rift" Lane Turret Old 1 
+(Order)
+Blue "Summoner's Rift" Gate Turret Old 1 
+(Order)
+Blue "Summoner's Rift" Nexus Turret Old 1 
+(Order)
+Red "Summoner's Rift" Lane Turret Old 1 
+(Chaos)
+Red "Summoner's Rift" Gate Turret Old 1 
+(Chaos)
+Red "Summoner's Rift" Nexus Turret Old 1 
+(Chaos)
+Blue "Summoner's Rift" Lane Turret Old 2 
+(Order)
+Blue "Summoner's Rift" Gate Turret Old 2 
+(Order)
+Blue "Summoner's Rift" Nexus Turret Old 2 
+(Order)
+Purple "Summoner's Rift" Lane Turret Old 2 
+(Chaos)
+Purple "Summoner's Rift" Gate Turret Old 2 
+(Chaos)
+Purple "Summoner's Rift" Nexus Turret Old 2 
+(Chaos)
+
+Other game modes refers to 
+Arcade
+, 
+Butcher's Bridge
+, 
+Howling Abyss
+, 
+Twisted Treeline
+, and 
+Ultra Rapid Fire
+ turrets.
+
+Both original 
+Howling Abyss
+, 
+Twisted Treeline
+ and 
+Murder Bridge
+ had altered variants of the original Summoner's Rift turrets before their eventual updates.
+
+Blue "Arcade" Turret 
+(Order & Chaos)
+Red "Arcade" Turret 
+(Order & Chaos)
+Blue "Arcane" Turret 
+(Order & Chaos)
+Red "Arcane" Turret 
+(Order & Chaos)
+Blue "Arcane" Turret Shield 
+(Order & Chaos)
+Red "Arcane" Turret Shield 
+(Order & Chaos)
+Blue "Butcher's Bridge" Turret 
+(Order)
+Red "Butcher's Bridge" Turret 
+(Order)
+Blue "Butcher's Bridge" Turret 
+(Chaos)
+Red "Butcher's Bridge" Turret 
+(Chaos)
+"Crystal Scar" Turret 
+(Order & Chaos)
+Blue "Howling Abyss" Turret 
+(Order)
+Red "Howling Abyss" Turret 
+(Order)
+Purple "Howling Abyss" Turret 
+(Order)
+Blue "Howling Abyss" Turret 
+(Chaos)
+Red "Howling Abyss" Turret 
+(Chaos)
+Purple "Howling Abyss" Turret 
+(Chaos)
+Blue "Temple of Lily and Lotus" Turret 
+(Order & Chaos)
+Red "Temple of Lily and Lotus" Turret 
+(Order & Chaos)
+Blue "Temple of Lily and Lotus" Turret Shield 
+(Order & Chaos)
+Red "Temple of Lily and Lotus" Turret Shield 
+(Order & Chaos)
+Blue "Twisted Treeline" Turret 
+(Order)
+Purple "Twisted Treeline" Turret 
+(Chaos)
+Blue "Ultra Rapid Fire" Turret 
+(Order)
+Red "Ultra Rapid Fire" Turret 
+(Chaos)
+Blue "Nexus Siege" Turret 
+(Chaos)
+Red "Nexus Siege" Turret 
+(Chaos)
+
+Trivia
+
+Whenever a turret is destroyed, the crystal where its attacks originate from shatters and drops on the ground.
+
+ 
+Warmed up
+ attacks evolve stage by stage (up to four):
+
+Attack orbs and their launch visual become larger and brighter, and their colors blend more smoothly with the trajectory's colors.
+
+Attack trajectories transform to an erratic line pattern and gain particle effects.
+
+Hit VFX become brighter, larger and gain a lensing effect.
+
+Sometimes, the base layer of the map (cyan/blue color, normally) is visible through a destroyed turret's base.
+(bug)
+
+Older versions of League of Legends used to feature up to three different models of turrets per faction. In the latest version however, all turrets of one faction use the same model.
+
+Order's and Chaos' turrets have several visual and technical differences:
+
+The crystal atop Chaos turrets' staff appears to be floating, whereas it is directly attached onto the Order turrets' staff.
+
+Chaos' 
+Nexus Obelisk
+ uniquely does not resemble its respective turrets, unlike Order. On 
+Howling Abyss
+, one single standard Order turret functions as Order's Nexus Obelisk, while Chaos has none and their Obelisk is replaced by a purple eye attached to the nearby gate instead.
+
+Based on the visuals, theoretically a destroyed Chaos turret sustains less structural damage when taken down than an Order turret. Also, destroyed Order turret's ornaments slowly fade away while Chaos' sink into the ground.
+
+In their current design iteration, the Order faction turrets' staves have the shape of a hammer, while the Chaos faction turrets' staves have the shape of a spear or halberd.
+
+On Summoner's Rift, Chaos turrets have their base detached from their pedestals, as if floating. The only part that is attached to the pedestals and the terrains are their staves.
+
+One of the old turret variants used the old 
+ 
+Baron Nashor
+ model for the lane turrets.
+
+ 
+Turret Plating
+ is effective at the start of the game, but an animation plays from 0:25 to 0:32 that shows Outer turrets as "armoring up" while plates form around it.
+
+The icons for turrets' passives/items are reused from previous game assets.
+
+ 
+Ohmwrecker
+ uses the icon of 
+ 
+Ohmwrecker
+, an item that was removed in 
+Season Ten
+.
+
+Before that, it was called 
+ 
+Penetrating Bullets
+, which used the icon of 
+ 
+Skull Crusher
+, an 
+alpha item
+ with unknown effects.
+
+ 
+Reinforced Armor
+ uses the icon of 
+ 
+Netherrift Armor
+, an alpha item with unknown effects.
+
+ 
+Turret Plating
+ uses the icon of 
+ 
+Vanguard
+, a removed turret buff.
+
+ 
+Warden's Eye
+ uses the icon of 
+ 
+Vision Ward
+, a removed item.
+
+ 
+Fortification
+ uses the icon of 
+ 
+Fortify
+, a removed summoner spell.
+
+In the oldest versions of the game, Nexuses used to be targetable by enemies even while turrets were defending it. This allowed a team to destroy the enemy Nexus directly. The only way this is possible in the current patch is by the 
+the enemy team surrendering
+.
+
+Turrets were featured in the obscure mobile game 
+League of Legends: Turret Defence
+.
+
+Media
+
+Gallery
+Summoner Icons
+
+Blue Turret Concept
+Blue Turret Model
+Blue Turret 1
+Blue Turret 2
+Summoner's Rift Update Turret Concept
+Summoner's Rift Update Blue Turret Concept
+Summoner's Rift Update Red Turret Concept
+Summoner's Rift Update Turret Models
+Howling Abyss Turret Concept (by Riot Artist 
+Maokai Xiao
+)
+Nexus Siege Turret Concept 1 (by Riot Artist 
+Max Gon
+)
+Nexus Siege Turret Concept 2 (by Riot Artist 
+Max Gon
+)
+Nexus Siege Turret Concept 3 (by Riot Artist 
+Max Gon
+)
+Nexus Siege Turret Concept 4 (by Riot Artist 
+Jeremy Page
+)
+Nexus Siege Turret Concept 5 (by Riot Artist 
+Jeremy Page
+)
+Nexus Siege Turret Concept 6 (by Riot Artist 
+Jeremy Page
+)
+Nexus Siege Turret Concept 7 (by Riot Artist 
+Jeremy Page
+)
+Nexus Siege Turret Concept 8 (by Riot Artist 
+Jeremy Page
+)
+Nexus Siege Turret Concept 9 (by Riot Artist 
+Jeremy Page
+)
+Arcade Summoners Rift 
+Promo
+Arcade Turret Concept 1 (by Riot Artist 
+Jeremy Page
+)
+Arcade Turret Concept 2 (by Riot Artist 
+Jeremy Page
+)
+Arcade Turret Concept 3 (by Riot Artist 
+Jeremy Page
+)
+Arcade Turret Concept 4 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Turret Concept 5 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Turret Concept 6 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Turret Concept 7 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Turret Concept 8 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Turret Concept 9 (by Riot Artist 
+Ayhan Aydogan
+)
+First stage of damage on a turret.
+Second stage of damage on a turret.
+A destroyed turret.
+Lightning Rod effect on inhibitor and nexus turrets removed on patch 
+V6.22
+Turret "Wild Rift" Concept 1 (by Riot Contracted Artist 
+Noodle Li
+)
+Turret "Wild Rift" Concept 2 (by Riot Contracted Artist 
+Noodle Li
+)
+Turret "Wild Rift" Concept 3 (by Riot Contracted Artist 
+Shuohan
+)
+Turret "Wild Rift" Concept 4 (by Riot Contracted Artist 
+Shuohan
+)
+
+Main article: 
+Summoner icon
+
+Trimmed Turret
+Latin America Beta Tester Turret
+Masters Challenge Season 4
+Masters Challenge Season 5
+
+Patch History
+
+V14.19
+
+Bounties
+
+The paradigm for earning local turret takedown rewards has changed.
+
+New:
+ A champion whose own direct damage destroys a turret earns the reward regardless of death state. All alive champions within 1200 units of the turret at the time of its destruction earn the reward. Any alive champion or their summoned units (including the 
+ 
+Mercenary
+) who has assisted in taking down the turret in the last 10 seconds earns the reward regardless of range.
+
+Old:
+ A champion whose own direct damage destroys a turret earns the reward regardless of death state. All alive champions within 1200 units of the turret at the time of its destruction earn the reward. Any alive champion who is between 1200 and 2500 units of the turret and has assisted in taking down the turret in the last 10 seconds earns the reward.
+
+The paradigm for earning 
+ 
+Turret Plating
+ rewards has changed.
+
+New:
+ A champion whose own direct damage destroys a plating stage earns the reward regardless of death state. All alive champions within 1200 units of the turret at the time of its plating stage being destroyed earn the reward. Any alive champion or their summoned units (including the 
+ 
+Mercenary
+) who has assisted in taking down the turret plating in the last 10 seconds earns the reward regardless of range.
+
+Old:
+ A champion whose own direct damage destroys a plating stage earns the reward regardless of death state. All alive champions within 1200 units of the turret at the time of its plating stage being destroyed earn the reward. Any alive champion who is between 1200 and 2500 units of the turret and has assisted in taking down a plating stage in the last 10 seconds earns the reward. The 
+ 
+Mercenary's
+ summoner grants the reward for taking down plating stages, regardless of death state and range.
+
+VFX
+
+Cleaned up idle and attack priming brightness and particles.
+
+Increased the fidelity of all parts of a turret's attack.
+
+Reduced the size and noisiness of the hit visuals.
+
+New:
+ 
+ 
+Warmed up
+ attacks now have special effects, per-stage.
+
+Attack orbs and their launch visual become larger and brighter, and their colors blend more smoothly with the trajectory's colors.
+
+Attack trajectories transform to an erratic line pattern and gain particle effects.
+
+Hit VFX become brighter, larger and gain a lensing effect.
+
+V14.18
+
+Outer turret
+
+Midlane and toplane turret damage reduction for first 5 minutes increased to 85% from 75%.
+
+Bonus armor and magic resistance increased to 
+-25 / 25 / 75 / 125 / 175 (based on 
+current
+ health)
+ from 
+-25 / 15 / 55 / 95 / 135 (based on 
+current
+ health)
+.
+
+Bulwark bonus resistances per stack reduced to 
+20 − 100 (based on nearby enemy champions)
+ from 
+45 − 225 (based on nearby enemy champions)
+.
+
+V14.12
+
+Bug Fix:
+ Tooltip for 
+ 
+Reinforced Armor
+ has been updated to note that the Backdoor bonus only reduces true damage and does not nullify it, in accordance with patch 
+14.1
+'s change.
+
+Bug Fix:
+ First turret floating gold text has been updated in accordance with patch 
+14.11
+'s change instead of displaying the previous amount.
+
+V14.11
+
+First turret gold increased to 
+ 
+300
+ from 
+ 
+150
+. 
+Announcement bugged to still display 
+ 
+150
+ until 14.12.
+
+Outer turret damage reduction for first 5 minutes increased to 75% from 50%.
+
+Bug Fix:
+ Tooltip for the 
+ 
+Reinforced Armor
+ item in the turret's pseudo-inventory now uses the correct value for the backdoor damage reduction of 80%, rather than the pre-
+V14.1
+ value of 66.
+6
+%.
+
+V14.1
+
+Inner turret health increased to 4000 from 3000.
+
+Inhibitor turret health increased to 3500 from 3300.
+
+Nexus turret health increased to 3000 from 2700.
+
+Backdoor damage reduction increased to 80% from 66.
+666
+%.
+
+Backdoor damage reduction now reduces true damage instead of nullifying it entirely.
+
+V13.23
+
+Summoner's Rift
+
+Mid Lane Inner Turret
+
+Local gold increased to 
+ 
+425
+ from 
+ 
+300
+.
+
+Global gold reduced to 
+ 
+25
+ from 
+ 
+50
+.
+
+Side Lane Inner Turret
+
+Local gold increased to 
+ 
+675
+ from 
+ 
+550
+.
+
+Global gold reduced to 
+ 
+25
+ from 
+ 
+50
+.
+
+Inhibitor Turret
+
+Local gold increased to 
+ 
+375
+ from 
+ 
+50
+.
+
+Global gold reduced to 
+ 
+25
+ from 
+ 
+50
+.
+
+Gold reward tooltips updated to show both local and global turret gold.
+
+Updated formatting of other turret item tooltips.
+
+V13.20
+
+ 
+Turret Plating
+ gold per plate reduced to 
+ 
+125
+ from 
+ 
+175
+.
+
+V13.10
+
+New:
+ Champions' basic attack against turrets deals 
+Champions stunned with Pyromania (P)
+100% 
+base
+ AD
+ 
+Champions stunned with Pyromania (P)
+(+ 100% 
+bonus
+ AD)
+ 
+Multiple champions hit with Between Worlds (R)
+(+ 60% AP)
+.
+
+Old:
+ Champions' basic attack against turrets deals 
+Champions stunned with Pyromania (P)
+100% 
+base
+ AD
+ plus the highest of 
+Champions stunned with Pyromania (P)
+100% 
+bonus
+ AD
+ or 
+Multiple champions hit with Between Worlds (R)
+60% AP
+.
+
+Bulwark bonus resistances per stack increased to 
+45 − 225 (based on nearby enemy champions)
+ from 
+0 − 180 (based on nearby enemy champions)
+.
+
+V13.6
+
+All Howling Abyss turrets
+
+Armor reduced to 
+60 − 81 (based on minutes)
+ from 
+75 − 96 (based on minutes)
+.
+
+Magic resistance reduced to 
+60 − 81 (based on minutes)
+ from 
+75 − 96 (based on minutes)
+.
+
+V13.5
+
+Howling Abyss:
+
+New Effect:
+ Turrets now begin to decay resistances at 30:00 and health at 45:00 in Clash.
+
+Outer Turret
+
+Attack damage increased to 
+185 − 293 (based on minutes)
+ from 
+185 − 233 (based on minutes)
+.
+
+Armor increased to 
+75 − 96 (based on minutes)
+ from 
+70 − 78 (based on minutes)
+.
+
+Magic resistance increased to 
+75 − 96 (based on minutes)
+ from 
+75 − 83 (based on minutes)
+.
+
+New Effect:
+ Armor and magic resistance are reduced to 40 at 12:00.
+
+Inhibitor Turret
+
+Attack damage increased to 
+195 − 375 (based on minutes)
+ from 
+195 − 243 (based on minutes)
+.
+
+Armor increased to 
+75 − 96 (based on minutes)
+ from 
+70 − 78 (based on minutes)
+.
+
+Magic resistance increased to 
+75 − 96 (based on minutes)
+ from 
+75 − 83 (based on minutes)
+.
+
+New Effect - Fortification:
+ Inhibitor turrets now gain 30% damage reduction for 60 seconds after the Outer Turret is destroyed.
+
+Nexus Turret
+
+Attack damage increased to 
+195 − 375 (based on minutes)
+ from 
+175 − 223 (based on minutes)
+.
+
+Armor increased to 
+75 − 96 (based on minutes)
+ from 
+50 − 58 (based on minutes)
+.
+
+Magic resistance increased to 
+75 − 96 (based on minutes)
+ from 
+75 − 83 (based on minutes)
+.
+
+V13.3
+
+Outer turret base attack damage increased to 
+182 − 350 (based on minutes)
+ from 
+162 − 344 (based on minutes)
+.
+
+ 
+Turret Plating
+
+Bug Fix:
+ Enemy turret plates once again display on the mini-map at all times, rather than only until the first plate of an enemy's turret was destroyed.
+
+V12.22
+
+ 
+Turret Plating
+
+Gold per turret plate increased to 
+ 
+175
+ from 
+ 
+160
+.
+
+Bonus resistances per plate increased to 
+-25 / 15 / 55 / 95 / 135 (based on 
+current
+ health)
+ from 
+-25 / 10 / 45 / 80 / 115 (based on 
+current
+ health)
+.
+
+V12.15
+ - August 10th Hotfix
+
+Bug Fix:
+ Damage now properly increases with consecutive shots.
+
+Undocumented:
+ Attacks now 
+ 
+Warm Up
+ against 
+ 
+clones
+.
+
+V12.11
+
+Outer turret base attack damage reduced to 
+162 − 344 (based on minutes)
+ from 
+167 − 391 (based on minutes)
+.
+
+Bug Fix:
+ Outer turret health bars now properly display the explosion animation when the turret is destroyed.
+
+V12.10
+
+Outer turret base attack damage increased to 
+167 − 391 (based on minutes)
+ from 
+152 − 278 (based on minutes)
+.
+
+Inner turret base attack damage increased to 
+187 − 427 (based on minutes)
+ from 
+170 − 305 (based on minutes)
+.
+
+Inhibitor turret base attack damage increased to 
+187 − 427 (based on minutes)
+ from 
+170 − 305 (based on minutes)
+.
+
+Nexus turret base attack damage increased to 
+165 − 405 (based on minutes)
+ from 
+150 − 285 (based on minutes)
+.
+
+V11.13
+
+Inner turrets in side lanes (top and bottom) now grant an additional 
+ 
+250 local gold
+.
+
+All turret inventories now show how much local gold they give once destroyed.
+
+V10.11
+
+Turret Plating
+
+Bug Fix:
+ Gold is no longer divided between untargetable 
+ 
+clones
+ (i.e 
+ 
+Last Breath
+).
+
+V10.5
+
+Gold per turret plate increased to 
+ 
+160
+ from 
+ 
+120
+.
+
+New Effect:
+  Plates take 17% reduced damage from 
+ 
+minions
+ and 
+ 
+ranged
+ 
+ 
+champions
+.
+
+Bonus resistances per plate reduced to 
+-25 / 10 / 45 / 80 / 115 (based on 
+current
+ health)
+ from 
+0 / 40 / 80 / 120 / 160 (based on 
+current
+ health)
+.
+
+Bulwark bonus resistances increased to 
+0 − 180 (based on nearby enemy champions)
+ from 
+0 − 140 (based on nearby enemy champions)
+.
+
+V9.23
+ - November 25th Hotfix
+
+Turret Plating
+
+Bonus armor and magic resistance increased to 
+0 / 40 / 80 / 120 / 160 (based on 
+current
+ health)
+ from 
+0 / 30 / 60 / 90 / 120 (based on 
+current
+ health)
+.
+
+Gold per turret plate reduced to 
+ 
+120
+ from 
+ 
+160
+.
+
+V9.23
+
+Penetrating Bullets
+ renamed to 
+Ohmwrecker
+.
+
+Icon updated to 
+ 
+Ohmwrecker's
+ icon, instead of 
+ 
+Skull Crusher's
+ icon.
+
+Turret Plating resistances per stack increased to 
+0 − 130 (based on nearby enemy champions)
+ from 
+0 − 100 (based on nearby enemy champions)
+.
+
+V9.2
+
+Inhibitor and Nexus turrets base armor increased to 70 at all times from 
+55 − 70 (based on minutes)
+.
+
+Inhibitor and Nexus turrets base magic resistance increased to 70 at all times from 
+55 − 70 (based on minutes)
+.
+
+V9.1
+
+New Effect:
+ Champions within 2500 range who assisted in a turret takedown now also count toward turret gold distribution, including first turret bonus.
+
+Turret local gold proximity radius increased to 1200 from 1000.
+
+V8.24b
+
+Outer turret base armor and magic resistance increased to 40 from 0.
+
+ 
+Turret Plating
+ base armor and magic resistance reduced to 0 from 40. 
+Combined with the above, the turret now keeps 40 armor and magic resistance after Turret Plating is removed.
+
+V8.23
+
+General
+
+First Turret gold reduced to 
+ 
+150
+ from 
+ 
+300
+.
+
+Outer Turrets
+
+Base health increased to 5000 from 3800.
+
+AD per minute increased to 9 from 4.
+
+AD cap changed to (278 at 15:00) from (180 at 7:30).
+
+Base resistances reduced to 0 from 55.
+
+Base resistances per level reduced to 0 from 1.
+
+New item: Turret Plating
+
++40 Armor
+
++40 Magic Resistance
+
+Passive:
+ Grants 
+0 / 30 / 60 / 90 / 120 (based on 
+current
+ health)
+ 
+bonus
+ armor and magic resistance.
+
+Passive - Bulwark:
+ When the turret's health is reduced to 
+inherit
+4000
+, 
+inherit
+3000
+, 
+inherit
+2000
+ and 
+Champions killed with Comeuppance (R)
+1000 health
+, grants 
+0 / 25 / 50 / 75 / 100 (based on nearby enemy champions)
+ 
+bonus
+ Armor and Magic Resistance for 20 seconds. This effect can stack and fully refreshes previous stacks if there are any.
+
+Triggering 
+Bulwark
+ grants 
+ 
+160
+ gold divided among nearby champions.
+
+Turret Plating is removed after 14:00.
+
+Inner Turrets
+
+AD per minute increased to 9 from 4.
+
+AD cap changed to (305 at 18:00) from (250 at 28:00).
+
+Global gold reduced to 
+ 
+50
+ from 
+ 
+100
+.
+
+Inhibitor Turrets
+
+AD per minute increased to 9 from 4.
+
+AD cap changed to (305 at 18:00) from (250 at 28:00).
+
+Global gold reduced to 
+ 
+50
+ from 
+ 
+150
+.
+
+Nexus Turrets
+
+AD per minute increased to 9 from 4.
+
+AD cap changed to (285 at 18:00) from (230 at 28:00).
+
+Global gold reduced to 
+ 
+50
+ from 
+ 
+75
+.
+
+V8.13
+
+Outer turret gold reduced to 
+ 
+50
+ per player from 
+ 
+100
+.
+
+V8.11
+
+Inhibitor turret health reduced to 3300 from 3600.
+
+Nexus turret health reduced to 2700 from 3600.
+
+Inhibitor health regeneration increased to 15 health per 5 seconds from 5 health per 5 seconds.
+
+Nexus and inhibitor turrets now regenerates health up to the top of their current third.
+
+If health is below 
+inherit
+33.
+3
+%
+, regenerates up to 
+Champions killed with Comeuppance (R)
+33.
+3
+% health
+.
+
+If health is between 
+inherit
+33.
+3
+%
+ and 
+inherit
+66.
+7
+%
+, regenerates up to 
+Champions killed with Comeuppance (R)
+66.
+7
+% health
+.
+
+If health is between 
+inherit
+66.
+7
+%
+ and 
+inherit
+100%
+, regenerates up to 
+Champions killed with Comeuppance (R)
+100% health
+.
+
+Inner turret local gold reward (split among nearby champions) increased to 
+ 
+300
+ from 
+ 
+175
+.
+
+Global gold reward (to every allied champion) reduced to 
+ 
+100
+ from 
+ 
+125
+.
+
+V8.9
+
+Basic attack AP ratio against turrets increased to 
+Multiple champions hit with Between Worlds (R)
+60% AP
+ from 
+Multiple champions hit with Between Worlds (R)
+50% AP
+.
+
+New Effect:
+ If a basic attack uses ability power bonus to turrets, the whole attack will convert to magic damage, rather than only the ability power scaling portion.
+
+V8.5
+
+Damage to melee minions increased to 
+Champions killed with Comeuppance (R)
+45% of their 
+maximum
+ health
+ from 
+inherit
+43%
+.
+
+V8.2
+ - January 25th Hotfix
+
+Base resistances increased to 55 from 40.
+
+Scaling resistances reduced to +15 over 15 minutes from +30 over 15 minutes.
+
+V7.23
+
+All turrets on Summoner's Rift have gained 300 health.
+
+Minion reduced damage to turrets reduced to 40% from 50%.
+
+V7.4
+
+First Turret gold
+
+Local gold reward increased to 
+ 
+300
+ from 
+ 
+275
+.
+
+Removed:
+ Granting 
+ 
+25
+ globally.
+
+Total gold reduced to 
+ 
+300
+ from 
+ 
+400
+
+V6.22
+
+New Effect:
+ Turret icons now update to indicate turrets 
+Champions killed with Comeuppance (R)
+below 66% health
+ and 
+Champions killed with Comeuppance (R)
+below 33% health
+.
+
+Removed:
+ 
+ 
+Lightning Rod
+ removed. Inhibitor and Nexus turrets fire laser bullets like all other turrets, instead of lasers.
+
+Turret bullets now deal a 
+fixed
+ percent of minion 
+Champions killed with Comeuppance (R)
+maximum health
+.
+
+Melee:
+ 
+Champions killed with Comeuppance (R)
+45% health
+ per bullet (requires 3 turret shots).
+
+Ranged:
+ 
+Champions killed with Comeuppance (R)
+70% health
+ per bullet (requires 2 turret shots).
+
+Siege:
+ 
+Champions killed with Comeuppance (R)
+14% health
+ per bullet (requires 8 turret shots).
+
+Super:
+ 
+Champions killed with Comeuppance (R)
+5% health
+ per bullet (requires 20 turret shots).
+
+V6.15
+
+Outer turret:
+
+Shared local gold reduced to 
+ 
+250
+ from 
+ 
+300
+.
+
+Health increased to 3500 from 3300.
+
+Fortification:
+
+Duration reduced to 5 minutes from 7.
+
+Damage reduction increased to 50% from 35%.
+
+Bot lane turrets no longer have 
+Fortification
+.
+
+Visual effect added to show you are hitting a shielded turret.
+
+New:
+ Turret First Blood
+
+Upon killing the first turret of the game, the turret killer gains 
+ 
+400
+, and his team gains 
+ 
+275
+ locally and 
+ 
+25
+ globally.
+
+Writes down the following message in all-chat upon killing the first turret of the game:
+
+"
+inherit
+Player
+ has destroyed the first turret! (Bonus Gold: 
+inherit
+400G
+)"
+
+V6.10
+
+Now additionally absorbs 66% of true damage when the backdoor bonus is in effect
+
+V6.9
+
+All turrets
+
+New Effect:
+ The AP-based damage dealt to structures is now dealt as magic damage.
+
+For Reference:
+ Damage to structures changed to 
+Champions stunned with Pyromania (P)
+100% base AD
+ physical damage plus the highest value between 
+Champions stunned with Pyromania (P)
+100% bonus AD
+ physical damage and 
+Multiple champions hit with Between Worlds (R)
+50% AP
+ magic damage.
+
+Base armor and magic resistance increased to 40 from 0.
+
+Base health reduced to 3300 from 4000.
+
+Removed:
+ Immunity to penetration.
+
+Reinforced Armor
+ now grants 66.
+66
+% damage reduction instead of 200 armor and magic resistance.
+
+Inner and Outer turrets
+
+Warming Up (37.
+5
+% per attack) and Heating Up (once 
+Warmed Up
+, 25% per attack versus champions) combined.
+
+Revised:
+ Turrets deal 40% increased damage on consecutive attacks, up to 120%. 
+Maximum damaged changed to 220% over three shots from 225% over four shots.
+
+Heating up
+ damage no longer partially resets when turrets switch targets.
+
+Outer turrets
+
+Outer turret early game defensive buff now reduces damage from all sources.
+
+Damage reduction changed to 35% from all sources from blocking 30 damage from champion basic attacks.
+
+Local gold increased to 
+ 
+300
+ from 
+ 
+220
+.
+
+Global gold reduced to 
+ 
+100
+ from 
+ 
+125
+.
+
+Maximum team gold reduced to 
+ 
+800
+ from 
+ 
+845
+.
+
+Inner turrets
+
+Local gold reduced to 
+ 
+175
+ from 
+ 
+200
+.
+
+Global gold reduced to 
+ 
+125
+ from 
+ 
+150
+.
+
+Maximum team gold reduced to 
+ 
+800
+ from 
+ 
+1000
+.
+
+Experience bounty removed.
+
+Inhibitors
+
+New Effect:
+ Grants 
+ 
+50
+ locally.
+
+Maximum team gold increased to 
+ 
+800
+ from 
+ 
+750
+.
+
+V5.23
+
+Outer turret health increased to 4000 from 3500.
+
+Inner turret health increased to 4000 from 3500.
+
+V5.22
+
+Removed:
+ Inner turrets no longer shield nearby players from damage.
+
+Base armor and magic resistance reduced to 0 from 100.
+
+Turrets now gain 2 armor and magic resistance per minute starting immediately (Outer), 15 minutes (Inner) and 30 minutes (Inhibitor and Nexus).
+
+Outer turret health increased to 3500 from 1000.
+
+Inner turret health increased to 3500 from 1300.
+
+Inhibitor turret health increased to 4000 from 1300.
+
+Nexus turret health increased to 4000 from 1500.
+
+AP ratio on champion attacks versus turrets increased to 50% from 40%.
+
+For Reference:
+ Structures take physical damage from champion basic attacks equal to 
+Champions stunned with Pyromania (P)
+100% base AD
+ plus the greater value between 
+Champions stunned with Pyromania (P)
+100% bonus AD
+ and, now, 
+Multiple champions hit with Between Worlds (R)
+50% AP
+.
+
+Reinforced Armor bonus reduced to 200 from 300.
+
+Outer turret local gold increased to 
+ 
+220
+ from 
+ 
+150
+.
+
+Inner turret local gold increased to 
+ 
+250
+ from 
+ 
+100
+.
+
+V5.13
+
+Twisted Treeline
+
+Outer Turret health reduced to 1650 from 1850.
+
+Inner turret health reduced to 1850 from 2050.
+
+Inhibitor turret health reduced to 2250 from 2350.
+
+V5.12
+
+Lightning Rod
+ no longer slows (previously 10%).
+
+Lightning Rod
+ no longer reduces the target's damage (previously 15%).
+
+V5.11
+
+Twisted Treeline
+
+All Turrets
+
+Reinforced Armor improved to 200 from 75.
+
+Outer Turret
+
+Now an "inner" turret.
+
+Damage reduced to 160 from 190.
+
+Armor increased to 100 from 67.
+
+Gold reduced to 100 from 150.
+
+Experience removed.
+
+New Outer Turret
+
+A new turret has been added to the lane.
+
+Health implemented at 1850.
+
+Armor and magic resistance implemented at 50.
+
+Damage implemented at 152.
+
+Gold implemented at 100.
+
+Inhibitor Turret
+
+Armor increased to 100 from 6.
+
+Attack speed increased to 1.25 from 0.83.
+
+Gold reduced to 100 from 150.
+
+Experience removed.
+
+Nexus Turret
+
+Armor increased to 100 from 67.
+
+Damage reduced to 150 from 180.
+
+Attack speed increased to 2.5 from 0.83.
+
+Gold reduced to 100 from 150.
+
+Experience removed.
+
+V5.8
+
+Murder Bridge
+
+Outer Turrets
+
+Base damage increased to 185 from 160.
+
+Inner/Inhibitor Turrets
+
+Base damage increased to 195 from 160.
+
+Nexus Turrets
+
+Base damage increased to 175 from 130.
+
+V5.5
+
+Summoner's Rift
+
+Inner Turrets
+
+Removed:
+ Middle lane inner turrets no longer have 
+ 
+Vanguard
+.
+
+Middle lane inner turrets no longer shield nearby champions.
+
+Middle lane inner turrets no longer have shield.
+
+Top and Bottom inner turrets shield health reduced to 30 from 200.
+
+Inner turret health increased to 1300 from 1000.
+
+Inhibitor Turrets
+
+Global team gold when destroyed reduced to 50 from 175.
+
+Global team experience on inhibitor turrets reduced to 0 from 100.
+
+Nexus Turrets
+
+Global team gold when destroyed reduced to 50 from 150.
+
+Global team experience on inhibitor turrets reduced to 0 from 100.
+
+V4.21
+
+Outer turret global gold reward decreased to 125 from 100.
+
+Inner turret global gold reward increased to 150 from 125.
+
+Inner turret shielding window increased to 1.5 seconds from 1 second.
+
+V4.20
+
+Summoner's Rift
+
+Turrets no longer gain armor or magic resistance over time.
+
+Turret armor / magic resistance has been standardized to +100 armor / magic resistance.
+
+Reinforced Armor
+ bonuses have been increased to +200 armor / magic resistance.
+
+Outer Turrets: 1000~2000 health.
+
+Inner Turrets: 1000~2000 health.
+
+Inhibitor Turrets: 1500~2500 health.
+
+Nexus Turrets: 1500~2500 health.
+
+Inhibitor and Nexus Turrets
+
+Health regeneration decreased to 5 from 15.
+
+New item 
+ 
+Lightning Rod
+
+Ignores 82.5% of the target's armor.
+
+Unique Passive - Lightning Rod: Deals damage in a continuous beam and cannot be dodged. Deals up to 125% additional damage the longer it targets the same target.
+
+With every hit, the beam gains 6 heat until 120 heat is reached. When the beam switches targets, heat is reset.
+
+Gains +1.05% damage per point of heat, up to a maximum of +125% extra damage.
+
+Inner Turrets
+
+New item 
+ 
+Vanguard
+
+Unique Passive - Turret Vanguard: Has a 30 health champion damage shield. This shield regenerates to full 30 seconds after not taking damage.
+
+Unique Passive - Champion Vanguard: While this turret has the Turret Vanguard shield, grants nearby champions a 30 health per second regeneration shield (Max 300 health). This shield decays while away from a shielded turret. The shield does not regenerate on champions actively taking damage.
+
+V4.11
+
+Penetrating Bullets:
+ Turret damage gained per hit increased to 37.5% from 25%.
+
+Warming Up:
+ Turrets now finish warming up after 2 hits from 3.
+
+Turrets select targets slightly faster.
+
+V4.7
+
+Fortification
+
+Duration reduced to 7 minutes from 8.
+
+Damage reduction from champions increased to 30 from 20.
+
+Now also applies to bottom turret, not just top and mid.
+
+V4.1
+
+Outer turrets no longer gain bonus armor and magic resist for the first eight minutes of the game.
+
+Top and middle lane outer turrets now have 20 damage reduction from champion basic attacks.
+
+V3.14
+
+Outer turrets now grant 100 global gold per player and 150 gold split among the players who participate in destroying the turret.
+
+Inner turrets now grant 125 global gold per player and 100 gold split among the players who participate in destroying the turret.
+
+Inhibitor turrets now grant 175 global gold per player.
+
+V3.10
+
+Outer turrets now gain 60 bonus armor at the start of the game, which starts decaying after 4 minutes have passed and finishes decaying 4 minutes later.
+
+Outer turret base armor increased to 60 from 54.
+
+Outer turrets no longer gain armor over the first 8 minutes of the game.
+
+Fixed a bug where purple side inner turrets had 10 more armor than intended.
+
+V3.5
+
+Turrets now deal 105% damage to champions for the first attack, increased from 94.5%
+
+Turrets now deal 25% additional damage for consecutive attacks on the same champion (max 225%), increased from 20% (max 210%).
+
+V3.01
+
+Turrets now have kill callouts.
+
+V1.0.0.112
+
+Minion damage to turrets increased to 60% from 40%.
+
+Turrets deal about 10% less base damage to champions.
+
+Turrets now have 20% armor penetration.
+
+V1.0.0.107
+
+All turrets now provide less global experience, but more global gold.
+
+V1.0.0.100
+
+Turrets currently attacking a champion will no longer respond to further calls for help from other champions.
+
+V1.0.0.72
+
+Bonus damage to structures from ability power increased to 40% from 25%.
+
+V1.0.0.63
+
+Turrets that are not currently targetable will no longer display a health bar.
+
+Base health increased to 1300 from 1200.
+
+Damage growth per minute increased to 6 from 5.
+
+Global experience given on death reduced to 240 from 270.
+
+Removed late game armor and magic resistance decay.
+
+V1.0.0.61
+
+All turret ranges increased to 750 from 700.
+
+Turret target acquisition is now faster.
+
+Turret base health reduced to 1200 from 1400.
+
+Fixed a bug that was granting turrets an additional bonus 50 armor and magic resistance.
+
+Backdooring defenses reduced to 150 armor/magic resistance from 200 armor/magic resistance.
+
+Damage scaling per hit increased to 15% from 10%.
+
+Damage scaling max cap increased to 175% from 155%.
+
+Damage scaling cap when switching targets increased to 130% from 125%.
+
+Turret armor and magic resistance decay rate reduced to 2 per 60 seconds from 3 per 60 seconds.
+
+V1.0.0.52
+
+Turret damage scaling changed to 85%-155% at 10% increments on hit resetting to 125% when switching champions from 75% to 200% at 25% increments on hit resetting to 150% when switching champions.
+
+Turret backdoor bonus decreased to 200 from 250.
+
+Turret armor and magic resistance growth decreased to 1.5 from 2.5.
+
+Turret armor and magic resistance decay decreased to 3 from 5.
+
+Second turret base armor decreased to 37.5 from 42.5.
+
+Inhibitor turret base armor decreased to 47.5 from 55.
+
+V0.9.25.24
+
+Moved to allow players to path around them on Summoner Rift.
+
+Turret hits can no longer be dodged.
+
+Rotated Turrets to face the proper direction.
+
+Global XP reduced to 270 from 300.
+
+Attack range reduced to 700 from 750.
+
+Turrets now gain scaling damage per hit against champions.
+
+First shot = 75% damage.
+
+Each additional shot increases damage by 25% (200% cap).
+
+Damage bonus clears after 4 seconds of not attacking a champion.
+
+V0.9.22.16
+
+All turrets
+
+Turret attack speed increased by 20% and armor/magic resist by 15.
+
+Champion bonuses to turrets now all increment by the same amount (instead of bonus from the first champion).
+
+Turret damage to 
+champions
+ increased to 1.1 from 1.
+
+Turret damage to 
+minions
+ increased to 1.105 from 1.
+
+Outer turret damage increased to 152 from 112.
+
+Outer turret power increase timer reduced by 2 minutes.
+
+Shrine turrets:
+
+Health regen increased to 15 from 10.
+
+Damage increased to 999 from 600.
+
+Range increased to 2250 from 1500 .
+
+Attack speed increased to 1 from 0.57.
+
+Added a hit effect.
+
+Lane turrets
+
+Range increased to 750 from 700.
+
+Base turrets
+
+Range reduced to 750 from 850.
+
+V0.9.22.15
+
+All turrets
+
+Turret vs Minion Damage reduced to 1 from 1.105.
+
+Damage growth per minute decreased to 5 from 7.
+
+When a teammate leaves, turrets gain 10 damage and 10 armor (stacking).
+
+1st Turret:
+
+Base damage decreased to 112 from 115.
+
+Growth time increased by 1 minute.
+
+2nd Turret:
+
+Growth time beginning 2 minutes earlier.
+
+3rd Turret:
+
+Base damage increased to 227 from 226.
+
+Growth beginning delayed by 1 minute.
+
+Growth period shortened by 1 minute.
+
+V0.9.22.7
+
+Inhibitor turret base damage reduced to 210 from 226.
+
+May 29, 2009 Patch
+
+Outer turrets
+
+Tooltip fix
+
+Health reduced to 2600 from 2800.
+
+Added a new passive to mech minions: Turret Shield - damage taken from turrets is reduced by 50%.
+
+May 15, 2009 Patch
+
+Global experience reduced to 300 from 400.
+
+May 1, 2009 Patch
+
+Added a shrine turret: updated shrine turret stats (it is VERY deadly now).
+
+References
+
+Map Features
+
+General
+
+Brush
+
+Inhibitor
+
+Lanes
+
+Nexus
+
+Nexus Obelisk
+
+Shop
+
+Spawn
+
+Terrain
+
+Turret
+
+Summoner's Rift
+
+Base gate
+
+Jungle plants
+
+ 
+Speed Shrine
+
+Howling Abyss
+
+Health Relic
+
+Twisted Treeline
+ (Removed)
+
+Altar
+
+Ghost Relic
+
+Crystal Scar
+ (Removed)
+
+Capture point
+
+Health Relic
+
+Greater Relic
+
+Speed Shrine
+
+
+========================================
+## 억제기 (Inhibitor)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Inhibitor
+========================================
+
+Inhibitors
+ are structures that prevent 
+ 
+super minions
+ from spawning in the respective same lane. Inhibitors have 4000 
+health
+, 15 
+health regeneration
+ per second, 20 
+armor
+, and 0 
+magic resistance
+.
+
+Each team has 3 inhibitors on 
+Summoner's Rift
+ in each of their bases, of which at least one inhibitor must be destroyed to render the Nexus and its defending turrets vulnerable to being attacked (the Nexus will be invulnerable as long as one of its turrets or all 3 inhibitors are standing). Every inhibitor is protected by a turret that makes that inhibitor invulnerable; destroying the turret makes the inhibitor vulnerable.
+
+Once a team's inhibitor is destroyed, the enemy's 
+Nexus
+ will begin spawning a 
+ 
+super minion
+ in the waves set in the respective lane, replacing the 
+ 
+siege minion
+ in its place if applicable. If all 3 of a team's inhibitors are destroyed, it will instead spawn two 
+ 
+super minions
+ in each lane, per wave.
+
+Destroyed inhibitors respawn after 5 minutes, therefore stopping the opposing Nexus from spawning any more 
+ 
+super minions
+.
+
+Contents
+
+1
+ 
+Bounty
+
+2
+ 
+Notes
+
+3
+ 
+Strategy
+
+4
+ 
+Inhibitor Variants
+
+5
+ 
+Trivia
+
+6
+ 
+Media
+
+7
+ 
+Patch History
+
+Bounty
+
+When an inhibitor is destroyed, if a champion scored the last hit, they receive 
+ 
+50
+. Other champions involved in the destruction do not receive any bounty.
+
+Notes
+
+Inhibitors do not have any special buffs or effects.
+
+Armor penetration
+ has no effect on an inhibitor's armor.
+
+The damage dealt to an inhibitor with a basic attack is the sum of the 
+ 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+base
+ attack damage
+, plus the higher of 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+bonus
+ attack damage
+ and 60% of 
+ 
+Damage to champions with Center of the Universe (P)
+ability power
+. If 60% of a champion's 
+Damage to champions with Center of the Universe (P)
+ability power
+ is greater the amount of their 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+bonus
+ attack damage
+, the attack's damage converts from 
+ 
+physical damage
+ to 
+ 
+magic damage
+.
+
+When the announcer notifies that either yours or the enemy's inhibitor will respawn soon, said inhibitor will respawn in 15 seconds.
+
+In 
+Summoner's Rift
+, destroying an Inhibitor will spawn a Super Minion in each wave for the next 8 minion waves. Usually two minion waves before the Inhibitor completely recovers will not have any Super Minions.
+
+In 
+Howling Abyss
+, destroying the Inhibitor will spawn a Super Minion in each wave for the next 10 minion waves.
+
+Respawn timer for an inhibitor can be seen visually through a glowing gauge running around the destroyed inhibitor's framing.
+
+Strategy
+
+Once its protecting turret is destroyed the inhibitor is extremely susceptible to 
+backdooring
+. An enemy 
+ 
+marksman
+ will be able to take down an unprotected inhibitor before a defending champion can 
+ 
+Recall
+ and walk to defend it. Additionally, one can't directly 
+ 
+Teleport
+ to it. Destroying an inhibitor can often be worth more than a few champion kills because of the immense lane pressure that Super Minions will provide. Players have to keep in mind when an inhibitor respawns, however, as it respawning means that the Nexus cannot take damage; this notably happened in game 2 of EDG vs DRX during the 2022 League of Legends World Championships quarterfinals, when DRX's Deft was just about to finish EDG's Nexus, only to be stopped when one of the opposing team's inhibitors respawned, costing DRX the game.
+
+Inhibitor Variants
+
+League of Legends have had numerous different inhibitors during its history. Most were primarily used for Summoner's Rift while the remaining ones for ARAM, Twisted Treeline, and other game modes.
+
+Summoner's Rift
+Other Game Modes
+
+Evolved
+Alpha
+
+These are all the Inhibitors used after second Summoner's Rift map update
+
+Blue "Summoner's Rift" Inhibitor 
+(Order)
+Red "Summoner's Rift" Inhibitor 
+(Order)
+Blue "Summoner's Rift" Inhibitor 
+(Chaos)
+Red "Summoner's Rift" Inhibitor 
+(Chaos)
+
+These are all the Inhibitors used between Beta 1 and second Summoner's Rift map update
+
+Blue "Summoner's Rift" Inhibitor 
+(Order)
+Purple "Summoner's Rift" Inhibitor 
+(Chaos)
+Blue Destroyed "Summoner's Rift" Inhibitor 
+(Order)
+Purple Destroyed "Summoner's Rift" Inhibitor 
+(Chaos)
+Generic Destroyed "Summoner's Rift" Inhibitor
+
+Other game modes refers to 
+Arcade
+, 
+Butcher's Bridge
+, 
+Howling Abyss
+, 
+Twisted Treeline
+, and 
+Ultra Rapid Fire
+ inhibitors.
+
+Both original 
+Howling Abyss
+, 
+Twisted Treeline
+ and 
+Murder Bridge
+ had altered variants of the original Summoner's Rift inhibitors before their eventual updates.
+
+Blue "Arcade" Inhibitor 
+(Order & Chaos)
+Red "Arcade" Inhibitor 
+(Order & Chaos)
+Blue "Arcane" Inhibitor 
+(Order & Chaos)
+Red "Arcane" Inhibitor 
+(Order & Chaos)
+Blue "Butcher's Bridge" Inhibitor 
+(Order)
+Red "Butcher's Bridge" Inhibitor 
+(Order)
+Blue "Butcher's Bridge" Inhibitor 
+(Chaos)
+Red "Butcher's Bridge" Inhibitor 
+(Chaos)
+Blue "Howling Abyss" Inhibitor Old 
+(Order)
+Purple "Howling Abyss" Inhibitor Old 
+(Chaos)
+Blue "Howling Abyss" Inhibitor 
+(Order & Chaos)
+Red "Howling Abyss" Inhibitor 
+(Order & Chaos)
+Purple "Howling Abyss" Inhibitor 
+(Order & Chaos)
+Blue "Temple of Lily and Lotus" Inhibitor 
+(Order & Chaos)
+Red "Temple of Lily and Lotus" Inhibitor 
+(Order & Chaos)
+Purple "Twisted Treeline" Inhibitor Old 
+(Chaos)
+Blue "Twisted Treeline" Inhibitor 
+(Order)
+Purple "Twisted Treeline" Inhibitor 
+(Chaos)
+Blue "Ultra Rapid Fire" Inhibitor 
+(Order)
+Red "Ultra Rapid Fire" Inhibitor 
+(Chaos)
+
+Trivia
+
+ 
+Bard's
+ 
+ 
+Tempered Fate
+ has no effect on inhibitors, even if they are vulnerable.
+
+The Inhibitors were sometimes referred to as "Barracks" (e.g. in detailed statistics), the name of a 
+similar building
+ in 
+DotA
+.
+
+Media
+
+Gallery
+
+Summoner's Rift Update Inhibitor Model
+Arcade Inhibitor Concept 1 (by Riot Artist 
+Jeremy Page
+)
+Arcade Inhibitor Concept 2 (by Riot Artist 
+Jeremy Page
+)
+Arcade Inhibitor Concept 3 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Inhibitor Concept 4 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Inhibitor Concept 5 (by Riot Artist 
+Ayhan Aydogan
+)
+Arcade Inhibitor Concept 6 (by Riot Artist 
+Ayhan Aydogan
+)
+
+Patch History
+
+V12.6
+ - March 31st Hotfix
+
+Bug Fix:
+ Health regeneration per second reverted to 15 from 0.
+
+V12.6
+
+Undocumented:
+ Health regeneration per second reduced to 0 from 15.
+
+V7.15
+
+Bug Fix:
+ Now accurately display the 20 armor they have.
+
+V4.20
+
+Context
+: 
+At the beginning of the 2014 season we shortened the respawn time of inhibitors. Now, with our LASER-BUFFED BASE TURRETS (shouting is mandatory here), we can put inhibitor respawns back to their original timing so that attacking teams have a better window to capitalize on their achievements.
+
+Inhibitor death timers increased to 5 minutes (from 4 minutes).
+
+V3.14
+
+Context
+: 
+Losing an inhibitor often puts a team behind for a long period of time with few opportunities for retaliation. This was because a downed inhibitor also granted a global buff to minions in all lanes. We want more comeback opportunities for teams who can capitalize on winning teamfights, even with a downed inhibitor.
+
+Inhibitor death timers reduced to 4 minutes (from 5 minutes).
+
+Inhibitors no longer grant a global buff to all minions when destroyed.
+
+The bonus amount ranged and melee minions receive was previously based on the number of enemy inhibitors destroyed as their wave spawned.
+
+Inhibitors now grant a stronger damage and durability buff to minions in their specific lane.
+
+V1.0.0.96
+
+Inhibitor death timers changed to 5 minutes.
+
+The respawn time previously increased every time the inhibitor was destroyed.
+
+Map Features
+
+General
+
+Brush
+
+Inhibitor
+
+Lanes
+
+Nexus
+
+Nexus Obelisk
+
+Shop
+
+Spawn
+
+Terrain
+
+Turret
+
+Summoner's Rift
+
+Base gate
+
+Jungle plants
+
+ 
+Speed Shrine
+
+Howling Abyss
+
+Health Relic
+
+Twisted Treeline
+ (Removed)
+
+Altar
+
+Ghost Relic
+
+Crystal Scar
+ (Removed)
+
+Capture point
+
+Health Relic
+
+Greater Relic
+
+Speed Shrine
+
+
+========================================
+## 방어구 관통력 (Armor Penetration)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Armor_penetration
+========================================
+
+Contents
+
+1
+ 
+Order of calculations
+
+2
+ 
+Flat armor reduction
+
+3
+ 
+Percentage armor reduction
+
+4
+ 
+Percentage armor penetration
+
+4.1
+ 
+Percentage bonus armor penetration
+
+5
+ 
+Lethality
+
+6
+ 
+Examples
+
+7
+ 
+Lethality as scaling
+
+7.1
+ 
+Champion abilities
+
+7.2
+ 
+Items
+
+8
+ 
+Increasing lethality
+
+8.1
+ 
+Champion abilities
+
+8.2
+ 
+Items
+
+8.2.1
+ 
+Item passives
+
+9
+ 
+Increasing percent armor penetration
+
+9.1
+ 
+Champion abilities
+
+9.2
+ 
+Items
+
+9.2.1
+ 
+Item passives
+
+10
+ 
+Reducing armor
+
+10.1
+ 
+Champion abilities
+
+10.2
+ 
+Items
+
+10.3
+ 
+Monsters
+
+11
+ 
+Notes
+
+12
+ 
+Trivia
+
+12.1
+ 
+Highest Lethality
+
+12.2
+ 
+Highest Armor Penetration (%)
+
+13
+ 
+Media
+
+14
+ 
+See also
+
+15
+ 
+References
+
+Lethality
+ redirects here. For the 2013 Mastery, see 
+Lethality
+.
+
+Champion skillshot and targetted missiles evaded with Hallowed Mist (W)
+ 
+Armor penetration
+ is a 
+champion statistic
+ that determines the amount of a target's 
+ 
+armor
+ that will be ignored when the user deals 
+physical damage
+. 
+Percentage armor penetration
+ and 
+Lethality
+ have no effect if the target's armor is less than or equal to 0.
+
+Armor reduction
+ is an effect that reduces the target's armor for a period of time, by an amount or percentage. 
+Flat
+ armor reduction can reduce armor values below 0, while 
+percentage
+ armor reduction cannot.
+
+It is important to note that 
+penetration
+ 
+treats
+ the target's resistances as being multiplied by a percentage or reduced by a flat amount, in contrast to 
+reduction
+ which applies to the target's resistances as a whole.
+
+All champions have 0 base armor penetration and lethality, but they can be increased by 
+items
+, 
+runes
+, and with certain champions' passive 
+ability
+ effects.
+
+Starting in 
+V6.22
+, 
+lethality
+ replaced 
+flat armor penetration
+ as a statistic, and offered 
+40.
+33
+% − 100% (based on target's level)
+ of the value as penetration.
+[
+1
+]
+ In 
+V7.14
+, it was changed to scale with the user's level instead of the target's level, offering 
+62.
+22
+% − 100% (based on level)
+ of the value as penetration. In 
+V14.1
+ 
+lethality
+ was changed back to no longer scale by level; it grants the full amount of 
+flat armor penetration
+ at all levels, but keeps the name to differentiate it from 
+percent armor penetration
+ and emphasize its relative effectiveness against low-armor enemies rather than high-armor enemies.
+[
+2
+]
+ In 
+V14.9
+, 
+lethality
+ was updated to be handled as an innate statistic rather than a scripted one.
+
+Order of calculations
+
+Armor penetration and armor reduction are considered in the following order:
+[
+3
+]
+
+Armor reduction, flat
+
+Armor reduction, percentage
+
+Armor penetration, percentage
+
+Armor penetration, flat (Lethality)
+
+Base
+ armor and 
+bonus
+ armor are calculated separately.
+
+Flat armor reduction
+
+The target's armor is reduced by an amount. Flat armor reduction 
+ 
+stacks additively
+ and is distributed proportionally between base armor and bonus armor.
+
+Example: 15 armor reduction against a 20 base armor and 40 bonus armor target will reduce base armor by 5 and bonus armor by 10, so the target will be reduced to 45 armor (
+(20 − 5) 
++ 
+ (40 − 10) = 45
+)
+.
+
+Flat armor reduction can reduce a target's armor below zero. For example, if an enemy with 10 armor has their armor reduced by 25, the enemy will have −15 armor.
+
+Percentage armor reduction
+
+The target's armor is multiplied by a percentage (100% − the listed reduction). Applies to both base and bonus armor. Percentage armor reduction 
+ 
+stacks multiplicatively
+ and is ignored if the target's armor is 0 or less.
+
+Example: 30% armor reduction multiplies the target's armor to 70%, so a target with 20 base armor and 40 bonus armor will be reduced to 42 armor (
+(20 × 0.
+7
+) + (
+40 × 0.
+7
+)
+ = 42)
+.
+
+Percentage armor reduction reduces more armor on targets with higher armor. For instance, with 40% armor reduction, a target with 200 armor will lose 80 while a target with only 50 armor will lose 20. 
+
+With 40% armor reduction, the physical damage dealt to a target with 50 armor is only increased by around 15%, whereas the physical damage dealt to a target with 200 armor is increased by around 36%.
+
+If one wanted to calculate the total armor reduction after two consecutive percent armor reductions, the following formula may be useful:
+
+C
+
+u
+
+m
+
+u
+
+l
+
+a
+
+t
+
+i
+
+v
+
+e
+
+P
+
+e
+
+r
+
+c
+
+e
+
+n
+
+t
+
+A
+
+r
+
+m
+
+o
+
+r
+
+R
+
+e
+
+d
+
+u
+
+c
+
+t
+
+i
+
+o
+
+n
+
+=
+
+r
+
+1
+
++
+
+r
+
+2
+
+−
+
+r
+
+1
+
+r
+
+2
+
+{\displaystyle CumulativePercentArmorReduction=r_{1}+r_{2}-r_{1}r_{2}}
+
+Each 
+r
+ is the individual percent armor reductions. For example, the calculation of two armor reductions, 20% and 30%, would yield the following:
+
+C
+
+u
+
+m
+
+u
+
+l
+
+a
+
+t
+
+i
+
+v
+
+e
+
+P
+
+e
+
+r
+
+c
+
+e
+
+n
+
+t
+
+A
+
+r
+
+m
+
+o
+
+r
+
+P
+
+e
+
+n
+
+e
+
+t
+
+r
+
+a
+
+t
+
+i
+
+o
+
+n
+
+=
+
+r
+
+1
+
++
+
+r
+
+2
+
+−
+
+r
+
+1
+
+r
+
+2
+
+=
+
+(
+
+.2
+
+)
+
++
+
+(
+
+.3
+
+)
+
+−
+
+(
+
+.2
+
+)
+
+(
+
+.3
+
+)
+
+=
+
+44
+
+%
+
+{\displaystyle CumulativePercentArmorPenetration=r_1+r_2-r_1r_2=(.2)+(.3)-(.2)(.3)=44\%
+}
+
+Percentage armor penetration
+
+The target's armor is treated as being multiplied by a percentage for purposes of damage calculation (100% − the listed penetration). Percentage armor penetration 
+ 
+stacks multiplicatively
+ and is ignored if the target's armor is 0 or less.
+
+Example: 30% armor penetration causes the target to take damage as if its armor was multiplied by 70%, so a target with 
+20 base armor and 40 bonus armor will be treated as though it had 42 for purposes of damage 
+ (the target's actual armor value will not change, however) 
+(
+(20 × 0.
+7
+)
+ + 
+(40 × 0.
+7
+) = 42).
+
+Because the target's actual armor value does not change, anything else depending on that value also doesn't change.
+
+Percentage armor penetration reduces more armor on targets with higher armor. For instance, with 40% armor penetration, a target with 200 armor will be considered as having 80 less while a target with only 50 armor will be considered as having 20 less.
+
+Gold Value
+
+Percent armor penetration
+ has a gold value of 
+ 
+41.
+666667
+ per point.
+
+Percentage bonus armor penetration
+
+Percentage armor penetration that applies only to 
+bonus
+ armor.
+
+Example: 30% bonus armor penetration multiplies the target's bonus armor to 70% without affecting base armor, so a target with 20 base armor and 40 bonus armor 
+will be treated as though it had 48 for purposes of damage calculation (the target's actual armor value will not change, however).
+ (
+20
+ + (
+40 × 0.
+7
+)
+ = 48)
+. 
+
+If the unit has multiple sources of percentage bonus penetration, they stack multiplicatively:
+
+Example: 10% armor penetration and 30% bonus armor penetration
+.
+ (
+20  × 0.
+9
+))
+ + (
+40 × 0.
+7
+ × 0.
+9
+)
+)
+ = 43.2)
+. 
+
+Because the target's actual armor value does not change, anything else depending on that value also doesn't change.
+
+Percentage bonus armor penetration reduces more armor on targets with higher 
+bonus
+ armor, but will not have an effect against base armor. For instance, with 40% 
+bonus
+ armor penetration, a target with 200 
+bonus
+ armor will be considered as having 80 less while a target with only 50 
+bonus
+ armor will be considered as having 20 less. In contrast, a target with any amount of base armor and no 
+bonus
+ armor will be considered as having the same value.
+
+Lethality
+
+Lethality
+ is the statistic that represents and grants flat armor penetration.
+
+The target's armor is treated as being reduced by an amount for the purposes of damage calculation, but cannot be reduced below 0. Flat armor penetration 
+ 
+stacks additively
+.
+
+Example: 20 lethality on a user will cause a target to take damage as if its armor was 20 less, so a target with 30 armor will be treated as though it had 10 for purposes of damage calculation (the target's actual armor value will not change, however).
+
+Because the target's actual armor value does not change, anything else depending on that value also doesn't change.
+
+Gold Value
+
+Lethality
+ has a gold value of 
+ 
+30
+ per point, for more details see 
+this page
+.
+
+Examples
+
+Given 10 flat armor penetration and 45% bonus armor penetration, and the target is affected by 30 flat armor reduction and 30% armor reduction;
+
+Target A has 300 armor (100 base and 200 bonus armor).
+
+The 300 is reduced to 270 (90 base and 180 bonus armor) by the 30 armor reduction.
+
+The 270 is reduced to 189 (63 base and 126 bonus armor) by the 30% armor reduction.
+
+The 189 is considered to be 132.
+3
+ (63 base and 69.
+3
+ bonus armor) by the 45% bonus armor penetration.
+
+The 132.
+3
+ is considered to be 122.
+3
+ by the 10 armor penetration.
+
+Target A takes damage as if it has 122.
+3
+ armor.
+
+Target B has 18 armor.
+
+The 18 is reduced to −12 by the 30 armor reduction.
+
+The −12 is not affected by any further calculations because it is less than 0.
+
+Target B takes damage as if it has −12 armor.
+
+Lethality as scaling
+
+The following have their stats improved based on the amount of lethality acquired:
+
+Champion abilities
+
+ 
+Pyke's
+ 
+ 
+Gift of the Drowned Ones
+, 
+ 
+Ghostwater Dive
+, 
+ 
+Phantom Undertow
+, and 
+ 
+Death from Below
+
+Items
+
+ 
+Axiom Arc
+
+Increasing lethality
+
+Champion abilities
+
+ 
+Aphelios'
+ 
+ 
+The Hitman and the Seer
+
+Items
+
+This table is automatically generated based on the data from 
+Module:ItemData/data
+.
+
+Item
+Cost
+Amount
+Availability
+Axiom Arc
+ 
+Axiom Arc
+3000
+ 
+18
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Duskblade of Draktharr
+ 
+Duskblade of Draktharr
+0
+ 
+20
+Arena
+Edge of Night
+ 
+Edge of Night
+3000
+ 
+15
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Flesheater
+ 
+Flesheater
+0
+ 
+18
+Arena
+Guardian's Dirk
+ 
+Guardian's Dirk
+500
+ 
+11
+Arena
+Hellfire Hatchet
+ 
+Hellfire Hatchet
+2500
+ 
+12
+Arena
+Hubris
+ 
+Hubris
+3000
+ 
+18
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Kinkou Jitte
+ 
+Kinkou Jitte
+0
+ 
+12
+Arena
+Opportunity
+ 
+Opportunity
+2700
+ 
+15
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Profane Hydra
+ 
+Profane Hydra
+3200
+ 
+18
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Prowler's Claw
+ 
+Prowler's Claw
+0
+ 
+20
+Arena
+Regicide
+ 
+Regicide
+0
+ 
+15
+Arena
+Serpent's Fang
+ 
+Serpent's Fang
+2500
+ 
+15
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Serrated Dirk
+ 
+Serrated Dirk
+1000
+ 
+10
+Nexus Blitz, Classic Summoner's Rift 5v5, All Random All Mid
+Spectral Cutlass
+ 
+Spectral Cutlass
+2500
+ 
+21
+Arena
+Talisman of Ascension
+ 
+Talisman of Ascension
+0
+ 
+0
+Arena
+The Brutalizer
+ 
+The Brutalizer
+1337
+ 
+5
+Nexus Blitz, Classic Summoner's Rift 5v5, All Random All Mid
+The Collector
+ 
+The Collector
+3000
+ 
+10
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Umbral Glaive
+ 
+Umbral Glaive
+2600
+ 
+15
+Nexus Blitz, Classic Summoner's Rift 5v5, All Random All Mid
+Voltaic Cyclosword
+ 
+Voltaic Cyclosword
+3000
+ 
+18
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Youmuu's Ghostblade
+ 
+Youmuu's Ghostblade
+2800
+ 
+18
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+
+Item passives
+
+ 
+Opportunity
+
+Increasing percent armor penetration
+
+Champion abilities
+
+ 
+Darius'
+ 
+ 
+Apprehend
+
+ 
+K'Sante's
+ 
+ 
+All Out
+
+ 
+Nilah's
+ 
+ 
+Formless Blade
+
+ 
+Pantheon's
+ 
+ 
+Grand Starfall
+
+Items
+
+This table is automatically generated based on the data from 
+Module:ItemData/data
+.
+
+Item
+Cost
+Amount
+Availability
+Last Whisper
+ 
+Last Whisper
+1450
+ 
+18%
+Nexus Blitz, Classic Summoner's Rift 5v5, All Random All Mid
+Lord Dominik's Regards
+ 
+Lord Dominik's Regards
+3000
+ 
+35%
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Mortal Reminder
+ 
+Mortal Reminder
+3200
+ 
+30%
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Perplexity
+ 
+Perplexity
+2500
+ 
+22%
+Arena
+Serylda's Grudge
+ 
+Serylda's Grudge
+3000
+ 
+30%
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Talisman of Ascension
+ 
+Talisman of Ascension
+0
+ 
+0%
+Arena
+
+Item passives
+
+ 
+Terminus
+
+Reducing armor
+
+Champion abilities
+
+Percentage Reduction
+
+ 
+Briar's
+ 
+ 
+Head Rush
+
+ 
+Garen's
+ 
+ 
+Judgment
+
+ 
+Jarvan IV's
+ 
+ 
+Dragon Strike
+
+ 
+Jayce's
+ 
+ 
+Transform Mercury Cannon
+
+ 
+Kayle's
+ 
+ 
+Radiant Blast
+
+ 
+Kog'Maw's
+ 
+ 
+Caustic Spittle
+
+ 
+Mordekaiser's
+ 
+ 
+Realm of Death
+
+ 
+Nasus'
+ 
+ 
+Spirit Fire
+
+ 
+Olaf's
+ 
+ 
+Undertow
+
+ 
+Rell's
+ 
+ 
+Break the Mold
+
+ 
+Renekton's
+ 
+ 
+Dice
+ (Empowered)
+
+ 
+Sion's
+ 
+ 
+Roar of the Slayer
+
+ 
+Trundle's
+ 
+ 
+Subjugate
+
+ 
+Vi's
+ 
+ 
+Denting Blows
+
+ 
+Wukong's
+ 
+ 
+Crushing Blow
+
+Flat Reduction
+
+ 
+Corki's
+ 
+ 
+Gatling Gun
+
+ 
+Rell's
+ 
+ 
+Break the Mold
+
+ 
+Rengar's
+ 
+ 
+Thrill of the Hunt
+
+Items
+
+Percentage Reduction
+
+ 
+Black Cleaver
+
+Monsters
+
+Flat Reduction
+
+ 
+Baron Nashor's
+ 
+ 
+Void Corruption
+
+Notes
+
+Armor penetration will apply to any and all sources of 
+ 
+physical damage
+.
+
+It will apply to the damage dealt to almost every type of unit, including 
+ 
+turrets
+ but not other structures (
+Inhibitors
+ are the only building with armor).
+
+Armor reduction will affect the physical damage from any unit source.
+
+Percentage penetration is applied before flat penetration.
+
+ 
+Turrets
+ and 
+ 
+Dragons
+ have 30% armor penetration.
+
+ 
+Gangplank's
+ 
+ 
+Powder Keg
+ is special cased to ignore a percentage of the target's armor with its damage.
+
+ 
+Yasuo's
+ 
+ 
+Last Breath
+ grants him a buff that causes the damage dealt by his critical strikes to ignore a percentage of the target's bonus armor.
+
+Trivia
+
+Highest Lethality
+
+Last updated:
+ January 20, 2024, patch 
+V14.10
+
+The highest amount of 
+lethality
+ any champion can obtain is 
+127
+.
+
+Items:
+
+ 
+Certainty
+ - 27
+
+This item grants an additional 10 lethality at the highest level with its passive effect, 
+Preparation
+.
+
+ 
+Youmuu's Ghostblade
+ - 18
+
+ 
+Voltaic Cyclosword
+ - 18
+
+ 
+Hubris
+ - 18
+
+ 
+Axiom Arc
+ - 18
+
+ 
+Profane Hydra
+ - 18
+
+Relevant mathematics:
+
+Items
+ = 
+ 
+27
+ + 
+10
+ + 
+ 
+18
+ + 
+ 
+18
+ + 
+ 
+18
+ + 
+ 
+18
+  + 
+ 
+18
+ = 
+127 lethality
+
+This is further increased to 
+160
+ lethality with 
+ 
+Aphelios
+ when 
+ 
+The Hitman and the Seer
+ is included in the equation (
+127
+ + 
+33
+ = 
+160
+), which grants 33 lethality when lethality is fully leveled. This is the highest amount of lethality in the game that only 
+ 
+Aphelios
+ can obtain.
+
+Highest Armor Penetration (%)
+
+The highest amount of percentage armor penetration any champion can obtain is 
+35%
+ with 
+ 
+Lord Dominik's Regards
+.
+
+The highest amount of percentage armor penetration obtainable in the game is 
+61%
+ with 
+ 
+Darius
+ when he has 
+ 
+Lord Dominik's Regards
+ and his 
+ 
+Apprehend
+ is at rank 5.
+
+Relevant mathematics:
+
+(1 - 
+ 
+0.
+4
+)
+ × (1 - 
+0.
+35
+)
+ = 
+0.
+39
+
+1 - 0.
+39
+ = 
+0.
+61
+ × 100% = 
+61%
+ armor penetration
+
+Media
+
+Armor reduced indicator
+Armor and magic resistance reduced indicator
+
+See also
+
+Armor
+
+Magic penetration
+
+Champion statistic
+
+References
+
+↑
+ 
+https://web.archive.org/web/0/http://na.leagueoflegends.com/en/news/game-updates/patch/patch-72-notes#patch-items
+
+↑
+ 
+Lethality name
+
+↑
+ 
+If I technically had 100% armor reduction on an enemy...
+ at LeagueOfLegends.com Boards
+
+Champion statistics
+
+Offensive
+
+ 
+Ability power
+ ·
+ 
+ 
+Attack damage
+ ·
+ 
+ 
+Attack speed
+ ·
+ 
+ 
+Critical strike chance
+ ·
+ 
+ 
+Critical strike damage
+ ·
+ 
+ 
+Armor penetration
+ ·
+ 
+ 
+Magic penetration
+ ·
+ 
+ 
+Life steal
+ ·
+ 
+ 
+Omnivamp
+ ·
+ 
+ 
+Physical vamp
+ ·
+ 
+ 
+True damage
+
+Defensive
+
+ 
+Heal and shield power
+ ·
+ 
+ 
+Health
+ ·
+ 
+ 
+Health regeneration
+ ·
+ 
+ 
+Armor
+ ·
+ 
+ 
+Magic resistance
+ ·
+ 
+ 
+Tenacity
+ ·
+ 
+ 
+Slow resist
+
+Utility
+
+ 
+Ability haste
+ ·
+ 
+ 
+Energy
+ ·
+ 
+ 
+Energy regeneration
+ ·
+ 
+ 
+Mana
+ ·
+ 
+ 
+Mana regeneration
+ 
+ 
+Movement speed
+ ·
+ 
+ 
+Range
+
+Other
+
+ 
+Experience
+ ·
+ 
+ 
+Gold generation
+
+
+========================================
+## 마법 관통력 (Magic Penetration)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Magic_penetration
+========================================
+
+Contents
+
+1
+ 
+Order of calculations
+
+2
+ 
+Flat magic resistance reduction
+
+3
+ 
+Percentage magic resistance reduction
+
+4
+ 
+Percentage magic penetration
+
+5
+ 
+Flat magic penetration
+
+6
+ 
+Examples
+
+7
+ 
+Increasing flat magic penetration
+
+7.1
+ 
+Items
+
+8
+ 
+Increasing percent magic penetration
+
+8.1
+ 
+Champion abilities
+
+8.2
+ 
+Items
+
+8.2.1
+ 
+Item passives
+
+9
+ 
+Reducing magic resistance
+
+9.1
+ 
+Champion abilities
+
+9.2
+ 
+Items
+
+9.3
+ 
+Monsters
+
+10
+ 
+Notes
+
+11
+ 
+Trivia
+
+11.1
+ 
+Highest Magic Penetration (flat)
+
+11.2
+ 
+Highest Magic Penetration (%)
+
+12
+ 
+Media
+
+13
+ 
+See also
+
+14
+ 
+References
+
+Damage to champions with Signature of the Visionary (P)
+ 
+Magic penetration
+ (also referred to as 
+Damage to champions with Signature of the Visionary (P)
+ 
+MPen
+) is a 
+champion statistic
+ that determines the amount of a target's 
+ 
+magic resistance
+ that will be ignored when the user deals 
+magic damage
+. 
+Percentage magic penetration
+ and 
+flat magic penetration
+ have no effect if the target's magic resistance is less than or equal to 0.
+
+Magic resistance reduction
+ is an effect that reduces the target's magic resistance for a period of time, by an amount or percentage. 
+Flat
+ magic resistance reduction can reduce the value below 0, while 
+percentage
+ magic resistance reduction cannot.
+
+It is important to note that 
+penetration
+ 
+treats
+ the target's resistances as being multiplied by a percentage or reduced by a flat amount, in contrast to 
+reduction
+ which applies to the target's resistances as a whole.
+
+All champions have 0 base flat magic penetration and percent magic penetration, but they can be increased by 
+items
+, 
+runes
+, and with certain champions' passive 
+ability
+ effects.
+
+Order of calculations
+
+Magic penetration and magic resistance reduction are considered in the following order:
+[
+1
+]
+
+Magic resistance reduction, flat
+
+Magic resistance reduction, percentage
+
+Magic penetration, percentage
+
+Magic penetration, flat
+
+Flat magic resistance reduction
+
+The target's magic resistance is reduced by an amount. Flat magic resistance reduction 
+ 
+stacks additively
+.
+
+Example: 20 magic resistance reduction reduces the target's magic resistance by 20, so a target with 30 magic resistance will be reduced to 10 magic resistance. 
+(30 − 20 = 10)
+
+Flat magic resistance reduction can reduce a target's magic resistance below zero. For example, if an enemy with 10 magic resistance has their magic resistance reduced by 25, the enemy will have −15 magic resistance.
+
+Percentage magic resistance reduction
+
+The target's magic resistance is multiplied by a percentage (100% − the listed reduction). Percentage magic resistance reduction 
+ 
+stacks multiplicatively
+ and is ignored if the target's magic resistance is 0 or less.
+
+Example: 20% magic resistance reduction multiplies the target's magic resistance to 80%, so a target with 30 magic resistance will be reduced to 24 magic resist. 
+(30 × 0.
+8
+ = 24)
+
+Percentage magic resistance reduction reduces more magic resistance on targets with higher magic resistance. For instance, with 40% magic resistance reduction, a target with 200 magic resistance will lose 80 while a target with only 50 magic resistance will lose 20.
+
+Percentage magic penetration
+
+The target's magic resistance is treated as being multiplied by a percentage for purposes of damage calculation (100% − the listed penetration). Percentage magic penetration 
+ 
+stacks multiplicatively
+ and is ignored if the target's magic resistance is 0 or less.
+
+Example: 20% magic penetration causes the target to take damage as if its magic resistance was multiplied by 80%, so a target with 30 magic resistance will be treated as though it had 24 for purposes of damage calculation (the target's actual magic resistance value will not change, however).
+
+Because the target's actual magic resistance value does not change, anything else depending on that value also doesn't change.
+
+Percentage magic penetration reduces more magic resistance on targets with higher magic resistance. For instance, with 40% magic penetration, a target with 200 magic resistance will be considered as having 80 less while a target with only 50 magic resistance will be considered as having 20 less.
+
+Gold Value
+
+​​
+
+Percentage magic penetration
+ has a gold value of 
+ 
+46.
+15
+ per point.
+
+Flat magic penetration
+
+The target's magic resistance is treated as being reduced by an amount for purposes of damage calculation, but cannot be reduced below 0. Flat magic penetration 
+ 
+stacks additively
+.
+
+Example: 20 magic penetration causes the target to take damage as if its magic resistance was 20 less, so a target with 30 magic resistance will be treated as though it had 10 for purposes of damage calculation (the target's actual magic resistance value will not change, however).
+
+Because the target's actual magic resistance value does not change, anything else depending on that value also doesn't change.
+
+Gold Value
+
+​​
+
+Flat magic penetration
+ has a gold value of 
+ 
+37.
+33
+ per point.
+
+Examples
+
+Given 10 flat magic penetration and 35% magic penetration, and the target is affected by 20 flat magic resistance reduction and 30% magic resistance reduction;
+
+Target A has 80 magic resistance.
+
+The 80 is reduced to 60 by the 20 magic resistance reduction.
+
+The 60 is reduced to 42 by the 30% magic resistance reduction.
+
+The 42 is considered to be 27.
+3
+ by the 35% magic resistance penetration.
+
+The 27.
+3
+ is considered to be 17.
+3
+ by the 10 magic resistance penetration.
+
+Target A takes damage as if it has 17.
+3
+ magic resistance.
+
+Target B has 18 magic resistance.
+
+The 18 is reduced to −2 by the 20 magic resistance reduction.
+
+The −2 is not affected by any further calculations because it is less than 0.
+
+Target B takes damage as if it has −2 magic resistance.
+
+Increasing flat magic penetration
+
+Items
+
+This table is automatically generated based on the data from 
+Module:ItemData/data
+.
+
+Item
+Cost
+Amount
+Availability
+Detonation Orb
+ 
+Detonation Orb
+0
+ 
+12
+Arena
+Flesheater
+ 
+Flesheater
+0
+ 
+18
+Arena
+Kinkou Jitte
+ 
+Kinkou Jitte
+0
+ 
+12
+Arena
+Shadowflame
+ 
+Shadowflame
+3200
+ 
+15
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Sorcerer's Shoes
+ 
+Sorcerer's Shoes
+1100
+ 
+12
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Stormsurge
+ 
+Stormsurge
+2900
+ 
+15
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Talisman of Ascension
+ 
+Talisman of Ascension
+0
+ 
+0
+Arena
+
+Increasing percent magic penetration
+
+Champion abilities
+
+ 
+Mordekaiser's
+ 
+ 
+Death's Grasp
+
+Items
+
+This table is automatically generated based on the data from 
+Module:ItemData/data
+.
+
+Item
+Cost
+Amount
+Availability
+Blighting Jewel
+ 
+Blighting Jewel
+1100
+ 
+13%
+Nexus Blitz, Classic Summoner's Rift 5v5, All Random All Mid
+Cryptbloom
+ 
+Cryptbloom
+2850
+ 
+30%
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+Perplexity
+ 
+Perplexity
+2500
+ 
+30%
+Arena
+Talisman of Ascension
+ 
+Talisman of Ascension
+0
+ 
+0%
+Arena
+Void Staff
+ 
+Void Staff
+3000
+ 
+40%
+Nexus Blitz, Arena, Classic Summoner's Rift 5v5, All Random All Mid
+
+Item passives
+
+ 
+Terminus
+
+Reducing magic resistance
+
+Champion abilities
+
+Percentage reduction
+
+ 
+Briar's
+ 
+ 
+Head Rush
+
+ 
+Evelynn's
+ 
+ 
+Allure
+
+ 
+Jayce's
+ 
+ 
+Transform Mercury Cannon
+
+ 
+Karthus'
+ 
+ 
+Wall of Pain
+
+ 
+Kayle's
+ 
+ 
+Radiant Blast
+
+ 
+Kog'Maw's
+ 
+ 
+Caustic Spittle
+
+ 
+Mordekaiser's
+ 
+ 
+Realm of Death
+
+ 
+Rell's
+ 
+ 
+Break the Mold
+
+ 
+Rumble's
+ 
+ 
+Electro Harpoon
+
+ 
+Trundle's
+ 
+ 
+Subjugate
+
+ 
+Zoe's
+ 
+ 
+Sleepy Trouble Bubble
+
+Flat reduction
+
+ 
+Corki's
+ 
+ 
+Gatling Gun
+
+ 
+Rell's
+ 
+ 
+Break the Mold
+
+Items
+
+Percentage reduction
+
+ 
+Abyssal Mask
+
+Flat reduction
+
+ 
+Malignance
+
+Monsters
+
+Flat reduction
+
+ 
+Baron Nashor's
+ 
+ 
+Void Corruption
+
+Notes
+
+Magic penetration will apply to any and all sources of 
+ 
+magic damage
+.
+
+It will apply to the damage dealt to any unit, including 
+ 
+turrets
+.
+
+Magic resistance reduction will affect the magic damage from any unit source.
+
+Percentage penetration is applied before flat penetration.
+
+Trivia
+
+Last updated: October 1st, 2024 (
+V14.19
+)
+
+Highest Magic Penetration (flat)
+
+The highest amount of flat magic penetration any champion can obtain is 
+45
+.
+
+Items:
+
+ 
+Sorcerer's Shoes
+ - 15
+
+ 
+Shadowflame
+ - 15
+
+ 
+Stormsurge
+ - 15
+
+Relevant mathematics
+:
+
+Items
+ = 
+ 
+15
+ + 
+ 
+15
+ + 
+ 
+15
+ = 
+45 flat magic penetration
+
+Highest Magic Penetration (%)
+
+The highest amount of percentage magic penetration any champion can obtain is 
+40%
+ due to 
+ 
+Void Staff
+.
+
+The highest amount obtainable in the game is 
+49%
+ with 
+ 
+Mordekaiser
+ when he has 
+ 
+Void Staff
+ and his 
+ 
+Death's Grasp
+ is at rank 5.
+
+Relevant mathematics:
+
+(1 - 
+ 
+0.
+4
+) × (1 - 
+ 
+0.
+15
+) = 0.
+51
+
+1 - 0.
+51
+ = 
+0.
+49
+ × 100 = 
+49%
+ magic penetration
+
+Media
+
+Magic resistance reduced indicator
+Armor and magic resistance reduced indicator
+
+See also
+
+Magic resistance
+
+Armor penetration
+
+Champion's stats
+
+References
+
+↑
+ 
+If I technically had 100% armor reduction on an enemy...
+ at League of Legend
+
+Champion statistics
+
+Offensive
+
+ 
+Ability power
+ ·
+ 
+ 
+Attack damage
+ ·
+ 
+ 
+Attack speed
+ ·
+ 
+ 
+Critical strike chance
+ ·
+ 
+ 
+Critical strike damage
+ ·
+ 
+ 
+Armor penetration
+ ·
+ 
+ 
+Magic penetration
+ ·
+ 
+ 
+Life steal
+ ·
+ 
+ 
+Omnivamp
+ ·
+ 
+ 
+Physical vamp
+ ·
+ 
+ 
+True damage
+
+Defensive
+
+ 
+Heal and shield power
+ ·
+ 
+ 
+Health
+ ·
+ 
+ 
+Health regeneration
+ ·
+ 
+ 
+Armor
+ ·
+ 
+ 
+Magic resistance
+ ·
+ 
+ 
+Tenacity
+ ·
+ 
+ 
+Slow resist
+
+Utility
+
+ 
+Ability haste
+ ·
+ 
+ 
+Energy
+ ·
+ 
+ 
+Energy regeneration
+ ·
+ 
+ 
+Mana
+ ·
+ 
+ 
+Mana regeneration
+ 
+ 
+Movement speed
+ ·
+ 
+ 
+Range
+
+Other
+
+ 
+Experience
+ ·
+ 
+ 
+Gold generation
+
+
+========================================
+## 스킬 가속 (Ability Haste)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Ability_Haste
+========================================
+
+본문을 찾을 수 없습니다.
+
+
+========================================
+## 이동 속도 (Movement Speed)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Movement_speed
+========================================
+
+본문을 찾을 수 없습니다.
+
+
+========================================
+## 몬스터 (Monsters)
+원본 링크: https://leagueoflegends.fandom.com/wiki/Monster
+========================================
+
+This is about 
+ 
+League of Legends
+ Monsters. For other uses of 
+Monster
+, see 
+Monster (disambiguation)
+
+ 
+Monsters
+ are neutral units in 
+League of Legends
+. Unlike 
+ 
+minions
+, monsters do not fight for either team, and will only do so if provoked (the exception of this being the 
+ 
+Rift Scuttler
+, which simply runs away when attacked).
+
+Contents
+
+1
+ 
+List of Monsters
+
+2
+ 
+Gameplay
+
+2.1
+ 
+Monster behavior & Patience
+
+2.2
+ 
+Camp respawn
+
+3
+ 
+Monster Rewards
+
+3.1
+ 
+Monster experience reward
+
+4
+ 
+Monster interactions
+
+4.1
+ 
+Capped damage
+
+4.2
+ 
+Modified damage
+
+4.3
+ 
+Other interactions
+
+5
+ 
+Event Monster Skins
+
+6
+ 
+Lore
+
+6.1
+ 
+Summoner's Rift
+
+6.2
+ 
+Twisted Treeline
+
+6.3
+ 
+Bilgewater
+
+7
+ 
+Media
+
+8
+ 
+Trivia
+
+9
+ 
+Patch History
+
+List of Monsters
+
+Epic
+
+ 
+Chemtech Drake
+
+ 
+Cloud Drake
+
+ 
+Hextech Drake
+
+ 
+Infernal Drake
+
+ 
+Mountain Drake
+
+ 
+Ocean Drake
+
+ 
+Baron Nashor
+
+ 
+Elder Dragon
+
+ 
+Rift Herald
+
+ 
+Voidgrub
+
+Large
+
+Note: 
+Epic monsters are also considered to be Large
+
+ 
+Ancient Krug
+
+ 
+Blue Sentinel
+
+ 
+Crimson Raptor
+
+ 
+Greater Murk Wolf
+
+ 
+Gromp
+
+ 
+Red Brambleback
+
+ 
+Rift Scuttler
+
+Medium
+
+ 
+Krug
+
+Small
+
+ 
+Mini Krug
+
+ 
+Murk Wolf
+
+ 
+Raptor
+
+ 
+Voidmite
+
+Gameplay
+
+Monster behavior & Patience
+
+Monsters reside in the 
+jungle
+, and will not move from their designated camp until attacked, at which point they become aggressive (are "
+aggroed
+"). When aggroed, the monster will acquire the nearest champion, regardless of 
+ 
+vision
+, and then attempt to attack them back. Monsters' distance to their target considers walking travel distance (pathing distance), 
+not
+ straight line distance.
+
+Monsters have a maximum radius they can move before they start to lose their 
+patience
+. This distance is called 
+leash range
+ and is indicated by a flowing circle around the camp's location that appears for each player when they initiate combat with that monster (with the exception of 
+ 
+Baron Nashor
+, who is stationary). 
+Leash range
+ varies per camp. If the monster is unable to find their acquired target (e.g. the champion enters 
+ 
+stealth
+) or moves outside of its 
+leash range
+, its patience will start to deplete. Patience depletes faster the farther away the monster is from its maximum leash range and/or the less it is attacked while being there. Non-epic monsters' patience also drops when they change targets. Their target can change up to 6 times before their patience fully depletes.
+
+When a monster's patience reaches zero, it will enter a state of 
+soft reset
+ for 6 seconds. While in this state, the monster will begin walking back toward its neutral position, healing for 
+Champions killed with Comeuppance (R)
+6% of its 
+maximum
+ health
+ every second and ignoring calls for aggression from its attackers until it has returned inside its 
+leash range
+. Attacking a monster while it is within its 
+leash range
+ ends this 
+soft reset
+ prematurely to restore some of its patience and prevent it from losing any further patience for 1.
+5
+ seconds.
+
+When the 
+soft reset
+ grace period ends, the monster will enter a state of 
+hard reset
+ instead, again ignoring all attackers, but now healing at a much faster rate and running back to its neutral position more rapidly. Once the monsters have returned to the camp's neutral position, they will recover their patience after 2 seconds of their arrival and over 2 seconds.
+
+Notes
+
+Small monsters match the patience of their respective large monster as long as it is alive and within 700 units.
+
+Vision of a champion applies to the entire camp of monsters not only e.g. the largest monster in the camp.
+
+When the large monster of a camp dies, all other smaller monsters in their camp will be 
+marked for death
+ for 10 seconds. After 10 seconds of not being in combat with a champion, the marked monsters will die.
+
+Monsters can have different range types.
+
+The following monsters are 
+ 
+melee
+:
+
+ 
+Ancient Krug
+, 
+ 
+Krugs
+, and 
+ 
+Mini Krugs
+
+ 
+Blue Sentinel
+
+ 
+Greater Murk Wolf
+ and 
+ 
+Murk Wolves
+
+ 
+Raptor
+
+ 
+Red Brambleback
+
+ 
+Rift Herald
+
+ 
+Voidmite
+
+The following monsters are 
+ 
+ranged
+:
+
+ 
+Baron Nashor
+
+ 
+Crimson Raptor
+
+ 
+Dragons
+ (
+ 
+ 
+ 
+ 
+ 
+ 
+)
+
+ 
+Gromp
+
+ 
+Rift Scuttler
+ (does not attack when provoked, but is technically ranged)
+
+ 
+Voidgrub
+
+Camp respawn
+
+After a camp has been completely cleared, it will remain empty for an amount of time specific to that camp (its "respawn time"), then all of the monsters will reappear. A camp's respawn timer can be viewed in the 
+scoreboard
+. An accurate timer can only be given to the ally team if the ally team had vision of the camp when it was cleared; however, gaining vision of the camp's location at any point may still provide an accurate timer on the minimap when the camp is close to spawning (a greyed out timer means 60 seconds remaining, a filled one means 10 seconds remaining until respawn). This does not apply to epic monster camps, which will always provide an accurate timer and be announced to both teams when cleared.
+
+When a non-epic monster camp is cleared outside of vision, it is not possible to know that an enemy has recently been at that location.
+
+A monster camp will not respawn until 
+all
+ of the monsters in the camp have died. For example, if the 
+ 
+Greater Murk Wolf
+ has been slain, but at least one of its two 
+ 
+Murk Wolf
+ companions has not, the camp's respawn timer will not start until the last Wolf has been slain. The game will automatically kill any remaining lesser monsters in a camp whose large monster has been killed, after 10 seconds of them returning to a neutral state. This allows them to respawn automatically as well, albeit with this important delay.
+
+Monster Rewards
+
+As a general rule, killing a monster rewards its killer with 
+ 
+gold
+ and 
+ 
+experience
+. 
+
+Killing a large monster without a jungle item (
+ 
+Gustwalker Hatchling
+, 
+ 
+Mosstomper Seedling
+, or 
+ 
+Scorchclaw Pup
+) reduces its bounty by 
+ 
+15
+ and its experience by 
+inherit
+15
+, modified to 
+inherit
+12
+ when killing the 
+ 
+Ancient Krug
+.
+
+Additionally, certain large monsters offer greater rewards when killed, such as an individual 
+buff
+, a team buff, or a global gold and/or experience reward.
+
+The 
+ 
+Crest of Insight
+ and 
+ 
+Crest of Cinders
+ buffs are gained respectively from the 
+ 
+Blue Sentinel
+ and the 
+ 
+Red Brambleback
+, and may be transferred to another champion. This occurs when a champion kills someone holding a crest, causing the crest to be transferred to the killer and resetting the buffs duration. Either buff disappears entirely if the champion holding the crest is executed by a minion, monster, or tower, or when the crest simply wear offs on its own after a few minutes.
+
+When the map transforms into the 
+Elemental Rift
+, the 
+ 
+Blue Sentinel
+ and the 
+ 
+Red Brambleback
+ become 
+Draconic
+, gaining this form if alive and respawning in it each time. Killing them in this form leaves behind a buff wisp at the camp's location for 60 seconds. The wisp can be picked up by an allied champion moving near it, granting them the buff. If the killer did not have 
+ 
+Smite
+, the wisp can only be picked up by a champion that does so.
+
+Once the 
+ 
+Baron Nashor
+ spawns at 
+20:00
+, the 
+ 
+Blue Sentinel
+ and the 
+ 
+Red Brambleback
+ become permanently corrupted by the 
+Void
+ if they are not 
+Draconic
+, transforming into a 
+Voidborn
+ with 30% increased health. Killing them in this form grants you and all your allied champions, if alive, the buff. Any remaining 
+Draconic
+ 
+ 
+Blue Sentinel
+ or 
+ 
+Red Brambleback
+ that are slain respawn as 
+Voidborn
+ instead.
+
+The 
+ 
+Eye of the Herald
+ buff can be picked up by the team that delivered the killing blow to the 
+ 
+Rift Herald
+, lasting for 4 minutes. This buff allows the holder to summon the 
+Rift Herald
+ on their team, which will then head to the closest lane to assist in pushing the lane until it dies.
+
+The stacking 
+ 
+Dragon Slayer
+ buffs acquired for slaying the 
+ 
+Dragon
+ are applied to all team members, whether living or dead, and last indefinitely. The exception to this is the 
+ 
+Aspect of the Dragon
+ from the 
+ 
+Elder Dragon
+, which is only granted to living teammates and lasts for a few minutes and is lost upon death.
+
+The 
+ 
+Touch of the Void
+ buff is granted to all teammates when a 
+ 
+Voidgrub
+ is slain. The buff stacks for each grub killed.
+
+At 4 or more stacks of this buff, it also grants the 
+ 
+Hunger of the Void
+.
+
+The 
+ 
+Hand of Baron
+ buff is only granted to living teammates when 
+ 
+Baron Nashor
+ is killed. The buff lasts for a few minutes and is lost upon death.
+
+Monsters spawn at level 1 when spawning for the first time, and their level is re-calculated only when they respawn. These exclude epic monsters, which start the game at higher levels and upgrade automatically per game time, akin to 
+ 
+minions
+.
+
+Monster experience reward
+
+While owning a jungle item (
+ 
+Gustwalker Hatchling
+, 
+ 
+Mosstomper Seedling
+, or 
+ 
+Scorchclaw Pup
+), gain 
+Champions killed with Trueshot Barrage (R)
+80 
+bonus
+ experience
+ from killing large monsters. Your first monster kill grants 
+Champions killed with Trueshot Barrage (R)
+150 
+bonus
+ experience
+.
+
+Monster interactions
+
+The following game elements have special interactions or effects against monsters:
+
+Capped damage
+
+Hide
+Show
+
+Champions
+
+ 
+Aatrox's
+ 
+ 
+Deathbringer Stance
+
+ 
+Bel'Veth's
+ 
+ 
+Endless Banquet
+
+ 
+Brand's
+ 
+ 
+Blaze
+
+ 
+Camille's
+ 
+ 
+Tactical Sweep
+
+ 
+Cho'Gath's
+ 
+ 
+Vorpal Spikes
+
+ 
+Dr. Mundo's
+ 
+ 
+Infected Bonesaw
+
+ 
+Ekko's
+ 
+ 
+Parallel Convergence
+
+ 
+Elise's
+ 
+ 
+Neurotoxin
+ and 
+ 
+Venomous Bite
+
+ 
+Evelynn's
+ 
+ 
+Empowered Whiplash
+
+ 
+Fiddlesticks'
+ 
+ 
+Terrify
+
+ 
+Galio's
+ 
+ 
+Winds of War
+
+ 
+Gnar's
+ 
+ 
+Hyper
+
+ 
+Gragas'
+ 
+ 
+Drunken Rage
+
+ 
+Gwen's
+ 
+ 
+Thousand Cuts
+
+ 
+Jarvan IV's
+ 
+ 
+Martial Cadence
+
+ 
+Jayce's
+ 
+ 
+Thundering Blow
+
+ 
+Jinx's
+ 
+ 
+Super Mega Death Rocket!
+
+ 
+Kai'Sa's
+ 
+ 
+Second Skin
+
+ 
+Kayle's
+ 
+ 
+Starfire Spellblade
+
+ 
+Rhaast's
+ 
+ 
+Reaping Slash
+
+ 
+Kindred's
+ 
+ 
+Mounting Dread
+
+ 
+Kled's
+ 
+ 
+Violent Tendencies
+
+ 
+Kog'Maw's
+ 
+ 
+Bio-Arcane Barrage
+
+ 
+K'Sante's
+ 
+ 
+Path Maker
+
+ 
+Lillia's
+ 
+ 
+Dream-Laden Bough
+
+ 
+Malzahar's
+ 
+ 
+Nether Grasp
+
+ 
+Maokai's
+ 
+ 
+Sapling Toss
+
+ 
+Mordekaiser's
+ 
+ 
+Darkness Rise
+
+ 
+Ornn's
+ 
+ 
+Living Forge
+
+ 
+Poppy's
+ 
+ 
+Hammer Shock
+
+ 
+Qiyana's
+ 
+ 
+Supreme Display of Talent
+
+ 
+Renata Glasc's
+ 
+ 
+Leverage
+
+ 
+Rumble's
+ 
+ 
+Junkyard Titan
+
+ 
+Sejuani's
+ 
+ 
+Fury of the North
+
+ 
+Sett's
+ 
+ 
+Knuckle Down
+
+ 
+Shen's
+ 
+ 
+Twilight Assault
+
+ 
+Shyvana's
+ 
+ 
+Flame Breath
+
+ 
+Singed's
+ 
+ 
+Fling
+
+ 
+Sion's
+ 
+ 
+Glory in Death
+ and 
+ 
+Soul Furnace
+
+ 
+Urgot's
+ 
+ 
+Echoing Flames
+
+ 
+Varus'
+ 
+ 
+Blighted Quiver
+
+ 
+Vayne's
+ 
+ 
+Silver Bolts
+
+ 
+Viego's
+ 
+ 
+Blade of the Ruined King
+
+ 
+Volibear's
+ 
+ 
+Sky Splitter
+
+ 
+Warwick's
+ 
+ 
+Jaws of the Beast
+
+ 
+Wukong's
+ 
+ 
+Cyclone
+
+ 
+Xin Zhao's
+ 
+ 
+Crescent Guard
+
+ 
+Yone's
+ 
+ 
+Spirit Cleave
+
+ 
+Yuumi's
+ 
+ 
+Prowling Projectile
+
+ 
+Zac's
+ 
+ 
+Unstable Matter
+
+ 
+Zed's
+ 
+ 
+Contempt for the Weak
+
+ 
+Zeri's
+ 
+ 
+Basic Attack
+
+Items
+
+ 
+Blade of the Ruined King
+
+ 
+Liandry's Torment
+
+ 
+Zaz'Zak's Realmspike
+
+Modified damage
+
+Hide
+Show
+
+Champions
+
+ 
+Akshan's
+ 
+ 
+Avengerang
+
+ 
+Bel'Veth's
+ 
+ 
+Void Surge
+ and 
+ 
+Royal Maelstrom
+
+ 
+Brand's
+ 
+ 
+Blaze
+
+ 
+Camille's
+ 
+ 
+Tactical Sweep
+
+ 
+Darius'
+ 
+ 
+Hemorrhage
+
+ 
+Diana's
+ 
+ 
+Moonsilver Blade
+
+ 
+Dr. Mundo's
+ 
+ 
+Blunt Force Trauma
+
+ 
+Ekko's
+ 
+ 
+Z-Drive Resonance
+
+ 
+Evelynn's
+ 
+ 
+Allure
+
+ 
+Ezreal's
+ 
+ 
+Trueshot Barrage
+
+ 
+Galio's
+ 
+ 
+Justice Punch
+
+ 
+Garen's
+ 
+ 
+Judgment
+
+ 
+Heimerdinger's
+ 
+ 
+Hextech Rocket Swarm
+
+ 
+Kalista's
+ 
+ 
+Rend
+
+ 
+Kayn's
+ 
+ 
+Reaping Slash
+
+ 
+Kindred's
+ 
+ 
+Wolf's Frenzy
+
+ 
+Kled's
+ 
+ 
+Bear Trap on a Rope
+
+ 
+Malzahar's
+ 
+ 
+Void Swarm
+
+ 
+Master Yi's
+ 
+ 
+Alpha Strike
+
+ 
+Morgana's
+ 
+ 
+Tormented Shadow
+
+ 
+Nautilus'
+ 
+ 
+Riptide
+
+ 
+Nilah's
+ 
+ 
+Formless Blade
+
+ 
+Nunu's
+ 
+ 
+Consume
+
+ 
+Ornn's
+ 
+ 
+Bellows Breath
+
+ 
+Pantheon's
+ 
+ 
+Comet Spear
+
+ 
+Rengar's
+ 
+ 
+Battle Roar
+
+ 
+Shaco's
+ 
+ 
+Jack in the Box
+
+ 
+Shen's
+ 
+ 
+Twilight Assault
+
+ 
+Sion's
+ 
+ 
+Decimating Smash
+
+ 
+Sylas'
+ 
+ 
+Chain Lash
+
+ 
+Taliyah's
+ 
+ 
+Threaded Volley
+ and 
+ 
+Unraveled Earth
+
+ 
+Talon's
+ 
+ 
+Blade's End
+
+ 
+Teemo's
+ 
+ 
+Toxic Shot
+
+ 
+Urgot's
+ 
+ 
+Purge
+
+ 
+Vex's
+ 
+ 
+Doom 'n Gloom
+
+ 
+Viego's
+ 
+ 
+Blade of the Ruined King
+
+ 
+Wukong's
+ 
+ 
+Nimbus Strike
+
+ 
+Zeri's
+ 
+ 
+Ultrashock Laser
+
+ 
+Zyra's
+ 
+ 
+Garden of Thorns
+
+Items
+
+ 
+Bami's Cinder
+
+ 
+Blackfire Torch
+
+ 
+Fated Ashes
+
+Other interactions
+
+Hide
+Show
+
+Champions
+
+ 
+Aatrox's
+ 
+ 
+Deathbringer Stance
+, 
+ 
+The Darkin Blade
+, 
+ 
+Infernal Chains
+ and 
+ 
+World Ender
+
+ 
+Alistar's
+ 
+ 
+Triumphant Roar
+
+ 
+Bel'Veth's
+ 
+ 
+Death in Lavender
+*
+ and 
+ 
+Endless Banquet
+*
+
+ 
+Bard's
+ 
+ 
+Tempered Fate
+
+ 
+Brand's
+ 
+ 
+Blaze
+
+ 
+Cassiopeia's
+ 
+ 
+Twin Fang
+
+ 
+Cho'Gath's
+ 
+ 
+Feast
+
+ 
+Darius'
+ 
+ 
+Decimate
+ and 
+ 
+Noxian Guillotine
+
+ 
+Dr. Mundo's
+ 
+ 
+Infected Bonesaw
+, 
+ 
+Heart Zapper
+ and 
+ 
+Blunt Force Trauma
+
+ 
+Evelynn's
+ 
+ 
+Allure
+
+ 
+Ezreal's
+ 
+ 
+Essence Flux
+
+ 
+Garen's
+ 
+ 
+Perseverance
+
+ 
+Graves'
+ 
+ 
+New Destiny
+
+ 
+Hecarim's
+ 
+ 
+Spirit of Dread
+
+ 
+Irelia's
+ 
+ 
+Ionian Fervor
+ and 
+ 
+Bladesurge
+
+ 
+Ivern's
+ 
+ 
+Friend of the Forest
+
+ 
+Jinx's
+ 
+ 
+Get Excited!
+
+ 
+Karma's
+ 
+ 
+Focused Resolve
+ and 
+ 
+Renewal
+
+ 
+Kindred's
+ 
+ 
+Mark of the Kindred
+*
+ and 
+ 
+Wolf's Frenzy
+
+ 
+Kled's
+ 
+ 
+Skaarl the Cowardly Lizard
+, 
+ 
+Bear Trap on a Rope
+, 
+ 
+Jousting
+, 
+ 
+Dismounted Skaarl the Cowardly Lizard
+ and 
+ 
+Pocket Pistol
+
+ 
+Lillia's
+ 
+ 
+Lilting Lullaby
+
+ 
+Milio's
+ 
+ 
+Ultra Mega Fire Kick
+
+ 
+Mordekaiser's
+ 
+ 
+Darkness Rise
+
+ 
+Morgana's
+ 
+ 
+Soul Siphon
+
+ 
+Nasus'
+ 
+ 
+Siphoning Strike
+
+ 
+Nilah's
+ 
+ 
+Apotheosis
+
+ 
+Neeko's
+ 
+ 
+Blooming Burst
+
+ 
+Nidalee's
+ 
+ 
+Prowl
+
+ 
+Nocturne's
+ 
+ 
+Umbra Blades
+
+ 
+Nunu's
+ 
+ 
+Call of the Freljord
+, 
+ 
+Consume
+, 
+ 
+Biggest Snowball Ever!
+ and 
+ 
+Snowball Barrage
+
+ 
+Olaf's
+ 
+ 
+Undertow
+
+ 
+Ornn's
+ 
+ 
+Living Forge
+
+ 
+Rakan's
+ 
+ 
+Gleaming Quill
+
+ 
+Rammus'
+ 
+ 
+Frenzying Taunt
+
+ 
+Rengar's
+ 
+ 
+Battle Roar
+
+ 
+Samira's
+ 
+ 
+Daredevil Impulse
+
+ 
+Sejuani's
+ 
+ 
+Fury of the North
+, 
+ 
+Winter's Wrath
+ and 
+ 
+Permafrost
+
+ 
+Senna's
+ 
+ 
+Absolution
+
+ 
+Shaco's
+ 
+ 
+Jack in the Box
+
+ 
+Shen's
+ 
+ 
+Shadow Dash
+
+ 
+Shyvana's
+ 
+ 
+Fury of the Dragonborn
+
+ 
+Sion's
+ 
+ 
+Roar of the Slayer
+
+ 
+Swain's
+ 
+ 
+Demonic Ascension
+
+ 
+Syndra's
+ 
+ 
+Force of Will
+
+ 
+Taliyah's
+ 
+ 
+Unraveled Earth
+
+ 
+Talon's
+ 
+ 
+Blade's End
+
+ 
+Teemo's
+ 
+ 
+Blinding Dart
+
+ 
+Thresh's
+ 
+ 
+Damnation
+ and 
+ 
+Death Sentence
+
+ 
+Urgot's
+ 
+ 
+Purge
+
+ 
+Varus'
+ 
+ 
+Blighted Quiver
+
+ 
+Veigar's
+ 
+ 
+Baleful Strike
+
+ 
+Vex's
+ 
+ 
+Doom 'n Gloom
+
+ 
+Viego's
+ 
+ 
+Harrowed Path
+
+ 
+Viktor's
+ 
+ 
+Glorious Evolution
+
+ 
+Wukong's
+ 
+ 
+Stone Skin
+
+ 
+Xin Zhao's
+ 
+ 
+Wind Becomes Lightning
+
+ 
+Yasuo's
+ 
+ 
+Way of the Wanderer
+
+ 
+Yorick's
+ 
+ 
+Shepherd of Souls
+ and 
+ 
+Mourning Mist
+
+ 
+Zac's
+ 
+ 
+Unstable Matter
+
+ 
+Zed's
+ 
+ 
+Contempt for the Weak
+
+ 
+Zoe's
+ 
+ 
+Sleepy Trouble Bubble
+
+Items
+
+ 
+Doran's Shield
+
+ 
+Gustwalker Hatchling
+
+ 
+Mosstomper Seedling
+
+ 
+Scorchclaw Pup
+
+ 
+Warmog's Armor
+
+Runes
+
+ 
+Fleet Footwork
+
+ 
+Guardian
+
+ 
+Legend: Alacrity
+
+ 
+Legend: Bloodline
+
+ 
+Legend: Haste
+
+ 
+Overgrowth
+
+Summoner Spells
+
+ 
+Smite
+ (
+ 
+Unleashed Smite
+ and 
+ 
+Primal Smite
+)
+
+Neutral Buffs
+
+ 
+Ocean Dragon Soul
+
+Event Monster Skins
+
+Some 
+Events
+ had reskinned monsters
+
+Baron Nashor
+Blue Sentinel
+Raptor Camp
+Red Brambleback
+Rift Herald
+
+Baron Nashor
+
+2016 Snowdown Showdown
+2017 World Championship
+2018 Lunar Revel
+2018 Mid-Season Invitational
+
+Blue Sentinel
+
+2018 Pool Party
+
+Raptor Camp
+
+2018 April Fools
+
+Red Brambleback
+
+2018 Pool Party
+
+Rift Herald
+
+2017 Blood Moon
+
+Lore
+
+Summoner's Rift
+
+Historically, the forest where the Rift resides was the site of several battles between the Protectorate (Stag crest) and Magelords (Owl crest) summoners, two sides who sought out to use the natural magical energy of the area for their personal use.
+
+The large amount of concentrated magic has mutated the local wildlife. From 
+ 
+giant frogs
+, 
+ 
+Giant Birds
+ to 
+ 
+Two-headed Wolves
+ it has also attracted the attention of powerful 
+ 
+Dragons
+ who currently reside in one of the battle torn ruins. 
+ 
+Sentinels
+, 
+ 
+Bramblebacks
+ and 
+ 
+Krugs
+ are creatures made from local flora and earth infused to construct a magical being. The Rift's unstable magic has inadvertently cause the reemergence of 
+ 
+Baron Nashor
+, a large Serpent/Worm largely believed to be dead for centuries. It has his corruption affecting the land around him.
+
+Twisted Treeline
+
+After the fall of the Shadow Isles, the islands inhabitants were changed by 
+the Black Mist
+. Numerous individuals and creatures now serve the 
+Harrowing
+'s will.
+
+ 
+Vilemaw
+ is an ancient spider of unknown origin currently residing in the cursed forest. The 
+"Cult of the Spider"
+ has most of its followers located in 
+Noxus
+ and 
+Demacia
+. 
+ 
+Elise
+ serves as its High Priestess, traveling to and from between the two nations and the 
+Shadow Isles
+, bringing her followers to live with the Spider God, Vilemaw, for eternity, or so they believe.
+
+Bilgewater
+
+Various monsters from across Runeterra, such as the 
+ 
+Ironbacks
+, 
+ 
+Ocklepods
+, 
+ 
+Plundercrabs
+, and 
+ 
+Razorfins
+ are shipped through the black market and used for 
+monster brawls
+.
+
+Media
+
+Music
+Videos
+Gallery
+
+Related Music
+
+Summoner's Rift - Login Screen
+MSI 2016 - Login Screen
+
+Related Videos
+
+Welcome to League of Legends
+
+Wolf Concept
+Big Golem Concept 1
+Big Golem Concept 2
+Wraith Model
+Dragon Concept
+Dragon Model
+Dragon Update Concept 1
+Dragon Update Concept 2
+Baron Nashor Concept
+Baron Nashor Model
+Baron Nashor Cinematic Model (by Riot Artist 
+Nicolas Collings
+)
+Baron Nashor Update Concept 1 (by Riot Artist 
+Avery Coleman
+)
+Baron Nashor Update Concept 2 (by Riot Artist 
+Avery Coleman
+)
+Baron Nashor Update Concept 3 (by Riot Artist 
+Avery Coleman
+)
+Baron Nashor Update Concept 4 (by Riot Artist 
+Avery Coleman
+)
+Baron Nashor Skull Easter Egg 
+(
+V5.7
+)
+Vilemaw Concept 1 (by Riot Artist 
+Avery Coleman
+)
+Vilemaw Concept 2 (by Riot Artist 
+Avery Coleman
+)
+Vilemaw Concept 3 (by Riot Artist 
+Avery Coleman
+)
+Vilemaw Concept 4 (by Riot Artist 
+Avery Coleman
+)
+Summoner's Rift Update Monsters Concept 1
+Summoner's Rift Update Monsters Concept 2
+Summoner's Rift Update Monsters Concept 3
+Summoner's Rift Update Monsters Concept 4
+Summoner's Rift Update Monsters Concept 5
+Summoner's Rift Update Monsters Concept 6
+Summoner's Rift Update Monsters Concept 7
+Summoner's Rift Update Monsters Concept 8 (by Riot Artist 
+Trent Kaniuga
+)
+Red Brambleback concept art 1
+Red Brambleback concept art 2
+Blue Sentinel concept art 1
+Blue Sentinel concept art 2
+Greater Murk Wolf Concept
+Murk Wolf Concept
+Champions fighting the Blue Sentinel and Sentries
+Champions fighting the Red Brambleback
+Baron Nashor Render.png
+Baron Nashor
+Dragon
+Rift Herald
+Red Brambleback
+Blue Sentinel
+Gromp
+Greater Murk Wolf
+Murk Wolf
+Crimson Raptor
+Raptor
+Ancient Krug
+Krug
+Mini Krug
+Rift Scuttler
+Arcade Summoner's Rift
+
+Trivia
+
+The icon for the 
+ 
+Patience
+ mechanic is reused from the 
+Season 3
+ mastery 
+ 
+Frenzy
+.
+
+Patch History
+
+V12.22
+
+New Effect:
+ When a monster loses all of its patience, it will 
+soft reset
+ for 6 seconds instead of fully resetting its patience. While in the process of 
+soft resetting
+, the monster will path towards the center of its camp, heal for 
+Champions killed with Comeuppance (R)
+6% of its 
+maximum
+ health
+ every second, and ignore attackers outside of its leash range.
+
+Attacking a monster while it is within its leash range ends this 
+soft reset
+ prematurely to restore some of its patience and prevents it from being lost for 1.
+5
+ seconds.
+
+If the 
+soft reset
+ ends from after 6 seconds, the monster will 
+hard reset
+ and in the process will ignore all attackers, rapidly heal, and path to its original position.
+
+Monsters move slow while 
+soft resetting
+ and much more faster while 
+hard resetting
+.
+
+New Effect:
+ Monsters now regenerate patience that they have lost after 2 seconds of being back within their leash range.
+
+New Effect:
+ Small monsters now match the patience of their respective large monster as long as it is alive and within 700 units.
+
+New Effect:
+ When the large monster of a camp dies, all other smaller monsters in their camp will be 
+marked for death
+ for 10 seconds. After 10 seconds of not being in combat with a champion, the marked monsters will die.
+
+New Effect:
+ Killing a large monster without a jungle item reduces its bounty by 
+ 
+15
+ and its experience by 
+inherit
+15
+.
+
+The reduced experience is modified to 
+inherit
+12
+ when killing the 
+ 
+Ancient Krug
+.
+
+V8.10
+
+Experience is no longer reduced by 5% per level champion is ahead of the camp being taken.
+
+V6.22
+
+ 
+Blue Sentinel
+
+Removed:
+ Both 
+ 
+Sentries
+.
+
+ 
+Red Brambleback
+
+Removed:
+ Both 
+ 
+Cinderlings
+.
+
+V6.3
+
+ 
+Dragon Slayer
+
+Stack 2:
+
+Removed:
+ Bonus damage to structures.
+
+New Effect:
+ Attacks versus structures deal 
+10 − 180 (based on level)
+ bonus true damage over 2 seconds.
+
+Stack 4:
+
+Removed:
+ Bonus damage to minions and monsters.
+
+New Effect:
+ You take 20% reduced damage from turrets.
+
+V6.2
+
+ 
+Rift Herald
+
+Now drops a 
+ 
+soul
+ for 
+ 
+Thresh
+.
+
+V6.1
+
+ 
+Rift Herald
+
+Base damage reduced to 95 from 105.
+
+Base level changed to 6 from 2. Its stats at level 6 remain the same as its current stats at level 1, 
+but this affects how quickly it levels passively.
+
+V5.24
+
+General (excluding Epic Monsters and Rift Scuttler)
+
+Amount of health gained per level reduced to 100-170% of per-level coefficient from 100-200%.
+
+Amount of armor gained per level increased to 100-300% of per-level coefficient from 100%.
+
+ 
+Rift Scuttler
+
+Gold increased to 
+ 
+70
+ from 
+ 
+50
+.
+
+ 
+Ancient Krug
+
+Base health increased to 1450 from 1440.
+
+Base armor reduced to 10 from 12.
+
+ 
+Greater Murk Wolf
+
+Base health reduced to 1300 from 1320.
+
+Base armor increased to 10 from 9.
+
+ 
+Rift Herald
+
+Now properly classified as an Epic Monster (
+5 stacks on Devourer
+).
+
+Removed:
+ Eye no longer stays open if brought into kill threshold.
+
+ 
+Doom's Eve
+
+Removed:
+ Granted to killer.
+
+New Effect:
+ Granted by a shrine that drops to the ground on-kill. The shrine is visible to both teams but can only be collected by the killer's team.
+
+Bug Fix:
+ 
+ 
+Nunu's
+ 
+ 
+Consume
+ was not granting a 
+Well Fed
+ bonus.
+
+V5.23
+
+ 
+Blue Sentinel
+
+Movement speed reduced to 150 from 180.
+
+Magic resist reduced to -15 from -10.
+
+ 
+Gromp
+
+Magic resist reduced to -15 from -10.
+
+ 
+Ancient Krug
+
+Magic resist reduced to -15 from -10.
+
+ 
+Red Brambleback
+
+Movement speed reduced to 250 from 330.
+
+Magic resist reduced to -5 from 0.
+
+ 
+Rift Herald
+
+Base damage reduced to 105 from 120.
+
+Bonus damage based on target's current health reduced to 4% from 6%.
+
+New spawn and death animation.
+
+V5.22
+
+ 
+Rift Herald
+
+New monster.
+
+ 
+Blue Sentinel
+
+Removed:
+ Critical strikes.
+
+Armor reduced to 10 from 20.
+
+XP reduced to 90 from 100.
+
+Gold increased to 58 from 36.
+
+ 
+Crest of Insight
+
+Now grants 2 ability power per level.
+
+ 
+Sentry
+
+Health reduced to 375 from 400.
+
+Magic resistance increased to 10 from 0.
+
+Armor decreased to 0 from 8.
+
+ 
+Red Brambleback
+
+Armor reduced to 10 from 20.
+
+XP reduced to 90 from 100.
+
+Gold increased to 58 from 36.
+
+ 
+Crest of Cinders
+
+Now applies to turrets.
+
+ 
+Cinderling
+
+Health reduced to 375 from 400.
+
+Magic resistance increased to 10 from 0.
+
+Armor decreased to 0 from 8.
+
+ 
+Gromp
+
+Magic resistance reduced to -10 from 0.
+
+Damage reduced to 75 from 83.
+
+XP reduced to 140 from 150.
+
+Gold increased to 81 from 60.
+
+ 
+Ancient Krug
+
+Attack range reduced to 150 from 190.
+
+Damage reduced to 75 from 83.
+
+XP reduced to 190 from 200.
+
+Gold increased to 86 from 62.
+
+ 
+Krug
+
+Health reduced to 500 from 540.
+
+Magic resistance increased to 0 from -10.
+
+Damage reduced to 32 from 35.
+
+Armor reduced to 0 from 12.
+
+ 
+Greater Murk Wolf
+
+Attack range increased to 175 from 125.
+
+XP reduced to 132 from 142.
+
+Gold increased to 68 from 53.
+
+ 
+Murk Wolf
+
+Health reduced to 380 from 420.
+
+Armor reduced to 0 from 6.
+
+ 
+Crimson Raptor
+
+XP reduced to 130 from 140.
+
+Gold increased to 62 from 41.
+
+ 
+Raptor
+
+Health reduced to 225 from 250.
+
+Armor reduced to 0 from 5.
+
+V5.20
+
+Monsters now respond to aggression from players as long as they've reached their home camp. (Previously, you had to wait for them to be above 90% health).
+
+Monsters will get a temporary increase to their regeneration rate if they lose all their patience and retreat back to camp.
+
+V5.19
+
+Jungle monsters now have a 
+Patience
+ characteristic. Monsters no longer reset their aggression based on distance or positioning - Instead, once the monster's Patience is reduced to zero, the monster will reset and return to their original position. During this reset, they rapidly regenerate health and do not respond to further aggression.
+
+Monsters lose Patience under the following conditions:
+
+When a monster is in an aggressive state but can't find any targets to attack (ex. its target died or became untargetable)
+
+When a monster's target is too far away from the monster's initial spawn location or the monster is VERY far away from its initial spawn location
+
+When the monster is forced to switch targets
+
+Large monsters display their Patience in a meter above their heads.
+
+Once a monster has recovered to 90% health, they regain all of their 
+Patience
+.
+
+Abilities that pull or displace monsters no longer completely reset the monster's aggro if they already had a previous target.
+
+ 
+Gromp
+
+Attack range reduced to 250 from 550.
+
+ 
+Greater Murk Wolf
+
+Attack range reduced to 125 from 175.
+
+V5.14
+
+ 
+Dragon's
+ respawn timer will update for the non-killing team the moment they see an enemy with 
+ 
+Dragon Slayer
+ or the empty pit.
+
+ 
+Baron Nashor's
+ respawn timer is updated for both teams when he dies, regardless of sight.
+
+ 
+Rift Scuttler
+
+Forced action crowd control effects will now lock Scuttles in place.
+
+Fixed a bug where forced action crowd control effects and 
+ 
+Dark Flight
+ were not triggering Scuttles' "loses resistances while disabled".
+
+V5.11
+
+Twisted Treeline
+
+Jungle changes.
+
+Camp Spawn Time: 1:35 from 1:40
+
+Camp Starting Level: level 2 from level 1
+
+Experience: Junglers now reach level 2 after clearing 1 camp and level 3 after a full clear.
+
+ 
+Big Golem
+
+Health on spawn: 1240 from 1440
+
+Damage on spawn: 70 from 73
+
+ 
+Golem
+
+Health on spawn: 480 from 540
+
+Damage on spawn: 33 from 35
+
+ 
+Wraith
+
+Health on spawn: 1050 from 1200
+
+Damage on spawn: 52 from 55
+
+ 
+Lesser Wraith
+
+Health on spawn: 230 from 250
+
+Damage on spawn: 18 from 20
+
+ 
+Giant Wolf
+
+Health on spawn: 1120 from 1320
+
+Damage on spawn: 40 from 42
+
+ 
+Lesser Wolf
+
+Health on spawn: 390 from 420
+
+Damage on spawn:15 from 16
+
+ 
+Vilemaw
+
+Respawn time: 6 minutes from 5 minutes
+
+Vilemaw has now a custom health bar and a jungler timer.
+
+Health: 5500 from 3500
+
+Attack damage: 100 from 113
+
+AoE slam attack: Range slightly increased, area of effect slightly decreased.
+
+Melee attacks: Delay on attack shortened.
+
+New Passive: Spiderwebs: Vilemaw's attacks now reduce attack speed in addition to reducing armor and magic resistance.
+
+ 
+Crest of Crushing Wrath
+
+Duration increased to 3 minutes from 2 minutes.
+
+Upon killing 
+ 
+Vilemaw
+, champions become ghosted, ignoring all unit collision for the duration of the buff. Additionally, nearby minions gain aura bonuses, and briefly terrorize nearby enemy minions on first contact.
+
+ 
+Melee Minions
+: +20 
+Healing from Spirit of Dread (W)
+armor
+ & 
+Champions that have been made a Vessel by Test of Spirit (E)
+magic resistance
+, +20% 
+Champions hit with Martial Cadence (P)
+attack speed
+, +15 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+, +75 attack range.
+
+ 
+Caster Minions
+: +10 
+Healing from Spirit of Dread (W)
+armor
+ & 
+Champions that have been made a Vessel by Test of Spirit (E)
+magic resistance
+, +10% 
+Champions hit with Martial Cadence (P)
+attack speed
+, +20 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+, +100 attack range.
+
+ 
+Siege Minions
+: +30 
+Healing from Spirit of Dread (W)
+armor
+ & 
+Champions that have been made a Vessel by Test of Spirit (E)
+magic resistance
+, +10% 
+Champions hit with Martial Cadence (P)
+attack speed
+, +50 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+, +750 attack range.
+
+ 
+Super Minions
+: +10 
+Healing from Spirit of Dread (W)
+armor
+ & 
+Champions that have been made a Vessel by Test of Spirit (E)
+magic resistance
+, +10% 
+Champions hit with Martial Cadence (P)
+attack speed
+, +10 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+.
+
+No longer grants bonus health regen, mana regen, cooldown reduction or attack speed.
+
+V5.10
+
+Monster Leashing:
+
+Leash Range reduced to 700 from 750
+
+Maximum Resets increased to 6 from 5
+
+V5.9
+
+ 
+Dragon
+
+Attacks per second increased to 0.
+5
+ from 0.
+45
+
+Base Damage increased to 100 from 75
+
+V5.8
+
+Dragon's Might
+ / 
+ 
+Dragon Slayer
+ (first stack)
+
+Auto attack damage for champions with Dragon's Might and AD items will now be slightly higher
+
+Physical damage spells will now deal slightly less damage when interacting with Dragon's Might (unless the champion has a lot of bonus AD or their abilities scale higher than 1.0 AD)
+
+V5.7
+
+ 
+Gift of the Toadstool
+
+Damage Scaling changed to 
+Champions killed with Comeuppance (R)
+5% bonus health
+ from 
+Champions killed with Comeuppance (R)
+10% bonus health
+
+V5.6
+
+ 
+Rift Scuttler
+ Vision Radius reduced to 525 from 1350
+
+Jungle Experience:
+
+Levels 1–4 : Unchanged
+
+Levels 5–7 : 3% more experience
+
+Levels 8–10 : 6% more experience
+
+Levels 11–18 : 10% more experience
+
+V5.5
+
+ 
+Gromp
+ Attack Damage reduced to 83 from 90
+
+ 
+Crimson Raptor
+ Damage reduced to 45 from 55
+
+ 
+Raptor
+ Damage reduced to 16 from 20
+
+ 
+Big Wolf
+ Reward increased to 
+ 
+53
+ from 
+ 
+48
+
+ 
+Murk Wolf
+ Reward increased to 
+ 
+16
+ from 
+ 
+14
+
+ 
+Gift of the Toadstool
+ Damage changed to 10 + 
+Champions killed with Comeuppance (R)
+(10% of bonus health)
+ from 4 + (8 × level)
+
+The 
+ 
+Rift Scuttler
+ speed shrine now affects pets
+
+ 
+Dragon
+ Buff Counter for Spectator was added
+
+V5.2
+
+ 
+Dragon
+
+Attack Range increased to 500 from 350
+
+Attack Speed increased (base damage has been reduced so that overall damage-per-second remains the same)
+
+V5.1
+
+Jungle monsters will 'hard' reset after 5 soft leashes (from 10 soft leashes).
+
+ 
+Dragon
+
+Now knocks away wards when he's at (or moves to) his starting location.
+
+Tooltip bonuses for second and fourth 
+ 
+Dragon buffs
+ have been swapped to accurately reflect the change we made in patch 
+V4.21
+.
+
+ 
+Baron Nashor
+
+Base Attack Damage decreased to 240 from 500.
+
+Attack Damage gain per minute changed to 8 from 0. Capped at +310 AD after 40 minutes.
+
+Total Attack Damage at spawn decreased to 400 from 500.
+
+Base health reduced to 6400 from 8800.
+
+Health gain per minute increased to 180 from 140.
+
+Total health at spawn decreased to 10000 from 11600.
+
+Melee Attack Area-Of-Effect radius reduced to 175 from 350.
+
+Melee basic Attack ratio reduced to 
+Champions stunned with Pyromania (P)
+100% AD
+ from 
+Champions stunned with Pyromania (P)
+130% AD
+.
+
+Single Target rear attack ratio reduced to 
+Champions stunned with Pyromania (P)
+100% AD
+ from 
+Champions stunned with Pyromania (P)
+115% AD
+.
+
+Area-Of-Effect rear attack ratio reduced to 
+Champions stunned with Pyromania (P)
+50% AD
+ from 
+Champions stunned with Pyromania (P)
+115% AD
+.
+
+(New)
+ 
+ 
+Baron Nashor's
+ Void Corruption aura now scales with 
+Champions stunned with Pyromania (P)
+5% AD
+.
+
+(New)
+ Now casts 1 spell after 6 basic attacks from 1 spell after every 4 or 5 basic attacks
+
+Acid shot Ratio reduced to 
+Champions stunned with Pyromania (P)
+20% AD
+ from 
+Champions stunned with Pyromania (P)
+50% AD
+.
+
+Acid shot burn Ratio reduced to 
+Champions stunned with Pyromania (P)
+20% AD
+ from 
+Champions stunned with Pyromania (P)
+100% AD
+.
+
+Acid pool Ratio reduced to 
+Champions stunned with Pyromania (P)
+10% AD
+ from 
+Champions stunned with Pyromania (P)
+40% AD
+.
+
+Tentacle knockup Ratio reduced to 
+Champions stunned with Pyromania (P)
+25% AD
+ from 
+Champions stunned with Pyromania (P)
+75% AD
+.
+
+Champions receive less experience if the cleared monster camp is three levels lower than their own (from two level lower).
+
+V4.21
+
+Slightly adjusted positioning of 
+ 
+Blue
+ / 
+ 
+Red
+ buff camps so that area-effect abilities should now consistently hit the same number of monsters in all four camps
+
+ 
+Red
+ side 
+ 
+Krugs
+ now mirror 
+ 
+Blue
+ side (the 
+ 
+Ancient Krug
+ is always further away from the base)
+
+ 
+Dragon
+
+Fireball is now treated as a spell and not an auto attack (can be spell shielded)
+
+Fireballs track the target like a normal attack or targeted spell
+
+ 
+Dragon
+ will always finish his attack before switching targets
+
+ 
+Dragon
+ no longer gets stuck outside his pit when hit with terrain abilities
+
+ 
+Dragon
+ once again drops a soul for 
+ 
+Thresh
+
+ 
+Dragon Slayer
+ buffs:
+
+First Stack: 6% 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+ and 
+Damage to champions with Center of the Universe (P)
+ability power
+ from 8% 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+ and 
+Damage to champions with Center of the Universe (P)
+ability power
+
+Second Stack: (switched with the fourth) Now gives +15% damage to Turrets
+
+Fourth Stack: (switched with the second) Now gives +15% damage to minions and monsters
+
+ 
+Baron Nashor
+
+ 
+Hand of Baron
+ duration reduced to 180 seconds from 240 seconds
+
+ 
+Ancient Krug
+
+ 
+Gift of Heavy Hands
+ required hits to stun increased to 6 from 5
+
+ 
+Gromp
+
+ 
+Gift of the Toadstool
+ damage changed to 4 + (8 × level) magic damage over 3 seconds from 6 + (6 × level) magic damage over 3 seconds
+
+All jungle camps now give 10 less gold
+
+Twisted Treeline
+:
+
+All jungle monsters have been updated to match the same stats / respawn times of the Summoner's Rift jungle monsters.
+
+ 
+Vilemaw
+ base health increased to 5311 from 5011
+
+V4.20
+
+ 
+Baron Nashor
+
+Spawn time increased to 20 minutes from 15 minutes
+
+Killing 
+ 
+Baron Nashor
+ now grants a buff called 
+ 
+Hand of Baron
+ from Exalted with Baron Nashor
+
+Grants up to 40 
+Champions hit with Bandage Toss (Q) at greater than 75% of max range
+attack damage
+ and 
+Damage to champions with Center of the Universe (P)
+ability power
+ (scaling with game time)
+
+Empowers nearby minions:
+
+All Minions:
+
+Now match 90% of average movement speed of nearby champions, up to a limit of 500 movement speed
+
+Are resistant to slow effects
+
+Non-super minions have 75% damage reduction versus area of effect, damage over time, and persistent effects
+
+ 
+Melee Minions
+:
+
+Gain +50% movement speed when within 800 units of enemy minions or turrets
+
+Size is increased
+
++75 attack range
+
+75% damage reduction versus champions and minions
+
+30% damage reduction versus turrets (similar to cannon minions)
+
+ 
+Caster Minions
+:
+
++20 attack damage
+
++50% missile speed
+
++100 attack range
+
+ 
+Siege Minions
+:
+
++600 Attack Range
+
++50 Attack Damage, but Attack Speed is halved
+
+Attacks are now Area of Effect (200 range) and deal 2x damage to Turrets.
+
+ 
+Super Minions
+:
+
++25% Attack Speed.
+
+Gain +50% Movement Speed when within 800 units of enemy minion or Turret.
+
+Augments your 
+ 
+Recall
+ with new effects:
+
+Reduces recal channel by 4 seconds
+
+A successful recall heals 50% a champion's maximum health / mana
+
+A successful recall grants +50% movement speed for 8 seconds
+
+ 
+Dragon
+
+Killing the 
+ 
+Dragon
+ nows grants a permenant stacking buff called 
+ 
+Dragon Slayer
+:
+
+Dragon's Might (1 stack): +8% total attack damage and ability power
+
+Dragon's Dominance (2 stacks): +15% damage to minions and monsters
+
+Dragon's Flight (3 stacks): +5% movement speed
+
+Dragon's Wrath (4 stacks): +15% damage to turrets and buildings
+
+Aspect of the Dragon (5 stacks, repeatable): Doubles all other bonuses and your attacks burn enemies for 150 true damage over 5 seconds. Lasts 180 seconds.
+
+ 
+Dragon
+ no longer gives global gold but still awards experience and a small amount of gold to the slayer
+
+The experience 
+ 
+Dragon
+ grants to the killing team has been reduced by 50%
+
+ 
+Crest of Cinders
+ (red buff)
+
+(New)
+ Now heals its buffed target by 
+Champions killed with Comeuppance (R)
+1% of their maximum health
+ per 5 seconds
+
+Duration reduced to 120 seconds from 150 seconds
+
+Burn passive damage changed to 5–56 damage over 3 seconds from 10–44 damage over 3 seconds
+
+Slow reduced to 5%–10% from 8%–15%
+
+ 
+Crest of Insight
+ (blue bluff)
+
+Duration reduced to 120 seconds from 150 seconds
+
+Added the 
+ 
+Rift Scuttler
+
+Respawn time: 3 minutes
+
+Reward: Grants vision and a speed boost in front of either 
+ 
+Dragon
+ Pit or 
+ 
+Baron
+ Pit for 75 seconds upon death
+
+ 
+Scuttle Crab
+: Always runs away when attacked
+
+Small jungle camps now respawn every 100 seconds instead of 50 seconds
+
+Increased the health scaling of small jungle camps up to level 12
+
+ 
+Large Raptor
+
+Experience increased to 140 from 120
+
+Damage increased to 55 from 40
+
+Movement Speed increased to 350 from 320
+
+ 
+Small Raptor
+
+Experience increased to 20 from 10
+
+Damage increased to 20 from 14
+
+Movement Speed increased to 350 from 320
+
+ 
+Blue Sentinel
+
+Base health increased to 2000 from 1500
+
+Damage increased to 73 from 60
+
+ 
+Red Brambleback
+
+Base health increased to 1800 from 1500
+
+Damage increased to 80 from 60
+
+ 
+Blue Sentinel
+ & 
+ 
+Red Brambleback
+
+Experience reduced to 100 from 260
+
+Gold reducted to 
+ 
+42
+ from 
+ 
+60
+
+Small Monsters
+
+Experience increased to 50 from 20
+
+Gold increased to 
+ 
+22
+ from 
+ 
+7
+
+Champions gain 10% less experience for each level they are above the camp they are killing. This penalty caps at 50%.
+
+ 
+Red
+ and 
+ 
+Blue
+ buffs no longer fall off when a champion is executed by a jungle camp
+
+V4.19
+
+Crest of the Ancient Golem renamed 
+ 
+Crest of Insight
+
+Blessing of the Elder Lizard renamed 
+ 
+Crest of Cinders
+
+V4.10
+
+ 
+Dragon
+
+Base gold increased to 
+ 
+180
+ from 
+ 
+145
+
+Gold per level reduced to 
+ 
+10
+ from 
+ 
+15
+
+V4.9
+
+Jungle monsters no longer give additional experience based on their level (to remain consistent with lane minion experience)
+
+V4.8
+
+ 
+Big Golem
+
+Health increased to 1250 from 850
+
+ 
+Golem
+
+Health reduced to 500 from 550
+
+ 
+Giant Wolf
+
+Health increased to 1150 from 650
+
+ 
+Lesser Wolf
+
+Health reduced to 400 from 430
+
+ 
+Wraith
+
+Health increased to 1000 from 550
+
+ 
+Lesser Wraith
+
+Health reduced to 350 from 380
+
+V4.7
+
+ 
+Dragon
+
+Global gold reward increase to 
+ 
+145
+ from 
+ 
+125
+
+Fixed a bug where abilities that dealt damage based on maximum monster health were being calculated on base health instead of actual max health (this is a mid-lategame buff in all affected cases)
+
+V4.5
+
+ 
+Dragon
+
+Attack Damage decrease to 110 from 145
+
+Basic attacks deal bonus physical damage equal to 
+Champions killed with Comeuppance (R)
+5% of the target's current health
+, increasing by 
+Champions killed with Comeuppance (R)
+0.5% of the target's current health
+ every level after level 9.
+
+Basic attacks no longer deals attack speed slow.
+
+Basic attacks reduces damage dealt by 20%.
+
+Gains 13 armor and 5.85 magic resist per level after level 9.
+
+V4.4
+
+Health restoration particule fixed when killing a large jungle monster.
+
+V3.15
+
+ 
+Ancient Golem
+
+Damage reduced to 60 from 65
+
+ 
+Lizard Elder
+
+Damage reduced to 60 from 65
+
+ 
+Wight
+
+Gold increased to 
+ 
+65
+ from 
+ 
+60
+
+V3.14
+
+Jungler monsters now have levels
+
+Jungle monster level is based on the average level of the champions in the game when they spawn (equal to the average of all champion levels, rounded up)
+
+Jungle monster level determines their HP / Damage and XP / Gold value
+
+Jungle monsters grant 50% bonus XP per level to lower-level champions, up to a cap
+
+ 
+Ancient Golem
+
+Health increased to 1500 from 1400
+
+Gold reduced to 
+ 
+60
+ from 
+ 
+66
+
+ 
+Lizard Elder
+
+Health increased to 1500 from 1400
+
+Gold reduced to 
+ 
+60
+ from 
+ 
+66
+
+ 
+Lizard
+
+Attack Damage increased to 12 from 11
+
+Experience reduced to 20 from 50
+
+Gold increased to 
+ 
+7
+ from 
+ 
+5
+
+ 
+Giant Wolf
+
+Attack Damage increased to 40 from 35
+
+Experience reduced to 110 from 170
+
+Gold reduced to 
+ 
+40
+ from 
+ 
+55
+
+No longer critically strikes
+
+ 
+Lesser Wolf
+
+Attack Damage increased to 14 from 8
+
+Experience increased to 25 from 10
+
+Gold increased to 
+ 
+8
+ from 
+ 
+4
+
+No longer critically strikes
+
+ 
+Big Golem
+
+Attack Damage increased to 60 from 59
+
+Experience reduced to 140 from 160
+
+ 
+Golem
+
+Health increased to 450 from 300
+
+Experience increased to 40 from 38
+
+ 
+Wraith
+
+Experience reduced to 90 from 103
+
+Gold increased to 
+ 
+35
+ from 
+ 
+30
+
+ 
+Lesser Wraith
+
+Health increased to 250 from 150
+
+Attack Damage increased to 12 from 10
+
+Experience increased to 20 from 4
+
+Gold increased to 
+ 
+4
+ from 
+ 
+3
+
+ 
+Wight
+ 
+(New Camp)
+
+1400 Health
+
+75 Attack Damage
+
+15 Armor
+
+ 
+60
+
+150 Experience
+
+ 
+Dragon
+
+ 
+Dragon
+ level minimum: 6, maximum: 15
+
+ 
+Dragon
+ local XP: 150 to 510 based on 
+ 
+Dragon's
+ level, divided between nearby allied Champions
+
+ 
+Dragon
+ global Gold: 
+ 
+125
+ to 
+ 
+260
+ based on 
+ 
+Dragon's
+ level given to all allied Champions
+
+If the killing team is lower average level than their opponents, 
+ 
+Dragon
+ grants a bonus XP of +25% per average level difference
+
+Bonus XP is sharply increased for the lowest level members of the team, +15% per number of levels behind 
+ 
+Dragon
+ squared (max total +200% extra)
+
+V3.10
+
+ 
+Wraiths
+
+Spawn time increased to 2:05 from 1:55
+
+ 
+Wolves
+
+Spawn time increased to 2:05 from 1:55
+
+ 
+Giant Wolf
+
+Base experience granted increased to 170 from 153
+
+ 
+Golems
+
+Spawn time increased to 2:05 from 1:55
+
+ 
+Big Golem
+
+Base experience granted increased to 160 from 137
+
+ 
+Ancient Golem
+
+Base experience granted reduced to 260 from 340
+
+Base Health reduced to 1400 from 1500
+
+ 
+Lizard Elder
+
+Base experience granted reduced to 260 from 340
+
+Base Health reduced to 1400 from 1500
+
+ 
+Young Lizard
+
+Base experience granted increased to 50 from 10
+
+Base Health increased to 400 from 300
+
+ 
+Baron Nashor
+
+Voracious Corrossion
+
+No longer reduces the target's Attack Damage by 50%
+
+Now reduces the physical and magic damage the target deals to Nashor by 50%
+
+V3.8
+
+ 
+Wolves
+
+Initial spawn time increased to 1:55 from 1:40
+
+Respawn time reduced to 50 seconds from 60
+
+ 
+Wraiths
+
+Initial spawn time increased to 1:55 from 1:40
+
+ 
+Golems
+
+Initial spawn time increased to 1:55 from 1:40
+
+Respawn time reduced to 50 seconds from 60
+
+ 
+Ancient Golem
+
+Base Experience granted increased to 340 from 220
+
+Now plays a particle effect to show who the buff transferred to
+
+ 
+Lizard Elder
+
+Base Experience granted increased to 340 from 220
+
+Now plays a particle effect to show who the buff transferred to
+
+ 
+Young Lizard
+
+Base Experience granted reduced to 10 from 40
+
+V3.6
+
+ 
+Baron Nashor
+ / 
+ 
+Dragon
+
+Now immune to effects that would reduce their damage
+
+ 
+Baron Nashor
+, 
+ 
+Dragon
+, and 
+ 
+Vilemaw
+ kill messages are now bolded in chat
+
+V1.0.0.150
+
+Added 
+ 
+Vilemaw
+ to the new 
+Twisted Treeline
+.
+
+V1.0.0.130
+
+Monsters experience range reduced to 400 from 800. Monsters have been remade with new spawn timers, gold and experience. Gold and experience gain from killing monsters now scales over time.
+
+V1.0.0.129
+
+Added small amounts of experience to various jungle monsters in order to maintain current jungling paths without the necessity of the Awareness mastery (which increases experience gained)
+
+V1.0.0.109
+
+Jungle monsters that previously had negative magic resistance now have magic resistance of zero.
+
+V1.0.0.108
+
+Monsters experience range reduced to 800 from 1250.
+
+V1.0.0.107
+
+Monster AI has been improved and will now attempt to switch to a nearby target when you leave their leash range. Monsters can now reaggro if anyone in their camp is attacked while they are retreating.
+
+Units
+
+Champion
+ ·
+ 
+Champion summoned units
+ ·
+ 
+Little Legend
+ ·
+ 
+Structures
+ 
+(
+Turret
+ ·
+ 
+Inhibitor
+ ·
+ 
+Nexus
+)
+
+Minions
+
+Small
+
+ 
+Melee minion
+
+ 
+Caster minion
+
+Large
+
+ 
+Siege minion
+
+ 
+Super minion
+
+Monsters
+
+Lesser
+
+ 
+Krug
+
+ 
+Murk Wolf
+
+ 
+Raptor
+
+ 
+Voidmite
+
+Large
+
+ 
+Ancient Krug
+
+ 
+Blue Sentinel
+
+ 
+Crimson Raptor
+
+ 
+Greater Murk Wolf
+
+ 
+Gromp
+
+ 
+Red Brambleback
+
+ 
+Rift Scuttler
+
+Epic
+
+Baron pit
+ (
+ 
+Baron Nashor
+ ·
+ 
+ 
+Rift Herald
+ ·
+ 
+ 
+Voidgrubs
+)
+
+Dragon pit
+ (
+ 
+Cloud Drake
+ ·
+ 
+ 
+Hextech Drake
+ ·
+ 
+ 
+Infernal Drake
+ ·
+ 
+ 
+Mountain Drake
+ ·
+ 
+ 
+Ocean Drake
+ ·
+ 
+ 
+Elder Dragon
+)
+
+Featured game mode
+
+Black Market Brawlers
+
+ 
+Ironback
+
+ 
+Ocklepod
+
+ 
+Plundercrab
+
+ 
+Razorfin
+
+Invasion
+
+ 
+Big Stompy Monster
+
+ 
+Draggy Tail Monster
+
+ 
+Grumpy Burrow Monster
+
+ 
+Jumpy Slashy Monster
+
+ 
+Scary Spitty Monster
+
+ 
+Shooty Eyeball Monster
+
+ 
+The Big One
+
+Nexus Siege
+
+ 
+Siege Ballista
+
+ 
+Shield Totem
+
+ 
+Port Pad
+
+ 
+Vanguard Banner
+
+Odyssey: Extraction
+
+ 
+Kayn
+
+ 
+Alphacyte
+
+ 
+Anchortail
+
+ 
+Arcraptor
+
+ 
+Brightcore
+
+ 
+Crimson Stinger
+
+ 
+Cyte
+
+ 
+Dozermaw
+
+ 
+Hogtongue
+
+ 
+Landsquid
+
+ 
+Petal Claw
+
+ 
+Razorheart
+
+ 
+Rhinodon
+
+ 
+Shimmerstriker
+
+ 
+Skitterbeak
+
+ 
+Squidtooth
+
+ 
+Terraburster
+
+ 
+Tuskbeard
+
+Other
+
+ 
+Abyss Scuttler
+
+ 
+Ancient Ascendant
+
+ 
+Demon Herald
+
+ 
+Devil Teemo
+
+ 
+Poro King
+
+Removed content
+
+Minions
+
+ 
+Anti-turret cannon
+
+ 
+Siege rider minion
+
+Monsters
+
+Summoner's Rift
+
+ 
+Ancient Golem
+
+ 
+Big Golem
+
+ 
+Chemtech Drake
+
+ 
+Cinderling
+
+ 
+Dragon
+
+ 
+Giant Wolf
+
+ 
+Golem
+
+ 
+Lesser Wolf
+
+ 
+Lesser Wraith
+
+ 
+Lizard Elder
+
+ 
+Sentry
+
+ 
+Wight
+
+ 
+Wraith
+
+ 
+Young Lizard
+
+Twisted Treeline
+
+ 
+Big Golem
+
+ 
+Ebonmaw
+
+ 
+Ghast
+
+ 
+Giant Wolf
+
+ 
+Golem
+
+ 
+Grez
+
+ 
+Lesser Wolf
+
+ 
+Lesser Wraith
+
+ 
+Lizard
+
+ 
+Rabid Wolf
+
+ 
+Vilemaw
+
+ 
+Wraith
+
+ 
+Young Lizard
+
