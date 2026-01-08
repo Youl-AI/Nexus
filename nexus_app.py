@@ -15,7 +15,7 @@ st.markdown("""
 <style>
     /* [핵심 추가] 사이드바 초기 너비 고정 */
     section[data-testid="stSidebar"] {
-        min-width: 350px !important; /* 최소 너비를 350px로 강제 설정 (글자 안 짤리게) */
+        min-width: 200px !important; /* 최소 너비를 350px로 강제 설정 (글자 안 짤리게) */
     }
 
     /* 1. 라디오 버튼의 '동그라미' 아이콘 숨기기 */
