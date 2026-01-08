@@ -88,7 +88,7 @@ def get_chain(mode="lol"):
     """
     mode에 따라 페르소나를 설정하여 체인을 반환합니다.
     """
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.3)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.1)
     
     if mode == "lol":
         role_desc = "당신은 'Nexus'입니다. 소환사의 협곡(LoL) 전문 분석가이자 챌린저입니다."
