@@ -19,7 +19,7 @@ def fetch_tft_set16_exact_match():
         
         save_path = os.path.join(DATA_DIR, "season_tft_set16.txt")
         
-        # ★ 우리가 원하는 정확한 코드명 정의
+        # 원하는 정확한 코드명 정의
         TARGET_MUTATOR = "TFTSet16"
         
         found_target = False
@@ -36,7 +36,7 @@ def fetch_tft_set16_exact_match():
                 mutator = game_set.get('mutator', '')
                 name = game_set.get('name', '')
                 
-                # [핵심 로직] 정확히 "TFTSet16" 글자와 똑같은지 비교
+                # "TFTSet16" 글자와 똑같은지 비교
                 if mutator == TARGET_MUTATOR:
                     found_target = True
                     print(f"✅ [저장함] 발견! 코드명: {mutator} (이름: {name})")
@@ -51,7 +51,6 @@ def fetch_tft_set16_exact_match():
                         t_name = trait.get('name')
                         t_desc = (trait.get('desc') or "").replace('<br>', ' ')
                         
-                        # 시너지 이름이 있고, 설명이 비어있지 않은 유의미한 데이터만
                         if t_name:
                             f.write(f"- {t_name}: {t_desc}\n")
                             
@@ -79,7 +78,6 @@ def fetch_tft_set16_exact_match():
                             f.write(f"  스킬: {c_skill}\n\n")
                             
                 else:
-                    # 16시즌이 아니면 무조건 건너뜀
                     print(f"❌ [제외함] 코드명: {mutator}")
                     continue
 

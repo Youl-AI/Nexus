@@ -7,49 +7,42 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
 
 # ==========================================
-# 1. 페이지 설정 및 CSS (사이드바 너비 조절 포함)
+# 1. 페이지 설정 및 CSS
 # ==========================================
 st.set_page_config(page_title="Nexus AI", page_icon="✨", layout="wide")
 
 st.markdown("""
 <style>
-    /* [핵심 추가] 사이드바 초기 너비 고정 */
     section[data-testid="stSidebar"] {
         min-width: 150px !important; /* 최소 너비를 350px로 강제 설정 (글자 안 짤리게) */
     }
 
-    /* 1. 라디오 버튼의 '동그라미' 아이콘 숨기기 */
     div[role="radiogroup"] > label > div:first-child {
         display: none !important;
     }
 
-    /* 2. 라디오 버튼 스타일 (목록 메뉴처럼) */
     div[role="radiogroup"] label {
         padding: 12px 15px !important;
         border-radius: 8px !important;
         margin-bottom: 8px !important;
         border: 1px solid transparent;
         transition: all 0.2s ease;
-        white-space: nowrap; /* 글자가 절대 줄바꿈 되지 않게 설정 */
+        white-space: nowrap;
     }
 
-    /* 3. 마우스 호버 효과 */
     div[role="radiogroup"] label:hover {
         background-color: #f0f2f6 !important;
         cursor: pointer;
     }
 
-    /* 4. 선택된 항목 스타일 */
     div[role="radiogroup"] label:has(input:checked) {
         background-color: #e8f0fe !important;
         color: #1967d2 !important;
         font-weight: 600 !important;
     }
 
-    /* 채팅 메시지 간격 */
     .stChatMessage { margin-bottom: 10px; }
     
-    /* 헤더/푸터 숨김 */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 </style>
@@ -62,7 +55,7 @@ if "GOOGLE_API_KEY" in st.secrets:
 DATA_FOLDER = "data"
 
 # ==========================================
-# 2. 데이터 로딩 (기존 로직 유지)
+# 2. 데이터 로딩
 # ==========================================
 @st.cache_resource(show_spinner="Nexus 엔진 가동 중...")
 def load_split_knowledge():
