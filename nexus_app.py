@@ -6,70 +6,106 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
 
-# 1. 페이지 설정
+# 1. 페이지 설정 (아이콘 및 레이아웃)
 st.set_page_config(page_title="Nexus AI", page_icon="🎮", layout="wide")
 
-# ==========================================
-# 🔐 [중요] API 키 보안 설정 (Streamlit Cloud용)
-# ==========================================
-# 로컬에서 돌릴 때나 서버에서 돌릴 때나 알아서 키를 찾도록 설정합니다.
-if "GOOGLE_API_KEY" in st.secrets:
-    # 서버(Streamlit Cloud)에 저장된 비밀키를 가져옵니다.
-    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-else:
-    # 로컬 환경 변수나 다른 설정이 없다면 경고
-    if "GOOGLE_API_KEY" not in os.environ:
-        st.warning("⚠️ API 키가 설정되지 않았습니다. Streamlit Secrets에 'GOOGLE_API_KEY'를 등록해주세요.")
-        st.stop() # 키 없으면 실행 중단
+# 스타일 커스텀 (탭 디자인 등)
+st.markdown("""
+<style>
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 10px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        white-space: pre-wrap;
+        background-color: #f0f2f6;
+        border-radius: 4px 4px 0px 0px;
+        gap: 1px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #ffffff;
+        border-bottom: 2px solid #ff4b4b;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-# 데이터 폴더 경로
+# API 키 설정
+if "GOOGLE_API_KEY" in st.secrets:
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+
 DATA_FOLDER = "data"
 
 # ==========================================
-# ⚙️ 함수 정의
+# ⚙️ 데이터 로딩 및 분리 로직
 # ==========================================
-@st.cache_resource(show_spinner="Nexus가 데이터를 학습하는 중...")
-def load_nexus_knowledge():
-    """data 폴더의 모든 txt 파일을 읽어옵니다."""
-    combined_text = ""
-    file_list = []
+@st.cache_resource(show_spinner="Nexus가 데이터를 분류하여 학습 중입니다...")
+def load_split_knowledge():
+    """
+    data 폴더의 파일들을 'lol'과 'tft' 키워드로 분류하여 로드합니다.
+    파일명에 'lol'이 있으면 lol_context로, 'tft'가 있으면 tft_context로 들어갑니다.
+    """
+    lol_context = ""
+    tft_context = ""
     
-    # 폴더가 없으면 생성 (에러 방지)
     if not os.path.exists(DATA_FOLDER):
-        os.makedirs(DATA_FOLDER)
-        return None, []
+        return "", ""
 
     txt_files = glob.glob(os.path.join(DATA_FOLDER, "*.txt"))
     
+    lol_count = 0
+    tft_count = 0
+
     for file_path in txt_files:
+        filename = os.path.basename(file_path).lower()
         try:
             with open(file_path, "r", encoding="utf-8") as f:
-                filename = os.path.basename(file_path)
-                combined_text += f"\n--- [문서: {filename}] ---\n{f.read()}\n"
-                file_list.append(filename)
+                content = f.read()
+                formatted_content = f"\n--- [문서: {filename}] ---\n{content}\n"
+                
+                # 파일명 기반 분류
+                if "lol" in filename:
+                    lol_context += formatted_content
+                    lol_count += 1
+                elif "tft" in filename:
+                    tft_context += formatted_content
+                    tft_count += 1
+                else:
+                    # 'lol'이나 'tft'가 안 적힌 파일은 공통 지식으로 둘 다 포함하거나, 
+                    # 안전하게 둘 다 넣어줍니다. (여기서는 둘 다 넣음)
+                    lol_context += formatted_content
+                    tft_context += formatted_content
         except Exception:
             pass
             
-    return combined_text, file_list
+    return lol_context, tft_context, lol_count, tft_count
 
-def get_nexus_chain():
-    # 모델 설정
+# 데이터 로드
+lol_data, tft_data, lol_files, tft_files = load_split_knowledge()
+
+def get_chain(mode="lol"):
+    """
+    mode에 따라 페르소나를 약간 다르게 설정합니다.
+    """
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
     
-    # 페르소나 설정
-    system_instruction = """
-    당신은 'Nexus'입니다. 리그 오브 레전드 데이터 분석 전문가이자 챌린저 티어 플레이어입니다.
+    if mode == "lol":
+        role_desc = "당신은 'Nexus'입니다. 소환사의 협곡(LoL) 전문 분석가이자 챌린저입니다."
+    else:
+        role_desc = "당신은 'Nexus'입니다. 전략적 팀 전투(TFT) 전문 분석가이자 랭커입니다."
+
+    system_instruction = f"""
+    {role_desc}
     
-    [말투 및 행동 지침]
-    1. 당신은 'Nexus'입니다. 아래 제공된 [데이터]를 기반으로 답변하세요.
-    2. 이전 대화 흐름을 기억하고, 문맥에 맞게 자연스럽게 대화하세요.
-    3. 분석가답게 논리적으로 말하되, 게이머들이 쓰는 용어(너프, 버프, 떡상, 떡락, OP 등)를 자연스럽게 섞어 쓰세요.
-    4. 수치 변화(데미지, 쿨타임 등)는 매우 중요하므로 정확하게 언급하세요.
-    5. 질문에 대한 답이 데이터에 없다면, 어설프게 지어내지 말고 "그건 데이터에 없는데? 라이엇이 아직 안 알려줬나 봐."라고 솔직하게 말하세요.
-    6. 답변 끝에는 항상 도움이 될만한 '한 줄 꿀팁'을 덧붙이세요.
-    7. 사용자를 '소환사님'이라고 부르세요.    
+    [행동 지침]
+    1. 분석적이지만 게이머 은어(너프, 버프, OP, 떡상 등)를 자연스럽게 섞어 쓰세요.
+    2. 수치 변화를 정확하게 근거로 제시하세요.
+    3. 제공된 [학습된 데이터]에 없는 내용은 "데이터에 없다"고 솔직히 말하세요.
+    4. 답변 끝에 도움이 될만한 '한 줄 꿀팁'을 추가하세요.
+    
     [학습된 데이터]
-    {context}
+    {{context}}
     """
     
     prompt = ChatPromptTemplate.from_messages([
@@ -81,54 +117,101 @@ def get_nexus_chain():
     return prompt | llm | StrOutputParser()
 
 # ==========================================
-# 🖥️ 화면 구성
+# 🖥️ 사이드바 (심플하게 변경)
 # ==========================================
-st.title("🎮 Nexus AI : LoL 패치 분석기")
-st.markdown("### 24시간 깨어있는 당신만의 챌린저 코치")
-
-# 사이드바
 with st.sidebar:
-    st.header("📂 Nexus 지식 저장소")
-    context_data, loaded_files = load_nexus_knowledge()
+    st.title("🎮 Nexus System")
+    st.markdown("---")
+    st.success("System Online")
     
-    if loaded_files:
-        st.success(f"현재 {len(loaded_files)}개의 패치 노트를 분석했습니다.")
-        with st.expander("학습된 파일 목록 보기"):
-            for f in loaded_files:
-                st.caption(f"📄 {f}")
-    else:
-        st.error("데이터가 없습니다! GitHub 저장소의 'data' 폴더를 확인하세요.")
+    # 데이터 현황을 간단한 메트릭으로 표시
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric(label="LoL Data", value=f"{lol_files}개")
+    with col2:
+        st.metric(label="TFT Data", value=f"{tft_files}개")
+        
+    st.markdown("---")
+    st.caption("Tip: 질문하려는 게임 탭을 선택하세요.")
 
-# 채팅 초기화
-if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": "어서와, 소환사! 이번 패치에서 궁금한 게 뭐야?"}]
+# ==========================================
+# 📑 탭 구성 및 채팅 로직
+# ==========================================
+st.title("Nexus AI Analysis")
 
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = [] 
+# 탭 생성
+tab1, tab2 = st.tabs(["⚔️ League of Legends", "♟️ Teamfight Tactics"])
 
-# 대화 내용 출력
-for msg in st.session_state.messages:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+# --- [Tab 1] LoL 채팅 ---
+with tab1:
+    st.subheader("소환사의 협곡 분석실")
+    
+    # LoL 전용 세션 스테이트 초기화
+    if "messages_lol" not in st.session_state:
+        st.session_state.messages_lol = [{"role": "assistant", "content": "협곡에 오신 것을 환영합니다! 챔피언, 아이템, 룬 무엇이든 물어보세요."}]
+    if "history_lol" not in st.session_state:
+        st.session_state.history_lol = []
 
-# 사용자 입력
-if user_input := st.chat_input("질문 입력 (예: 카이사 너프 심해?)"):
-    with st.chat_message("user"):
-        st.markdown(user_input)
-    st.session_state.messages.append({"role": "user", "content": user_input})
+    # 대화 출력
+    for msg in st.session_state.messages_lol:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
 
-    with st.chat_message("assistant"):
-        chain = get_nexus_chain()
-        with st.spinner("Nexus가 두뇌 풀가동 중..."):
-            try:
-                response = chain.invoke({
-                    "context": context_data if context_data else "데이터 없음",
-                    "chat_history": st.session_state.chat_history,
-                    "question": user_input
-                })
-                st.markdown(response)
-                st.session_state.messages.append({"role": "assistant", "content": response})
-                st.session_state.chat_history.append(HumanMessage(content=user_input))
-                st.session_state.chat_history.append(AIMessage(content=response))
-            except Exception as e:
-                st.error(f"오류 발생: {e}")
+    # 입력창 (key를 다르게 주어 탭 간 충돌 방지)
+    if prompt_lol := st.chat_input("LoL 질문 입력 (예: 가렌 버프됨?)", key="input_lol"):
+        with st.chat_message("user"):
+            st.markdown(prompt_lol)
+        st.session_state.messages_lol.append({"role": "user", "content": prompt_lol})
+
+        with st.chat_message("assistant"):
+            chain = get_chain(mode="lol")
+            with st.spinner("미니언 데이터 분석 중..."):
+                try:
+                    response = chain.invoke({
+                        "context": lol_data,
+                        "chat_history": st.session_state.history_lol,
+                        "question": prompt_lol
+                    })
+                    st.markdown(response)
+                    st.session_state.messages_lol.append({"role": "assistant", "content": response})
+                    st.session_state.history_lol.append(HumanMessage(content=prompt_lol))
+                    st.session_state.history_lol.append(AIMessage(content=response))
+                except Exception as e:
+                    st.error(f"분석 실패: {e}")
+
+# --- [Tab 2] TFT 채팅 ---
+with tab2:
+    st.subheader("전략적 팀 전투 연구소")
+
+    # TFT 전용 세션 스테이트 초기화
+    if "messages_tft" not in st.session_state:
+        st.session_state.messages_tft = [{"role": "assistant", "content": "반갑습니다, 전략가님! 이번 시즌 꿀덱이나 증강체가 궁금하신가요?"}]
+    if "history_tft" not in st.session_state:
+        st.session_state.history_tft = []
+
+    # 대화 출력
+    for msg in st.session_state.messages_tft:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
+
+    # 입력창
+    if prompt_tft := st.chat_input("TFT 질문 입력 (예: 16시즌 4코스트 기물 알려줘)", key="input_tft"):
+        with st.chat_message("user"):
+            st.markdown(prompt_tft)
+        st.session_state.messages_tft.append({"role": "user", "content": prompt_tft})
+
+        with st.chat_message("assistant"):
+            chain = get_chain(mode="tft")
+            with st.spinner("리롤 확률 계산 중..."):
+                try:
+                    response = chain.invoke({
+                        "context": tft_data,
+                        "chat_history": st.session_state.history_tft,
+                        "question": prompt_tft
+                    })
+                    st.markdown(response)
+                    st.session_state.messages_tft.append({"role": "assistant", "content": response})
+                    st.session_state.history_tft.append(HumanMessage(content=prompt_tft))
+                    st.session_state.history_tft.append(AIMessage(content=response))
+                except Exception as e:
+                    st.error(f"분석 실패: {e}")
