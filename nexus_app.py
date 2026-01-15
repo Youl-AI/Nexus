@@ -1,71 +1,65 @@
 import streamlit as st
 import os
 import glob
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
+from langchain_community.vectorstores import FAISS
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
 
 # ==========================================
-# 1. 페이지 설정 및 CSS
+# 1. 페이지 설정 및 CSS (사이드바 150px & 목록형 스타일)
 # ==========================================
 st.set_page_config(page_title="Nexus AI", page_icon="✨", layout="wide")
 
 st.markdown("""
 <style>
+    /* 사이드바 너비 고정 */
     section[data-testid="stSidebar"] {
-        min-width: 150px !important; /* 최소 너비를 350px로 강제 설정 (글자 안 짤리게) */
+        min-width: 150px !important; 
+        max-width: 150px !important;
     }
-
-    div[role="radiogroup"] > label > div:first-child {
-        display: none !important;
-    }
-
+    /* 라디오 버튼 스타일링 (목록형) */
+    div[role="radiogroup"] > label > div:first-child { display: none !important; }
     div[role="radiogroup"] label {
         padding: 12px 15px !important;
         border-radius: 8px !important;
         margin-bottom: 8px !important;
         border: 1px solid transparent;
         transition: all 0.2s ease;
-        white-space: nowrap;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-
-    div[role="radiogroup"] label:hover {
-        background-color: #f0f2f6 !important;
-        cursor: pointer;
-    }
-
+    div[role="radiogroup"] label:hover { background-color: #f0f2f6 !important; cursor: pointer; }
     div[role="radiogroup"] label:has(input:checked) {
-        background-color: #e8f0fe !important;
-        color: #1967d2 !important;
-        font-weight: 600 !important;
+        background-color: #e8f0fe !important; color: #1967d2 !important; font-weight: 600 !important;
     }
-
     .stChatMessage { margin-bottom: 10px; }
-    
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-# API 키 설정
 if "GOOGLE_API_KEY" in st.secrets:
     os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 
 DATA_FOLDER = "data"
 
 # ==========================================
-# 2. 데이터 로딩
+# 2. 벡터 DB 빌더 (Vector RAG)
 # ==========================================
-@st.cache_resource(show_spinner="Nexus 엔진 가동 중...")
-def load_split_knowledge():
-    lol_context = ""
-    tft_context = ""
-    
+@st.cache_resource(show_spinner="Nexus가 데이터를 벡터화(Vectorizing) 중입니다...")
+def build_vector_db():
     if not os.path.exists(DATA_FOLDER):
-        return "", "", 0, 0 
+        return None, None, 0, 0
 
     txt_files = glob.glob(os.path.join(DATA_FOLDER, "*.txt"))
+    
+    lol_docs = []
+    tft_docs = []
     lol_count = 0
     tft_count = 0
 
@@ -74,24 +68,43 @@ def load_split_knowledge():
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
-                formatted = f"\n--- [문서: {filename}] ---\n{content}\n"
+                doc = Document(page_content=content, metadata={"source": filename})
                 
                 if "lol" in filename:
-                    lol_context += formatted
+                    lol_docs.append(doc)
                     lol_count += 1
                 elif "tft" in filename:
-                    tft_context += formatted
+                    tft_docs.append(doc)
                     tft_count += 1
                 else:
-                    lol_context += formatted
-                    tft_context += formatted
+                    lol_docs.append(doc)
+                    tft_docs.append(doc)
         except Exception:
             pass
-            
-    return lol_context, tft_context, lol_count, tft_count
 
-lol_data, tft_data, lol_files, tft_files = load_split_knowledge()
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
+    if lol_docs:
+        lol_splits = text_splitter.split_documents(lol_docs)
+        lol_db = FAISS.from_documents(lol_splits, embeddings)
+    else:
+        lol_db = None
+
+    if tft_docs:
+        tft_splits = text_splitter.split_documents(tft_docs)
+        tft_db = FAISS.from_documents(tft_splits, embeddings)
+    else:
+        tft_db = None
+        
+    return lol_db, tft_db, lol_count, tft_count
+
+lol_db, tft_db, lol_files, tft_files = build_vector_db()
+
+
+# ==========================================
+# 3. [수정됨] 프롬프트 체인 설정
+# ==========================================
 def get_chain(mode="lol"):
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
     
@@ -136,52 +149,48 @@ def get_chain(mode="lol"):
 
 
 # ==========================================
-# 3. 사이드바 UI
+# 4. 사이드바 UI
 # ==========================================
 with st.sidebar:
     st.title("Nexus AI")
-    st.caption("Game Data Analysis")
+    st.caption("Vector RAG Engine")
     st.markdown("---")
     
-    # 메뉴 선택
     selected_mode = st.radio(
         "내 프로젝트",
-        ["소환사의 협곡 (LoL)", "전략적 팀 전투 (TFT)"],
+        ["LoL (협곡)", "TFT (롤체)"],
         index=0,
         key="navigation",
         label_visibility="collapsed"
     )
     
-    # 여백 추가
     st.markdown("<br>" * 5, unsafe_allow_html=True)
-    
     st.markdown("---")
-    st.markdown(f"**📂 데이터베이스**")
-    st.caption(f"• LoL 문서: {lol_files}개")
-    st.caption(f"• TFT 문서: {tft_files}개")
+    st.markdown(f"**📂 DB 상태**")
+    st.caption(f"LoL: {'✅' if lol_db else '❌'} ({lol_files}개)")
+    st.caption(f"TFT: {'✅' if tft_db else '❌'} ({tft_files}개)")
 
 
 # ==========================================
-# 4. 메인 화면 로직
+# 5. 메인 화면 로직
 # ==========================================
-
 if "LoL" in selected_mode:
     current_mode = "lol"
+    current_db = lol_db
     header_text = "⚔️ 소환사의 협곡 분석실"
     input_placeholder = "LoL 질문 입력 (예: 가렌 버프됨?)"
-    context_data = lol_data
     msg_key = "messages_lol"
     hist_key = "history_lol"
-    initial_msg = "협곡에 오신 것을 환영합니다, 소환사님! 무엇을 분석해 드릴까요?"
+    initial_msg = "협곡에 오신 것을 환영합니다! 데이터베이스가 연결되었습니다."
 
 else: # TFT
     current_mode = "tft"
+    current_db = tft_db
     header_text = "♟️ 전략적 팀 전투 연구소"
     input_placeholder = "TFT 질문 입력 (예: 징크스 3신기 알려줘)"
-    context_data = tft_data
     msg_key = "messages_tft"
     hist_key = "history_tft"
-    initial_msg = "반갑습니다, 전략가님! 이번 시즌 꿀덱을 찾아드릴까요?"
+    initial_msg = "반갑습니다! 16시즌 데이터를 완벽하게 분석할 준비가 되었습니다."
 
 
 # 세션 초기화
@@ -194,12 +203,10 @@ if hist_key not in st.session_state:
 # 메인 UI
 st.subheader(header_text)
 
-# 채팅 기록 출력
 for msg in st.session_state[msg_key]:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# 입력창
 if prompt := st.chat_input(input_placeholder):
     
     with st.chat_message("user"):
@@ -207,11 +214,21 @@ if prompt := st.chat_input(input_placeholder):
     st.session_state[msg_key].append({"role": "user", "content": prompt})
 
     with st.chat_message("assistant"):
-        with st.spinner("Nexus가 분석 중입니다..."):
+        with st.spinner("Nexus가 DB에서 관련 정보를 검색 중..."):
             try:
+                # 1. RAG 검색 (Retrieval)
+                if current_db:
+                    # 질문과 가장 유사한 내용 4개만 뽑아옴
+                    retriever = current_db.as_retriever(search_kwargs={"k": 4})
+                    relevant_docs = retriever.invoke(prompt)
+                    context_text = "\n\n".join([d.page_content for d in relevant_docs])
+                else:
+                    context_text = "데이터베이스가 비어있습니다."
+
+                # 2. 답변 생성 (Generation)
                 chain = get_chain(mode=current_mode)
                 response = chain.invoke({
-                    "context": context_data,
+                    "context": context_text,
                     "chat_history": st.session_state[hist_key],
                     "question": prompt
                 })
