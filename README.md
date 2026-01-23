@@ -99,7 +99,10 @@ Nexus-AI/
 │   └── secrets.toml       # API 키 저장소 (Git 제외)
 ├── assets/                # README용 이미지 폴더
 ├── nexus_app.py           # 메인 애플리케이션 코드 (Streamlit)
-├── patch_crawler.py       # 패치 🎮 Nexus AI : LoL & TFT Analysis Assistant
+├── patch_crawler.py       # 패치 데이터 추출 스크립트
+├── requirements.txt       # 패키지 목록
+└── README.md              # 프로젝트 설명서
+```
 
 <br>
 
