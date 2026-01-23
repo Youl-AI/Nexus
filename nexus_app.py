@@ -10,18 +10,16 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 
 # ==========================================
-# 1. 페이지 설정 및 CSS (사이드바 150px & 목록형 스타일)
+# 1. 페이지 설정 및 CSS
 # ==========================================
 st.set_page_config(page_title="Nexus AI", page_icon="✨", layout="wide")
 
 st.markdown("""
 <style>
-    /* 사이드바 너비 고정 */
     section[data-testid="stSidebar"] {
         min-width: 150px !important; 
         max-width: 150px !important;
     }
-    /* 라디오 버튼 스타일링 (목록형) */
     div[role="radiogroup"] > label > div:first-child { display: none !important; }
     div[role="radiogroup"] label {
         padding: 12px 15px !important;
@@ -49,9 +47,9 @@ if "GOOGLE_API_KEY" in st.secrets:
 DATA_FOLDER = "data"
 
 # ==========================================
-# 2. 벡터 DB 빌더 (Vector RAG)
+# 2. 벡터 DB 빌더
 # ==========================================
-@st.cache_resource(show_spinner="Nexus가 데이터를 벡터화(Vectorizing) 중입니다...")
+@st.cache_resource(show_spinner="Nexus가 데이터를 벡터화 중입니다...")
 def build_vector_db():
     if not os.path.exists(DATA_FOLDER):
         return None, None, 0, 0
@@ -103,7 +101,7 @@ lol_db, tft_db, lol_files, tft_files = build_vector_db()
 
 
 # ==========================================
-# 3. [수정됨] 프롬프트 체인 설정
+# 3. 프롬프트 설정
 # ==========================================
 def get_chain(mode="lol"):
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
@@ -216,7 +214,7 @@ if prompt := st.chat_input(input_placeholder):
     with st.chat_message("assistant"):
         with st.spinner("Nexus가 DB에서 관련 정보를 검색 중..."):
             try:
-                # 1. RAG 검색 (Retrieval)
+                # 1. RAG 검색
                 if current_db:
                     # 질문과 가장 유사한 내용 4개만 뽑아옴
                     retriever = current_db.as_retriever(search_kwargs={"k": 4})
@@ -225,7 +223,7 @@ if prompt := st.chat_input(input_placeholder):
                 else:
                     context_text = "데이터베이스가 비어있습니다."
 
-                # 2. 답변 생성 (Generation)
+                # 2. 답변 생성
                 chain = get_chain(mode=current_mode)
                 response = chain.invoke({
                     "context": context_text,
