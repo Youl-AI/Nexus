@@ -1,10 +1,15 @@
 # 🎮 Nexus AI : LoL & TFT Analysis Assistant
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://nexus-app.streamlit.app/)
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlebard&logoColor=white)
+<div align="center">
+  <a href="https://nexus-app.streamlit.app/">
+    <img src="https://img.shields.io/badge/Live_Demo-000000?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo">
+  </a>
+
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain">
+  <img src="https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini">
+</div>
 
 > **"소환사님, 이번 패치 꿀덱은 데이터가 증명합니다."** > Nexus AI는 **RAG(검색 증강 생성)** 기술을 활용하여, 최신 롤/TFT 패치 데이터를 학습하고 분석해주는 AI 어시스턴트입니다.
 
