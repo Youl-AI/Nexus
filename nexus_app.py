@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 import glob
-import time
+import time  # [필수] 속도 제한(429) 방지용
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
@@ -48,9 +48,13 @@ if "GOOGLE_API_KEY" in st.secrets:
 DATA_FOLDER = "data"
 
 # ==========================================
-# 벡터 DB 생성 함수
+# [중요] 2.1 안전한 벡터 DB 생성 함수 (속도 제한 방지)
 # ==========================================
 def create_vector_db_safely(documents, embeddings):
+    """
+    데이터를 한 번에 보내지 않고, 조금씩 나누어(Batch) 보내서
+    Google API의 429(속도 제한) 에러를 방지하는 함수
+    """
     if not documents:
         return None
 
@@ -58,32 +62,34 @@ def create_vector_db_safely(documents, embeddings):
     batch_size = 10 
     total_docs = len(documents)
     
+    # 첫 번째 배치로 DB 틀 생성
     first_batch = documents[:batch_size]
     try:
         db = FAISS.from_documents(first_batch, embeddings)
-        print(f"✅ 초기 DB 생성 완료 (1/{total_docs})")
+        print(f"✅ 초기 DB 생성 완료 (10/{total_docs})")
     except Exception as e:
         print(f"❌ 초기 생성 실패: {e}")
         return None
         
-    time.sleep(1.5)
+    time.sleep(2) # [중요] 2초 휴식 (안전하게)
 
+    # 나머지 데이터 추가
     for i in range(batch_size, total_docs, batch_size):
         batch = documents[i : i + batch_size]
         try:
             db.add_documents(batch)
-            print(f"🔄 데이터 추가 중... ({i}/{total_docs})")
-            time.sleep(1.5)
+            print(f"🔄 데이터 추가 중... ({i + len(batch)}/{total_docs})")
+            time.sleep(2) # [핵심] API 호출 사이에 2초씩 쉼
         except Exception as e:
-            print(f"⚠️ 배치 추가 중 오류 발생 (무시하고 계속 진행): {e}")
-            time.sleep(5)
+            print(f"⚠️ 배치 추가 중 오류 (건너뜀): {e}")
+            time.sleep(5) # 에러나면 5초 쉼
             
     return db
 
 # ==========================================
 # 2.2 벡터 DB 빌더 (메인)
 # ==========================================
-@st.cache_resource(show_spinner="Nexus가 데이터를 정밀 분석 중입니다... (시간이 조금 걸립니다)")
+@st.cache_resource(show_spinner="Nexus가 데이터를 정밀 분석 중입니다...")
 def build_vector_db():
     if not os.path.exists(DATA_FOLDER):
         return None, None, 0, 0
@@ -92,8 +98,8 @@ def build_vector_db():
     
     lol_docs = []
     tft_docs = []
-    lol_count = 0
-    tft_count = 0
+    lol_count = 0  # [수정] 파일 개수를 세는 변수
+    tft_count = 0  # [수정] 파일 개수를 세는 변수
 
     for file_path in txt_files:
         filename = os.path.basename(file_path).lower()
@@ -116,12 +122,11 @@ def build_vector_db():
 
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     
-    embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/gemini-embedding-001", 
-        task_type="retrieval_document"
-    )
+    # [수정 완료] 2026년 2월 기준, text-embedding-004는 종료됨.
+    # 현재 살아있는 'gemini-embedding-001'을 사용합니다.
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
 
-    # [수정] 안전한 함수(create_vector_db_safely) 사용
+    # [수정] 안전한 함수 사용 (429 에러 방지)
     if lol_docs:
         lol_splits = text_splitter.split_documents(lol_docs)
         lol_db = create_vector_db_safely(lol_splits, embeddings)
@@ -133,9 +138,12 @@ def build_vector_db():
         tft_db = create_vector_db_safely(tft_splits, embeddings)
     else:
         tft_db = None
-        
-    return lol_db, tft_db, len(txt_files) if lol_files else 0, len(txt_files) if tft_files else 0
+    
+    # [수정 완료] NameError 해결! 
+    # lol_files 라는 없는 변수 대신 lol_count를 리턴합니다.
+    return lol_db, tft_db, lol_count, tft_count
 
+# 함수 실행 결과 받기
 lol_db, tft_db, lol_files, tft_files = build_vector_db()
 
 
@@ -143,6 +151,7 @@ lol_db, tft_db, lol_files, tft_files = build_vector_db()
 # 3. 프롬프트 설정
 # ==========================================
 def get_chain(mode="lol"):
+    # [수정 완료] 사용자님 말씀대로 최신 모델 gemini-2.5-flash 사용
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
     
     if mode == "lol":
@@ -204,8 +213,8 @@ with st.sidebar:
     st.markdown("<br>" * 5, unsafe_allow_html=True)
     st.markdown("---")
     st.markdown(f"**📂 DB 상태**")
-    st.caption(f"LoL: {'✅' if lol_db else '❌'}")
-    st.caption(f"TFT: {'✅' if tft_db else '❌'}")
+    st.caption(f"LoL: {'✅' if lol_db else '❌'} ({lol_files}개 파일)")
+    st.caption(f"TFT: {'✅' if tft_db else '❌'} ({tft_files}개 파일)")
 
 
 # ==========================================
