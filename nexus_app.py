@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import glob
+import time
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
@@ -47,9 +48,42 @@ if "GOOGLE_API_KEY" in st.secrets:
 DATA_FOLDER = "data"
 
 # ==========================================
-# 2. 벡터 DB 빌더
+# 벡터 DB 생성 함수
 # ==========================================
-@st.cache_resource(show_spinner="Nexus가 데이터를 벡터화 중입니다...")
+def create_vector_db_safely(documents, embeddings):
+    if not documents:
+        return None
+
+    # 한 번에 처리할 문서 개수
+    batch_size = 10 
+    total_docs = len(documents)
+    
+    first_batch = documents[:batch_size]
+    try:
+        db = FAISS.from_documents(first_batch, embeddings)
+        print(f"✅ 초기 DB 생성 완료 (1/{total_docs})")
+    except Exception as e:
+        print(f"❌ 초기 생성 실패: {e}")
+        return None
+        
+    time.sleep(1.5)
+
+    for i in range(batch_size, total_docs, batch_size):
+        batch = documents[i : i + batch_size]
+        try:
+            db.add_documents(batch)
+            print(f"🔄 데이터 추가 중... ({i}/{total_docs})")
+            time.sleep(1.5)
+        except Exception as e:
+            print(f"⚠️ 배치 추가 중 오류 발생 (무시하고 계속 진행): {e}")
+            time.sleep(5)
+            
+    return db
+
+# ==========================================
+# 2.2 벡터 DB 빌더 (메인)
+# ==========================================
+@st.cache_resource(show_spinner="Nexus가 데이터를 정밀 분석 중입니다... (시간이 조금 걸립니다)")
 def build_vector_db():
     if not os.path.exists(DATA_FOLDER):
         return None, None, 0, 0
@@ -81,21 +115,26 @@ def build_vector_db():
             pass
 
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
+    
+    embeddings = GoogleGenerativeAIEmbeddings(
+        model="models/gemini-embedding-001", 
+        task_type="retrieval_document"
+    )
 
+    # [수정] 안전한 함수(create_vector_db_safely) 사용
     if lol_docs:
         lol_splits = text_splitter.split_documents(lol_docs)
-        lol_db = FAISS.from_documents(lol_splits, embeddings)
+        lol_db = create_vector_db_safely(lol_splits, embeddings)
     else:
         lol_db = None
 
     if tft_docs:
         tft_splits = text_splitter.split_documents(tft_docs)
-        tft_db = FAISS.from_documents(tft_splits, embeddings)
+        tft_db = create_vector_db_safely(tft_splits, embeddings)
     else:
         tft_db = None
         
-    return lol_db, tft_db, lol_count, tft_count
+    return lol_db, tft_db, len(txt_files) if lol_files else 0, len(txt_files) if tft_files else 0
 
 lol_db, tft_db, lol_files, tft_files = build_vector_db()
 
@@ -165,8 +204,8 @@ with st.sidebar:
     st.markdown("<br>" * 5, unsafe_allow_html=True)
     st.markdown("---")
     st.markdown(f"**📂 DB 상태**")
-    st.caption(f"LoL: {'✅' if lol_db else '❌'} ({lol_files}개)")
-    st.caption(f"TFT: {'✅' if tft_db else '❌'} ({tft_files}개)")
+    st.caption(f"LoL: {'✅' if lol_db else '❌'}")
+    st.caption(f"TFT: {'✅' if tft_db else '❌'}")
 
 
 # ==========================================
