@@ -81,7 +81,7 @@ def build_vector_db():
             pass
 
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+    embeddings = GoogleGenerativeAIEmbeddings(model="text-embedding-004")
 
     if lol_docs:
         lol_splits = text_splitter.split_documents(lol_docs)
