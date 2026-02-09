@@ -1,17 +1,13 @@
 import streamlit as st
 import os
 import glob
-import time  # [필수] 속도 제한(429) 방지용
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
-from langchain_community.vectorstores import FAISS
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.documents import Document
 
 # ==========================================
-# 1. 페이지 설정 및 CSS
+# 1. 페이지 설정 및 CSS (변경 없음)
 # ==========================================
 st.set_page_config(page_title="Nexus AI", page_icon="✨", layout="wide")
 
@@ -47,112 +43,52 @@ if "GOOGLE_API_KEY" in st.secrets:
 
 DATA_FOLDER = "data"
 
-# ==========================================
-# [중요] 2.1 안전한 벡터 DB 생성 함수 (속도 제한 방지)
-# ==========================================
-def create_vector_db_safely(documents, embeddings):
+
+@st.cache_resource(show_spinner="Nexus가 데이터를 로드 중입니다...")
+def load_all_text_data():
     """
-    데이터를 한 번에 보내지 않고, 조금씩 나누어(Batch) 보내서
-    Google API의 429(속도 제한) 에러를 방지하는 함수
+    벡터 DB를 만들지 않고, 텍스트 파일 내용을 그대로 읽어옵니다.
     """
-    if not documents:
-        return None
-
-    # 한 번에 처리할 문서 개수
-    batch_size = 10 
-    total_docs = len(documents)
-    
-    # 첫 번째 배치로 DB 틀 생성
-    first_batch = documents[:batch_size]
-    try:
-        db = FAISS.from_documents(first_batch, embeddings)
-        print(f"✅ 초기 DB 생성 완료 (10/{total_docs})")
-    except Exception as e:
-        print(f"❌ 초기 생성 실패: {e}")
-        return None
-        
-    time.sleep(2) # [중요] 2초 휴식 (안전하게)
-
-    # 나머지 데이터 추가
-    for i in range(batch_size, total_docs, batch_size):
-        batch = documents[i : i + batch_size]
-        try:
-            db.add_documents(batch)
-            print(f"🔄 데이터 추가 중... ({i + len(batch)}/{total_docs})")
-            time.sleep(2) # [핵심] API 호출 사이에 2초씩 쉼
-        except Exception as e:
-            print(f"⚠️ 배치 추가 중 오류 (건너뜀): {e}")
-            time.sleep(5) # 에러나면 5초 쉼
-            
-    return db
-
-# ==========================================
-# 2.2 벡터 DB 빌더 (메인)
-# ==========================================
-@st.cache_resource(show_spinner="Nexus가 데이터를 정밀 분석 중입니다...")
-def build_vector_db():
     if not os.path.exists(DATA_FOLDER):
-        return None, None, 0, 0
+        return "", "", 0, 0
 
     txt_files = glob.glob(os.path.join(DATA_FOLDER, "*.txt"))
     
-    lol_docs = []
-    tft_docs = []
-    lol_count = 0  # [수정] 파일 개수를 세는 변수
-    tft_count = 0  # [수정] 파일 개수를 세는 변수
+    lol_text = ""
+    tft_text = ""
+    lol_count = 0
+    tft_count = 0
 
     for file_path in txt_files:
         filename = os.path.basename(file_path).lower()
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
-                doc = Document(page_content=content, metadata={"source": filename})
+                # 파일 내용을 그대로 문자열에 추가
+                formatted_content = f"\n\n=== [Source: {filename}] ===\n{content}"
                 
                 if "lol" in filename:
-                    lol_docs.append(doc)
+                    lol_text += formatted_content
                     lol_count += 1
                 elif "tft" in filename:
-                    tft_docs.append(doc)
+                    tft_text += formatted_content
                     tft_count += 1
                 else:
-                    lol_docs.append(doc)
-                    tft_docs.append(doc)
+                    lol_text += formatted_content
+                    tft_text += formatted_content
         except Exception:
             pass
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-    
-    # [수정 완료] 2026년 2월 기준, text-embedding-004는 종료됨.
-    # 현재 살아있는 'gemini-embedding-001'을 사용합니다.
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
+    return lol_text, tft_text, lol_count, tft_count
 
-    # [수정] 안전한 함수 사용 (429 에러 방지)
-    if lol_docs:
-        lol_splits = text_splitter.split_documents(lol_docs)
-        lol_db = create_vector_db_safely(lol_splits, embeddings)
-    else:
-        lol_db = None
-
-    if tft_docs:
-        tft_splits = text_splitter.split_documents(tft_docs)
-        tft_db = create_vector_db_safely(tft_splits, embeddings)
-    else:
-        tft_db = None
-    
-    # [수정 완료] NameError 해결! 
-    # lol_files 라는 없는 변수 대신 lol_count를 리턴합니다.
-    return lol_db, tft_db, lol_count, tft_count
-
-# 함수 실행 결과 받기
-lol_db, tft_db, lol_files, tft_files = build_vector_db()
+lol_context, tft_context, lol_files, tft_files = load_all_text_data()
 
 
 # ==========================================
 # 3. 프롬프트 설정
 # ==========================================
 def get_chain(mode="lol"):
-    # [수정 완료] 사용자님 말씀대로 최신 모델 gemini-2.5-flash 사용
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
+    llm = ChatGoogleGenerativeAI(model="gemini-3-preview", temperature=0.3)
     
     if mode == "lol":
         role_desc = """
@@ -170,6 +106,7 @@ def get_chain(mode="lol"):
         아이템 추천은 항상 '찬란한', '유물' 아이템을 제외한 기본 아이템으로 추천하세요.
         """
 
+    # [유지] 사용자 요청대로 행동 지침 수정 없이 그대로 사용
     system_instruction = f"""
     {role_desc}
     
@@ -199,7 +136,7 @@ def get_chain(mode="lol"):
 # ==========================================
 with st.sidebar:
     st.title("Nexus AI")
-    st.caption("Vector RAG Engine")
+    st.caption("Vector RAG Engine") # 캡션 유지
     st.markdown("---")
     
     selected_mode = st.radio(
@@ -213,8 +150,9 @@ with st.sidebar:
     st.markdown("<br>" * 5, unsafe_allow_html=True)
     st.markdown("---")
     st.markdown(f"**📂 DB 상태**")
-    st.caption(f"LoL: {'✅' if lol_db else '❌'} ({lol_files}개 파일)")
-    st.caption(f"TFT: {'✅' if tft_db else '❌'} ({tft_files}개 파일)")
+    # DB 객체 대신 텍스트 데이터 존재 여부로 확인
+    st.caption(f"LoL: {'✅' if lol_context else '❌'} ({lol_files}개 파일)")
+    st.caption(f"TFT: {'✅' if tft_context else '❌'} ({tft_files}개 파일)")
 
 
 # ==========================================
@@ -222,7 +160,7 @@ with st.sidebar:
 # ==========================================
 if "LoL" in selected_mode:
     current_mode = "lol"
-    current_db = lol_db
+    current_context_data = lol_context # DB 대신 전체 텍스트 할당
     header_text = "⚔️ 소환사의 협곡 분석실"
     input_placeholder = "LoL 질문 입력 (예: 가렌 버프됨?)"
     msg_key = "messages_lol"
@@ -231,7 +169,7 @@ if "LoL" in selected_mode:
 
 else: # TFT
     current_mode = "tft"
-    current_db = tft_db
+    current_context_data = tft_context # DB 대신 전체 텍스트 할당
     header_text = "♟️ 전략적 팀 전투 연구소"
     input_placeholder = "TFT 질문 입력 (예: 징크스 3신기 알려줘)"
     msg_key = "messages_tft"
@@ -262,16 +200,11 @@ if prompt := st.chat_input(input_placeholder):
     with st.chat_message("assistant"):
         with st.spinner("Nexus가 DB에서 관련 정보를 검색 중..."):
             try:
-                # 1. RAG 검색
-                if current_db:
-                    # 질문과 가장 유사한 내용 4개만 뽑아옴
-                    retriever = current_db.as_retriever(search_kwargs={"k": 4})
-                    relevant_docs = retriever.invoke(prompt)
-                    context_text = "\n\n".join([d.page_content for d in relevant_docs])
+                if current_context_data:
+                    context_text = current_context_data
                 else:
                     context_text = "데이터베이스가 비어있습니다."
 
-                # 2. 답변 생성
                 chain = get_chain(mode=current_mode)
                 response = chain.invoke({
                     "context": context_text,
