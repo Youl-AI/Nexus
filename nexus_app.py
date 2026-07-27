@@ -88,7 +88,7 @@ lol_context, tft_context, lol_files, tft_files = load_all_text_data()
 # 3. 프롬프트 설정
 # ==========================================
 def get_chain(mode="lol"):
-    llm = ChatGoogleGenerativeAI(model="gemini-3-preview", temperature=0.3)
+    llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash", temperature=0.3)
     
     if mode == "lol":
         role_desc = """
